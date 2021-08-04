@@ -23,15 +23,20 @@ export default {
   computed: {
     menu () {
       return [
-        'General',
+        'Basic Detail',
         [
           {
-            to: '/',
-            icon: 'desktop-mac',
-            label: 'Dashboard'
+            to: '/forms',
+            label: 'Patient Information',
+            icon: 'account'
+          },
+          {
+            label: 'Laboratory Data',
+             pack:"fas",
+             icon:"fa-vial"
           }
         ],
-        'Examples',
+        'Medical History',
         [
           {
             to: '/tables',
@@ -41,7 +46,7 @@ export default {
           },
           {
             to: '/forms',
-            label: 'Forms',
+            label: 'Patient Information',
             icon: 'square-edit-outline'
           },
           {
@@ -63,19 +68,6 @@ export default {
                 label: 'Sub-item Two'
               }
             ]
-          }
-        ],
-        'About',
-        [
-          {
-            href: 'https://admin-one.justboil.me',
-            label: 'Premium Demo',
-            icon: 'credit-card'
-          },
-          {
-            href: 'https://justboil.me/bulma-admin-template/one',
-            label: 'About',
-            icon: 'help-circle'
           }
         ]
       ]

@@ -1,8 +1,9 @@
 <template>
-  <aside v-show="isAsideVisible" class="aside is-placed-left is-expanded">
+  <aside v-show="isAsideVisible" class="aside is-placed-left is-expanded logo-section">
     <aside-tools :is-main-menu="true">
-      <span slot="label"> <b>Admin</b> One </span>
+      <span slot="label" class="logo-img"> <img src="../assets/logo.png" alt=""> <span> eAccess  Telemedics  </span>  </span>
     </aside-tools>
+    <p class="form-heading"> PRE ANESTHESIA CHECKUP </p>
     <div class="menu is-menu-main">
       <template v-for="(menuGroup, index) in menu">
         <p v-if="typeof menuGroup === 'string'" :key="index" class="menu-label">
@@ -23,6 +24,7 @@
 import { mapState } from 'vuex'
 import AsideTools from '@/components/AsideTools'
 import AsideMenuList from '@/components/AsideMenuList'
+import ('../css/custom.css')
 
 export default {
   name: 'AsideMenu',

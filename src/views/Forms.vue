@@ -1,14 +1,8 @@
 <template>
   <div>
-    <title-bar :title-stack="titleStack" />
-    <hero-bar>
-      Forms
-      <router-link slot="right" to="/" class="button">
-        Dashboard
-      </router-link>
-    </hero-bar>
+
     <section class="section is-main-section">
-      <card-component title="Forms" icon="ballot">
+      <card-component title="Patient Information" icon="account">
         <form @submit.prevent="submit">
           <div class="columns">
             <div class="column is-one-third">
@@ -20,7 +14,7 @@
 
             <div class="column is-one-third ">
               <b-field label="Time">
-                <b-timepicker :incrementMinutes="minutesGranularity" :incrementHours="hoursGranularity">
+                <b-timepicker>
                 </b-timepicker>
               </b-field>
             </div>
@@ -41,7 +35,7 @@
               </b-field>
             </div>
 
-            <div class="column is-one-third ">
+            <div class="column is-one-third cstm-radio-btn">
               <div class="block">
                 <b-field label="Sex">
                   <b-radio v-model="radio" name="name" native-value="male" type="is-info">
@@ -59,7 +53,7 @@
           </div>
 
 
-          <div class="columns">
+          <div class="columns mb-0">
             <div class="column is-one-third ">
               <b-field label="IP">
                 <b-input maxlength="300" type="textarea"></b-input>
@@ -139,7 +133,7 @@
           </div>
 
 <div>
-             <div class="column is-full">
+             <div class="column is-full cstm-radio-btn">
               <div class="block">
                 <b-field label="ASA Physical Status">
                   <b-radio v-model="radio" name="name" native-value="zero" type="is-info">
