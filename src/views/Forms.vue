@@ -10,178 +10,232 @@
     <section class="section is-main-section">
       <card-component title="Forms" icon="ballot">
         <form @submit.prevent="submit">
-          <b-field label="From" horizontal>
-            <b-field>
-              <b-input
-                v-model="form.name"
-                icon="account"
-                placeholder="Name"
-                name="name"
-                required
-              />
-            </b-field>
-            <b-field>
-              <b-input
-                v-model="form.email"
-                icon="email"
-                type="email"
-                placeholder="E-mail"
-                name="email"
-                required
-              />
-            </b-field>
-          </b-field>
-          <b-field message="Do not enter the leading zero" horizontal>
-            <b-field>
-              <p class="control">
-                <a class="button is-static">
-                  +44
-                </a>
-              </p>
-              <b-input v-model="form.phone" type="tel" name="phone" expanded />
-            </b-field>
-          </b-field>
-          <b-field label="Department" horizontal>
-            <b-select
-              v-model="form.department"
-              placeholder="Select a department"
-              required
-            >
-              <option
-                v-for="(department, index) in departments"
-                :key="index"
-                :value="department"
-              >
-                {{ department }}
-              </option>
-            </b-select>
-          </b-field>
-          <hr />
-          <b-field label="Subject" message="Message subject" horizontal>
-            <b-input
-              v-model="form.subject"
-              placeholder="e.g. Partnership proposal"
-              required
-            />
-          </b-field>
-          <b-field
-            label="Question"
-            message="Your question. Max 255 characters"
-            horizontal
-          >
-            <b-input
-              v-model="form.question"
-              type="textarea"
-              placeholder="Explain how we can help you"
-              maxlength="255"
-              required
-            />
-          </b-field>
-          <hr />
-          <b-field horizontal>
-            <b-field grouped>
-              <div class="control">
-                <b-button native-type="submit" type="is-primary"
-                  >Submit</b-button
-                >
+          <div class="columns">
+            <div class="column is-one-third">
+              <b-field label="Date">
+                <b-datepicker>
+                </b-datepicker>
+              </b-field>
+            </div>
+
+            <div class="column is-one-third ">
+              <b-field label="Time">
+                <b-timepicker :incrementMinutes="minutesGranularity" :incrementHours="hoursGranularity">
+                </b-timepicker>
+              </b-field>
+            </div>
+          </div>
+
+          <div class="columns">
+            <div class="column is-one-third ">
+              <b-field label="Name">
+                <b-input>
+                </b-input>
+              </b-field>
+            </div>
+
+            <div class="column is-one-third ">
+              <b-field label="DOB">
+                <b-datepicker placeholder="DOB">
+                </b-datepicker>
+              </b-field>
+            </div>
+
+            <div class="column is-one-third ">
+              <div class="block">
+                <b-field label="Sex">
+                  <b-radio v-model="radio" name="name" native-value="male" type="is-info">
+                    Male
+                  </b-radio>
+                  <b-radio v-model="radio" name="name" native-value="female" type="is-info">
+                    Female
+                  </b-radio>
+                  <b-radio v-model="radio" name="name" native-value="other" type="is-info">
+                    Other
+                  </b-radio>
+                </b-field>
               </div>
-              <div class="control">
-                <b-button type="is-primary is-outlined" @click="reset"
-                  >Reset</b-button
-                >
+            </div>
+          </div>
+
+
+          <div class="columns">
+            <div class="column is-one-third ">
+              <b-field label="IP">
+                <b-input maxlength="300" type="textarea"></b-input>
+              </b-field>
+            </div>
+
+            <div class="column is-one-third ">
+              <b-field label="Proposed Operation">
+                <b-input maxlength="300" type="textarea"></b-input>
+              </b-field>
+            </div>
+
+            <div class="column is-one-third ">
+              <b-field label="Pre-Operative Diagnosis">
+                <b-input maxlength="300" type="textarea"></b-input>
+              </b-field>
+            </div>
+          </div>
+
+
+          <div class="columns">
+            <div class="column is-one-third ">
+              <div class="columns">
+                <div class="column is-half">
+                  <b-field label="BP">
+                    <b-input>
+                    </b-input>
+                  </b-field>
+                </div>
+
+                <div class="column is-half ">
+                  <b-field label="HR">
+                    <b-input>
+                    </b-input>
+                  </b-field>
+                </div>
+
+
               </div>
-            </b-field>
-          </b-field>
+            </div>
+
+            <div class="column is-one-third ">
+              <div class="columns">
+                <div class="column is-half">
+                  <b-field label="Sao2">
+                    <b-input>
+                    </b-input>
+                  </b-field>
+                </div>
+
+                <div class="column is-half">
+                  <b-field label="Height(cm)">
+                    <b-input>
+                    </b-input>
+                  </b-field>
+                </div>
+              </div>
+            </div>
+
+            <div class="column is-one-third ">
+              <div class="columns">
+                <div class="column is-half">
+                  <b-field label="Weight (kg)">
+                    <b-input>
+                    </b-input>
+                  </b-field>
+                </div>
+
+                <div class="column is-half">
+                  <b-field label="BMI">
+                    <b-input>
+                    </b-input>
+                  </b-field>
+                </div>
+              </div>
+            </div>
+          </div>
+
+<div>
+             <div class="column is-full">
+              <div class="block">
+                <b-field label="ASA Physical Status">
+                  <b-radio v-model="radio" name="name" native-value="zero" type="is-info">
+                    0
+                  </b-radio>
+                  <b-radio v-model="radio" name="name" native-value="one" type="is-info">
+                    1
+                  </b-radio>
+                  <b-radio v-model="radio" name="name" native-value="two" type="is-info">
+                    2
+                  </b-radio>
+                  <b-radio v-model="radio" name="name" native-value="two" type="is-info">
+                    3
+                  </b-radio>
+                  <b-radio v-model="radio" name="name" native-value="two" type="is-info">
+                    4
+                  </b-radio>
+                  <b-radio v-model="radio" name="name" native-value="two" type="is-info">
+                    5
+                  </b-radio>
+                  <b-radio v-model="radio" name="name" native-value="two" type="is-info">
+                    E
+                  </b-radio>
+                </b-field>
+              </div>
+            </div>
+            </div>
+
+
         </form>
       </card-component>
-      <card-component title="Custom elements" icon="ballot-outline">
-        <b-field label="Checkbox" class="has-check" horizontal>
-          <checkbox-picker
-            v-model="customElementsForm.checkbox"
-            :options="{ lorem: 'Lorem', ipsum: 'Ipsum', dolore: 'Dolore' }"
-            type="is-primary"
-          />
-        </b-field>
-        <hr />
-        <b-field label="Radio" class="has-check" horizontal>
-          <radio-picker
-            v-model="customElementsForm.radio"
-            :options="{ one: 'One', two: 'Two' }"
-          ></radio-picker>
-        </b-field>
-        <hr />
-        <b-field label="Switch" horizontal>
-          <b-switch v-model="customElementsForm.switch">
-            Default
-          </b-switch>
-        </b-field>
-        <hr />
-        <b-field label="File" horizontal>
-          <file-picker v-model="customElementsForm.file" />
-        </b-field>
-      </card-component>
+
     </section>
   </div>
 </template>
 
 <script>
-import mapValues from 'lodash/mapValues'
-import TitleBar from '@/components/TitleBar'
-import CardComponent from '@/components/CardComponent'
-import CheckboxPicker from '@/components/CheckboxPicker'
-import RadioPicker from '@/components/RadioPicker'
-import FilePicker from '@/components/FilePicker'
-import HeroBar from '@/components/HeroBar'
-export default {
-  name: 'Forms',
-  components: {
-    HeroBar,
-    FilePicker,
-    RadioPicker,
-    CheckboxPicker,
-    CardComponent,
-    TitleBar
-  },
-  data () {
-    return {
-      isLoading: false,
-      form: {
-        name: null,
-        email: null,
-        phone: null,
-        department: null,
-        subject: null,
-        question: null
-      },
-      customElementsForm: {
-        checkbox: [],
-        radio: null,
-        switch: true,
-        file: null
-      },
-      departments: ['Business Development', 'Marketing', 'Sales']
-    }
-  },
-  computed: {
-    titleStack () {
-      return ['Admin', 'Forms']
-    }
-  },
-  methods: {
-    submit () {},
-    reset () {
-      this.form = mapValues(this.form, (item) => {
-        if (item && typeof item === 'object') {
-          return []
-        }
-        return null
-      })
+  import mapValues from 'lodash/mapValues'
+  import TitleBar from '@/components/TitleBar'
+  import CardComponent from '@/components/CardComponent'
+  import CheckboxPicker from '@/components/CheckboxPicker'
+  import RadioPicker from '@/components/RadioPicker'
+  import FilePicker from '@/components/FilePicker'
+  import HeroBar from '@/components/HeroBar'
+  export default {
+    name: 'Forms',
+    components: {
+      HeroBar,
+      FilePicker,
+      RadioPicker,
+      CheckboxPicker,
+      CardComponent,
+      TitleBar
+    },
+    data() {
+      return {
+        radio: 'default',
+        isLoading: false,
+        form: {
+          name: null,
+          email: null,
+          phone: null,
+          department: null,
+          subject: null,
+          question: null
+        },
+        customElementsForm: {
+          checkbox: [],
+          radio: null,
+          switch: true,
+          file: null
+        },
+        departments: ['Business Development', 'Marketing', 'Sales']
+      }
+    },
+    computed: {
+      titleStack() {
+        return ['Admin', 'Forms']
+      }
+    },
+    methods: {
+      submit() {},
+      reset() {
+        this.form = mapValues(this.form, (item) => {
+          if (item && typeof item === 'object') {
+            return []
+          }
+          return null
+        })
 
-      this.$buefy.snackbar.open({
-        message: 'Reset successfully',
-        queue: false
-      })
+        this.$buefy.snackbar.open({
+          message: 'Reset successfully',
+          queue: false
+        })
+      }
     }
   }
-}
+
 </script>
