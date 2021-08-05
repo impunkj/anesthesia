@@ -8,6 +8,7 @@
       :class="{ 'has-icon': !!item.icon, 'has-dropdown-icon': hasDropdown }"
       @click="menuClick"
     >
+
       <b-icon
         v-if="item.icon"
         :icon="item.icon"
@@ -54,7 +55,7 @@ export default {
       return !!this.item.menu
     },
     dropdownIcon () {
-      return this.isDropdownActive ? 'minus' : 'plus'
+      return this.isDropdownActive ? 'chevron-down' : 'chevron-left'
     },
     itemTo () {
       return this.item.to ? this.item.to : null

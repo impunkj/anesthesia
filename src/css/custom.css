@@ -1,6 +1,7 @@
 body{font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
 .logo-section .aside-tools{display: inline-table !important; padding-bottom: 18px;
     padding-top: 15px;}
+    .menu-list{padding-left: 15px;}
 .logo-section .logo-img{display: flex; line-height: 20px;}
 .logo-section .logo-img span{ padding-top: 10px; font-size: 18px;}
 .logo-section .logo-img img{    padding-right: 15px;}
@@ -21,6 +22,24 @@ body{font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",
         padding-bottom: 15px;
     }
 
+    .popup-heading{
+        font-size: 20px;
+        font-weight: 600;
+        padding: 5px 13px;
+        margin-bottom: 20px;
+        background: #ffc107;
+        color: #000;
+    }
+
+    .sbmt-btn{
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #fff;
+    }
+    .sbmt-btn:hover{    border-color: #ffc107;
+        color: #363636;
+        background: #ffc107;}
+
     .logo-section  .menu-list a{ padding: 0.8rem 0;}
     .cstm-radio-btn .field-body{
         border: 1px solid #cecece;
@@ -35,6 +54,22 @@ body{font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",
     .title{    font-size: 1.5rem;}
     .card-header-title{background: #ffc107;}
     .form-section{    box-shadow: 0px 2px 15px #00000017;}
+    .b-radio.radio:not(.button){margin-right: 1rem;}
+
+    .cstm-ul-li li {
+        border-bottom: 1px dashed #dbdbdb;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        padding-left: 25px;
+    }
+    .cstm-ul-li li:before{
+        content: "\f046";
+        position: absolute;
+        font-family: 'FontAwesome';
+        margin-left: -24px;
+    }
+
+    .textarea:not([rows]){    min-height: 6em;}
 
     @media screen and (min-width: 1024px){
 html.has-aside-left.has-aside-expanded nav.navbar, html.has-aside-left.has-aside-expanded body {

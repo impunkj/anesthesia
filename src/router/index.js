@@ -28,37 +28,53 @@ const routes = [
   },
   {
     meta: {
-      title: 'Forms'
+      title: 'Patient Information'
     },
-    path: '/forms',
-    name: 'forms',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/Forms.vue')
+    path: '/patient-information',
+    name: 'Patient Information',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/patient-information.vue')
   },
   {
     meta: {
-      title: 'Profile'
+      title: 'Laboratory Data'
     },
-    path: '/profile',
-    name: 'profile',
-    component: () => import(/* webpackChunkName: "profile" */ '../views/Profile.vue')
+    path: '/laboratory-data',
+    name: 'Laboratory Data',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/laboratory-data.vue')
   },
   {
     meta: {
-      title: 'New Client'
+      title: 'HTN'
     },
-    path: '/client/new',
-    name: 'client.new',
-    component: () => import(/* webpackChunkName: "client-form" */ '../views/ClientForm.vue')
+    path: '/htn',
+    name: 'HTN',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/htn.vue')
   },
   {
     meta: {
-      title: 'Edit Client'
+      title: 'Angina'
     },
-    path: '/client/:id',
-    name: 'client.edit',
-    component: () => import(/* webpackChunkName: "client-form" */ '../views/ClientForm.vue'),
-    props: true
-  }
+    path: '/angina',
+    name: 'Angina',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/angina.vue')
+  },
+  {
+    meta: {
+      title: 'MI'
+    },
+    path: '/mi',
+    name: 'MI',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/mi.vue')
+  },
+  {
+    meta: {
+      title: 'NYHA Status'
+    },
+    path: '/nyha-status',
+    name: 'NYHA Status',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/nyha-status.vue')
+  },
+
 ]
 
 const router = new VueRouter({

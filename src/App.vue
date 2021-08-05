@@ -26,47 +26,173 @@ export default {
         'Basic Detail',
         [
           {
-            to: '/forms',
+            to: '/patient-information',
             label: 'Patient Information',
             icon: 'account'
           },
           {
+            to: '/laboratory-data',
             label: 'Laboratory Data',
-             pack:"fas",
-             icon:"fa-vial"
+            icon:"filter"
           }
         ],
         'Medical History',
         [
           {
-            to: '/tables',
-            label: 'Tables',
-            icon: 'table',
-            updateMark: true
-          },
-          {
-            to: '/forms',
-            label: 'Patient Information',
-            icon: 'square-edit-outline'
-          },
-          {
-            to: '/profile',
-            label: 'Profile',
-            icon: 'account-circle'
-          },
-          {
-            label: 'Submenus',
+            label: 'CSV',
             subLabel: 'Submenus Example',
-            icon: 'view-list',
+            icon: 'hotel',
             menu: [
               {
-                href: '#void',
-                label: 'Sub-item One'
+                to: '/htn',
+                label: 'HTN',
+                icon: 'circle-outline'
               },
               {
-                href: '#void',
-                label: 'Sub-item Two'
-              }
+                to: '/angina',
+                label: 'Angina',
+                icon: 'circle-outline'
+              },
+              {
+                to: '/mi',
+                label: 'MI',
+                icon: 'circle-outline'
+              },
+              {
+                to: '/nyha-status',
+                label: 'NYHA Status',
+                icon: 'circle-outline'
+              },
+              {
+                to: '#void',
+                label: 'Pacemaker',
+                icon: 'circle-outline'
+              },
+              {
+                to: '#void',
+                label: 'Failure',
+                icon: 'circle-outline'
+              },
+            ]
+          },
+           {
+            label: 'RESP',
+            subLabel: 'Submenus Example',
+            icon: 'lungs',
+            menu: [
+              {
+                to: '#void',
+                label: 'Asthama',
+                icon: 'circle-outline'
+              },
+              {
+                to: '#void',
+                label: 'Smoking',
+                icon: 'circle-outline'
+              },
+              {
+                to: '#void',
+                label: 'Snoring',
+                icon: 'circle-outline'
+              },
+              {
+                to: '#void',
+                label: 'Cough',
+                icon: 'circle-outline'
+              },
+              {
+                to: '#void',
+                label: 'Sputum',
+                icon: 'circle-outline'
+              },
+            ]
+          },
+          {
+            label: 'CNS',
+            subLabel: 'Submenus Example',
+            icon: 'brain',
+            menu: [
+              {
+                to: '#void',
+                label: 'Stroke',
+                icon: 'circle-outline'
+              },
+              {
+                to: '#void',
+                label: 'Epilepsy',
+                icon: 'circle-outline'
+              },
+              {
+                to: '#void',
+                label: 'Surgery',
+                icon: 'circle-outline'
+              },
+              {
+                to: '#void',
+                label: 'Cognitive impairment',
+                icon: 'circle-outline'
+              },
+            ]
+          },
+          {
+            label: 'RENL',
+            subLabel: 'Submenus Example',
+            icon: 'medical-bag',
+            menu: [
+              {
+                to: '#void',
+                label: 'Stones',
+                icon: 'circle-outline'
+              },
+              {
+                to: '#void',
+                label: 'Failure',
+                icon: 'circle-outline'
+              },
+              {
+                to: '#void',
+                label: 'UTI',
+                icon: 'circle-outline'
+              },
+              {
+                to: '#void',
+                label: 'Diabetes',
+                icon: 'circle-outline'
+              },
+            ]
+          },
+          {
+            label: 'Hepatic/GE',
+            subLabel: 'Submenus Example',
+            icon: 'monitor-star',
+            menu: [
+              {
+                to: '#void',
+                label: 'Jaundice',
+                icon: 'circle-outline'
+              },
+              {
+                to: '#void',
+                label: 'Reflux',
+                icon: 'circle-outline'
+              },
+            ]
+          },
+          {
+            label: 'Other',
+            subLabel: 'Submenus Example',
+            icon: 'hand-heart',
+            menu: [
+              {
+                to: '#void',
+                label: 'Thyroid',
+                icon: 'circle-outline'
+              },
+              {
+                to: '#void',
+                label: 'Fraility',
+                icon: 'circle-outline'
+              },
             ]
           }
         ]
