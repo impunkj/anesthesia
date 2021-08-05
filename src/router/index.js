@@ -74,7 +74,38 @@ const routes = [
     name: 'NYHA Status',
     component: () => import(/* webpackChunkName: "forms" */ '../views/nyha-status.vue')
   },
-
+  {
+    meta: {
+      title: 'Pacemaker'
+    },
+    path: '/pacemaker',
+    name: 'Pacemaker',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/pacemaker.vue')
+  },
+  {
+    meta: {
+      title: 'Failure'
+    },
+    path: '/failure',
+    name: 'Failure',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/failure.vue')
+  },
+  {
+    meta: {
+      title: 'Asthama'
+    },
+    path: '/asthama',
+    name: 'Asthama',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/asthama.vue')
+  },
+  {
+    meta: {
+      title: 'Smoking'
+    },
+    path: '/smoking',
+    name: 'Smoking',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/smoking.vue')
+  },
 ]
 
 const router = new VueRouter({

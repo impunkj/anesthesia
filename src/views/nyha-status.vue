@@ -1,42 +1,50 @@
 <template>
-<section class="section is-main-section">
-      <card-component title="MI">
-          <div class="columns">
-              <div class="column is-full  cstm-radio-btn">
-                <div class="block">
-                  <b-field label="NYHA Class (Patients with Cardiac Disease (Description of HF Related Symptoms)">
-                    <b-radio v-model="radio" name="mild" native-value="mildone" type="is-info">
-                      Class I (Mild)
-                    </b-radio>
-                    <b-radio v-model="radio" name="mild" native-value="mildtwo" type="is-info">
-                      Class II (Mild)
-                    </b-radio>
-                      <b-radio v-model="radio" name="mild" native-value="mildthree" type="is-info">
-                      Class III (Moderate)
-                    </b-radio>
-                      <b-radio v-model="radio" name="mild" native-value="mildfourth" type="is-info">
-                      Class IV (Severe)
-                    </b-radio>
-                  </b-field>
-                </div>
-              </div>
+  <section class="section is-main-section">
+    <card-component title="MI">
+      <div class="columns">
+        <div class="column is-full  cstm-radio-btn">
+          <div class="block">
+            <b-field label="NYHA Class (Patients with Cardiac Disease (Description of HF Related Symptoms)">
+              <b-radio v-model="radio" name="mild" native-value="mildone" type="is-info">
+                Class I (Mild)
+              </b-radio>
+              <b-radio v-model="radio" name="mild" native-value="mildtwo" type="is-info">
+                Class II (Mild)
+              </b-radio>
+              <b-radio v-model="radio" name="mild" native-value="mildthree" type="is-info">
+                Class III (Moderate)
+              </b-radio>
+              <b-radio v-model="radio" name="mild" native-value="mildfourth" type="is-info">
+                Class IV (Severe)
+              </b-radio>
+            </b-field>
           </div>
+        </div>
+      </div>
 
 
-          <div class="columns mt-3">
-              <div class="column is-full">
-<ul class="cstm-ul-li">
-                      <li> <b> Class I (Mild) </b> Patients with cardiac disease but without resulting in limitation of physical activity. Ordinary physical activity does not cause undue fatigue, palpitation (rapid or pounding heart beat), dyspnea (shortness of breath), or anginal pain (chest pain). </li>
-                      <li> <b> Class II (Mild) </b> Patients with cardiac disease resulting in slight limitation of physical activity. They are comfortable at rest. Ordinary physical activity results in fatigue, palpitation, dyspnea, or anginal pain.</li>
-                      <li> <b> Class III (Moderate) </b> Patients with cardiac disease resulting in marked limitation of physical activity. They are comfortable at rest. Less than ordinary activity causes fatigue, palpitation, dyspnea, or anginal pain.</li>
-                      <li> <b> Class IV (Severe) </b> Patients with cardiac disease resulting in the inability to carry on any physical activity without discomfort. Symptoms of heart failure or the anginal syndrome may be present even at rest. If any physical activity is undertaken, discomfort is increased.</li>
-                    </ul>
-              </div>
+      <div class="columns mt-3">
+        <div class="column is-full">
+          <ul class="cstm-ul-li">
+            <li> <b> Class I (Mild) </b> Patients with cardiac disease but without resulting in limitation of physical
+              activity. Ordinary physical activity does not cause undue fatigue, palpitation (rapid or pounding heart
+              beat), dyspnea (shortness of breath), or anginal pain (chest pain). </li>
+            <li> <b> Class II (Mild) </b> Patients with cardiac disease resulting in slight limitation of physical
+              activity. They are comfortable at rest. Ordinary physical activity results in fatigue, palpitation,
+              dyspnea, or anginal pain.</li>
+            <li> <b> Class III (Moderate) </b> Patients with cardiac disease resulting in marked limitation of physical
+              activity. They are comfortable at rest. Less than ordinary activity causes fatigue, palpitation, dyspnea,
+              or anginal pain.</li>
+            <li> <b> Class IV (Severe) </b> Patients with cardiac disease resulting in the inability to carry on any
+              physical activity without discomfort. Symptoms of heart failure or the anginal syndrome may be present
+              even at rest. If any physical activity is undertaken, discomfort is increased.</li>
+          </ul>
+        </div>
 
-          </div>
+      </div>
 
-          </card-component>
-</section>
+    </card-component>
+  </section>
 </template>
 
 

@@ -38,7 +38,7 @@
             <div class="column is-one-third cstm-radio-btn">
               <div class="block">
                 <b-field label="Sex">
-                  <b-radio v-model="radio" name="name" native-value="male" type="is-info" >
+                  <b-radio v-model="radio" name="name" native-value="male" type="is-info">
                     Male
                   </b-radio>
                   <b-radio v-model="radio" name="name" native-value="female" type="is-info">
@@ -132,8 +132,8 @@
             </div>
           </div>
 
-<div class="columns">
-             <div class="column is-full cstm-radio-btn">
+          <div class="columns">
+            <div class="column is-full cstm-radio-btn">
               <div class="block">
                 <b-field label="ASA Physical Status">
                   <b-radio v-model="radio" name="name" native-value="zero" type="is-info">
@@ -160,9 +160,9 @@
                 </b-field>
               </div>
             </div>
-            </div>
+          </div>
 
-        <b-button type="sbmt-btn">Primary</b-button>
+          <b-button type="sbmt-btn">Primary</b-button>
 
         </form>
       </card-component>
