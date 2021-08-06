@@ -87,17 +87,17 @@
                   icon: 'circle-outline'
                 },
                 {
-                  to: '#void',
+                  to: '/snoring',
                   label: 'Snoring',
                   icon: 'circle-outline'
                 },
                 {
-                  to: '#void',
+                  to: '/cough',
                   label: 'Cough',
                   icon: 'circle-outline'
                 },
                 {
-                  to: '#void',
+                  to: '/sputum',
                   label: 'Sputum',
                   icon: 'circle-outline'
                 },

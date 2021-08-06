@@ -106,6 +106,30 @@ const routes = [
     name: 'Smoking',
     component: () => import(/* webpackChunkName: "forms" */ '../views/smoking.vue')
   },
+  {
+    meta: {
+      title: 'Snoring'
+    },
+    path: '/snoring',
+    name: 'Snoring',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/snoring.vue')
+  },
+  {
+    meta: {
+      title: 'Cough'
+    },
+    path: '/cough',
+    name: 'Snoring',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/cough.vue')
+  },
+  {
+    meta: {
+      title: 'Sputum'
+    },
+    path: '/sputum',
+    name: 'Sputum',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/sputum.vue')
+  },
 ]
 
 const router = new VueRouter({
