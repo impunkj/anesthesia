@@ -108,12 +108,12 @@
               subLabel: 'Submenus Example',
               icon: 'brain',
               menu: [{
-                  to: '#void',
+                  to: '/stroke',
                   label: 'Stroke',
                   icon: 'circle-outline'
                 },
                 {
-                  to: '#void',
+                  to: '/epilesy',
                   label: 'Epilepsy',
                   icon: 'circle-outline'
                 },

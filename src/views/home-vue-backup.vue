@@ -1,9 +1,9 @@
 <template>
   <div>
-   <!--  <title-bar :title-stack="titleStack" />
+    <title-bar :title-stack="titleStack" />
     <hero-bar :has-right-visible="false">
       Dashboard
-    </hero-bar> -->
+    </hero-bar>
     <section class="section is-main-section">
       <tiles>
         <card-widget

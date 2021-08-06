@@ -130,6 +130,31 @@ const routes = [
     name: 'Sputum',
     component: () => import(/* webpackChunkName: "forms" */ '../views/sputum.vue')
   },
+  {
+    meta: {
+      title: 'Stroke'
+    },
+    path: '/stroke',
+    name: 'Stroke',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/stroke.vue')
+  },
+  {
+    meta: {
+      title: 'Epilesy'
+    },
+    path: '/epilesy',
+    name: 'Epilesy',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/epilesy.vue')
+  },
+
+  {
+    meta: {
+      title: 'Login'
+    },
+    path: '/login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/login.vue')
+  },
 ]
 
 const router = new VueRouter({
