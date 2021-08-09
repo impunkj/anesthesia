@@ -69,7 +69,7 @@
             </div>
           </div>
 
-          <b-button type="sbmt-btn mt-2">Primary</b-button>
+          <b-button type="sbmt-btn mt-2">Submit</b-button>
 
 
         </form>

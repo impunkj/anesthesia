@@ -12,7 +12,7 @@
               </b-field>
             </div>
 
-             <div class="column is-half">
+            <div class="column is-half">
               <b-field label="When did you stop it">
                 <b-input maxlength="300" type="textarea"></b-input>
               </b-field>
@@ -21,34 +21,34 @@
 
 
 
-<b-field label="How Long">
-                  </b-field>
+          <b-field label="How Long">
+          </b-field>
           <div class="columns">
 
             <div class="column is-one-third">
-                    <b-field label="">
-                    <b-input placeholder="YYYY">
-                    </b-input>
-                  </b-field>
+              <b-field label="">
+                <b-input placeholder="YYYY">
+                </b-input>
+              </b-field>
             </div>
 
             <div class="column is-one-third">
-   <b-field label="">
-                    <b-input placeholder="MM">
-                    </b-input>
-                  </b-field>
+              <b-field label="">
+                <b-input placeholder="MM">
+                </b-input>
+              </b-field>
             </div>
 
-             <div class="column is-one-third">
-   <b-field label="">
-                    <b-input placeholder="DD">
-                    </b-input>
-                  </b-field>
+            <div class="column is-one-third">
+              <b-field label="">
+                <b-input placeholder="DD">
+                </b-input>
+              </b-field>
             </div>
 
           </div>
 
-          <b-button type="sbmt-btn">Primary</b-button>
+          <b-button type="sbmt-btn">Submit</b-button>
 
 
         </form>

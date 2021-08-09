@@ -46,18 +46,18 @@
           </div>
 
 
-        <b-field class="checkOut" >
+          <b-field class="checkOut">
             <b-checkbox type="is-info">Check paperwork / Card</b-checkbox>
-        </b-field>
+          </b-field>
 
-<div class="mt-2 cardiology whencheckboxclicked">
-                <b>"Needs Cardiology Evaluation"</b>
-              </div>
-
-
+          <div class="mt-2 cardiology whencheckboxclicked">
+            <b>"Needs Cardiology Evaluation"</b>
+          </div>
 
 
-          <b-button type="sbmt-btn">Primary</b-button>
+
+
+          <b-button type="sbmt-btn">Submit</b-button>
 
         </form>
       </card-component>
@@ -87,6 +87,7 @@
     data() {
       return {
         radio: 'default',
+        checkboxGroup: ['Flint'],
         isLoading: false,
         form: {
           name: null,
@@ -127,6 +128,5 @@
       }
     }
   }
-
 
 </script>

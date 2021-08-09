@@ -118,12 +118,12 @@
                   icon: 'circle-outline'
                 },
                 {
-                  to: '#void',
+                  to: '/surgery',
                   label: 'Surgery',
                   icon: 'circle-outline'
                 },
                 {
-                  to: '#void',
+                  to: '/cognitive-impairment',
                   label: 'Cognitive impairment',
                   icon: 'circle-outline'
                 },
@@ -134,7 +134,7 @@
               subLabel: 'Submenus Example',
               icon: 'medical-bag',
               menu: [{
-                  to: '#void',
+                  to: '/stones',
                   label: 'Stones',
                   icon: 'circle-outline'
                 },
@@ -144,12 +144,12 @@
                   icon: 'circle-outline'
                 },
                 {
-                  to: '#void',
+                  to: '/uti',
                   label: 'UTI',
                   icon: 'circle-outline'
                 },
                 {
-                  to: '#void',
+                  to: '/diabetes',
                   label: 'Diabetes',
                   icon: 'circle-outline'
                 },
@@ -160,12 +160,12 @@
               subLabel: 'Submenus Example',
               icon: 'monitor-star',
               menu: [{
-                  to: '#void',
+                  to: '/jaundice',
                   label: 'Jaundice',
                   icon: 'circle-outline'
                 },
                 {
-                  to: '#void',
+                  to: '/reflux',
                   label: 'Reflux',
                   icon: 'circle-outline'
                 },
@@ -176,7 +176,7 @@
               subLabel: 'Submenus Example',
               icon: 'hand-heart',
               menu: [{
-                  to: '#void',
+                  to: '/thyroid',
                   label: 'Thyroid',
                   icon: 'circle-outline'
                 },

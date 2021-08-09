@@ -119,7 +119,7 @@ const routes = [
       title: 'Cough'
     },
     path: '/cough',
-    name: 'Snoring',
+    name: 'Cough',
     component: () => import(/* webpackChunkName: "forms" */ '../views/cough.vue')
   },
   {
@@ -154,6 +154,70 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: () => import(/* webpackChunkName: "forms" */ '../views/login.vue')
+  },
+  {
+    meta: {
+      title: 'Surgery'
+    },
+    path: '/surgery',
+    name: 'Surgery',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/surgery.vue')
+  },
+  {
+    meta: {
+      title: 'Cognitive impairment'
+    },
+    path: '/cognitive-impairment',
+    name: 'Cognitive impairment',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/cognitive-impairment.vue')
+  },
+  {
+    meta: {
+      title: 'Stones'
+    },
+    path: '/stones',
+    name: 'Stones',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/stones.vue')
+  },
+  {
+    meta: {
+      title: 'UTI'
+    },
+    path: '/uti',
+    name: 'UTI',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/uti.vue')
+  },
+  {
+    meta: {
+      title: 'Diabetes'
+    },
+    path: '/diabetes',
+    name: 'Diabetes',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/diabetes.vue')
+  },
+  {
+    meta: {
+      title: 'Jaundice'
+    },
+    path: '/jaundice',
+    name: 'Jaundice',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/jaundice.vue')
+  },
+  {
+    meta: {
+      title: 'Reflux'
+    },
+    path: '/reflux',
+    name: 'Reflux',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/reflux.vue')
+  },
+  {
+    meta: {
+      title: 'Thyroid'
+    },
+    path: '/thyroid',
+    name: 'Thyroid',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/thyroid.vue')
   },
 ]
 

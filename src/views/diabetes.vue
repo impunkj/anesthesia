@@ -1,59 +1,43 @@
 <template>
-  <div>
-
-    <section class="section is-main-section">
-      <card-component title="Cough">
-        <form @submit.prevent="submit">
-
-
-
-
-
-          <b-field label="How Long">
-          </b-field>
-          <div class="columns">
-
-            <div class="column is-one-third">
-              <b-field label="">
-                <b-input placeholder="YYYY">
-                </b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-one-third">
-              <b-field label="">
-                <b-input placeholder="MM">
-                </b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-one-third">
-              <b-field label="">
-                <b-input placeholder="DD">
-                </b-input>
-              </b-field>
-            </div>
-
+  <section class="section is-main-section">
+    <card-component title="Diabetes">
+      <div class="columns">
+        <div class="column is-full  cstm-radio-btn">
+          <div class="block">
+            <b-field label="">
+              <b-radio v-model="radio" name="mild" native-value="mildone" type="is-info">
+                Type 1
+              </b-radio>
+              <b-radio v-model="radio" name="mild" native-value="mildtwo" type="is-info">
+                Type 2
+              </b-radio>
+            </b-field>
           </div>
+        </div>
+      </div>
 
-
-          <div class="columns mb-0">
-            <div class="column is-full">
-              <b-field label="What Cause">
-                <b-input maxlength="300" type="textarea"></b-input>
-              </b-field>
-            </div>
+      <div class="columns">
+        <div class="column is-full  cstm-radio-btn">
+          <div class="block">
+            <b-field label="Sugar check at home">
+              <b-radio v-model="radio" name="mild" native-value="mildone" type="is-info">
+                Yes
+              </b-radio>
+              <b-radio v-model="radio" name="mild" native-value="mildtwo" type="is-info">
+                No
+              </b-radio>
+            </b-field>
           </div>
+        </div>
+      </div>
+
 
           <b-button type="sbmt-btn">Submit</b-button>
 
-
-        </form>
-      </card-component>
-
-    </section>
-  </div>
+    </card-component>
+  </section>
 </template>
+
 
 <script>
   import mapValues from 'lodash/mapValues'
@@ -75,6 +59,8 @@
     },
     data() {
       return {
+        isImageModalActive: false,
+        isCardModalActive: false,
         radio: 'default',
         isLoading: false,
         form: {

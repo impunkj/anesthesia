@@ -1,6 +1,6 @@
 <template>
   <section class="section is-main-section">
-    <card-component title="MI">
+    <card-component title="NYHA Status">
       <div class="columns">
         <div class="column is-full  cstm-radio-btn">
           <div class="block">
@@ -41,7 +41,9 @@
           </ul>
         </div>
 
+
       </div>
+          <b-button type="sbmt-btn">Submit</b-button>
 
     </card-component>
   </section>

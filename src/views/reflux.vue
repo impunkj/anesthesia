@@ -2,63 +2,17 @@
   <div>
 
     <section class="section is-main-section">
-      <card-component title="Stroke">
+      <card-component title="Reflux">
         <form @submit.prevent="submit">
 
+<div>
+   <p class="mb-4"> <b> "Prescribe H2 / PPI / Metoclopramide Warning Rapid Sequence No LMA."
+ </b> </p>
+</div>
 
-
-
-          <div class="columns">
-            <div class="column is-half">
-              <b-field label="When"> </b-field>
-              <div class="columns">
-                <div class="column is-one-third">
-                  <b-field label="">
-                    <b-input placeholder="YYYY">
-                    </b-input>
-                  </b-field>
-                </div>
-                <div class="column is-one-third">
-                  <b-field label="">
-                    <b-input placeholder="MM">
-                    </b-input>
-                  </b-field>
-                </div>
-                <div class="column is-one-third">
-                  <b-field label="">
-                    <b-input placeholder="DD">
-                    </b-input>
-                  </b-field>
-                </div>
-              </div>
-            </div>
-
-             <div class="column is-half cstm-radio-btn">
-              <div class="block">
-                   <b-field label="Present status">
-                  <b-radio v-model="radio" name="urti" native-value="residual" type="is-info">
-                    Residual
-                  </b-radio>
-                  <b-radio v-model="radio" name="urti" native-value="recovered" type="is-info">
-                    Recovered
-                  </b-radio>
- </b-field>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="columns mb-0">
-            <div class="column is-full">
-              <b-field label="What treatment">
-                <b-input maxlength="300" type="textarea"></b-input>
-              </b-field>
-            </div>
-          </div>
 
 
           <b-button type="sbmt-btn">Submit</b-button>
-
 
         </form>
       </card-component>
@@ -128,5 +82,6 @@
       }
     }
   }
+
 
 </script>

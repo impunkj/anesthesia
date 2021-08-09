@@ -2,63 +2,45 @@
   <div>
 
     <section class="section is-main-section">
-      <card-component title="Stroke">
+      <card-component title="Surgery">
         <form @submit.prevent="submit">
 
-
-
-
           <div class="columns">
-            <div class="column is-half">
-              <b-field label="When"> </b-field>
-              <div class="columns">
-                <div class="column is-one-third">
-                  <b-field label="">
-                    <b-input placeholder="YYYY">
-                    </b-input>
-                  </b-field>
-                </div>
-                <div class="column is-one-third">
-                  <b-field label="">
-                    <b-input placeholder="MM">
-                    </b-input>
-                  </b-field>
-                </div>
-                <div class="column is-one-third">
-                  <b-field label="">
-                    <b-input placeholder="DD">
-                    </b-input>
-                  </b-field>
-                </div>
-              </div>
-            </div>
-
-             <div class="column is-half cstm-radio-btn">
-              <div class="block">
-                   <b-field label="Present status">
-                  <b-radio v-model="radio" name="urti" native-value="residual" type="is-info">
-                    Residual
-                  </b-radio>
-                  <b-radio v-model="radio" name="urti" native-value="recovered" type="is-info">
-                    Recovered
-                  </b-radio>
- </b-field>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="columns mb-0">
-            <div class="column is-full">
-              <b-field label="What treatment">
-                <b-input maxlength="300" type="textarea"></b-input>
+            <div class="column pb-0">
+              <b-field>
+                <b-checkbox type="is-info">Brain</b-checkbox>
               </b-field>
             </div>
           </div>
 
+          <div class="columns">
+               <div class="column ">
+                <b-field label="What surgery?">
+                  <b-input maxlength="300" type="textarea"></b-input>
+                </b-field>
+              </div>
+          </div>
+
+           <div class="columns">
+            <div class="column pb-0">
+              <b-field>
+                <b-checkbox type="is-info">Spinal Cord</b-checkbox>
+              </b-field>
+            </div>
+          </div>
+
+          <div class="columns">
+               <div class="column">
+                <b-field label="What surgery?">
+                  <b-input maxlength="300" type="textarea"></b-input>
+                </b-field>
+              </div>
+          </div>
+
+
+
 
           <b-button type="sbmt-btn">Submit</b-button>
-
 
         </form>
       </card-component>

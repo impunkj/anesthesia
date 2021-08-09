@@ -2,63 +2,67 @@
   <div>
 
     <section class="section is-main-section">
-      <card-component title="Stroke">
+      <card-component title="Jaundice">
         <form @submit.prevent="submit">
 
+        <div class="columns">
+            <div class="column is-one-third">
+              <b-field label="When">
+                <b-input>
+                </b-input>
+              </b-field>
+            </div>
 
+            <div class="column is-one-third">
+              <b-field label="Months">
+                <b-input>
+                </b-input>
+              </b-field>
+            </div>
 
+            <div class="column is-one-third">
+              <b-field label="Days">
+                <b-input>
+                </b-input>
+              </b-field>
+            </div>
+          </div>
+
+            <b-field class="checkOut" >
+            <b-checkbox  type="is-info"> Needed hospitalisation </b-checkbox>
+        </b-field>
 
           <div class="columns">
             <div class="column is-half">
-              <b-field label="When"> </b-field>
-              <div class="columns">
-                <div class="column is-one-third">
-                  <b-field label="">
-                    <b-input placeholder="YYYY">
-                    </b-input>
-                  </b-field>
-                </div>
-                <div class="column is-one-third">
-                  <b-field label="">
-                    <b-input placeholder="MM">
-                    </b-input>
-                  </b-field>
-                </div>
-                <div class="column is-one-third">
-                  <b-field label="">
-                    <b-input placeholder="DD">
-                    </b-input>
-                  </b-field>
-                </div>
-              </div>
+              <b-field label="Cause">
+                <b-input maxlength="300" type="textarea"></b-input>
+              </b-field>
             </div>
 
-             <div class="column is-half cstm-radio-btn">
-              <div class="block">
-                   <b-field label="Present status">
-                  <b-radio v-model="radio" name="urti" native-value="residual" type="is-info">
-                    Residual
-                  </b-radio>
-                  <b-radio v-model="radio" name="urti" native-value="recovered" type="is-info">
-                    Recovered
-                  </b-radio>
- </b-field>
-              </div>
+            <div class="column is-half">
+              <b-field label="Viral status">
+                <b-input maxlength="300" type="textarea"></b-input>
+              </b-field>
             </div>
-
           </div>
 
-          <div class="columns mb-0">
-            <div class="column is-full">
-              <b-field label="What treatment">
+          <div class="columns">
+               <div class="column is-half">
+              <b-field label="Child criteria">
+                <b-input maxlength="300" type="textarea"></b-input>
+              </b-field>
+            </div>
+
+              <div class="column is-half">
+              <b-field label="I.N.R">
                 <b-input maxlength="300" type="textarea"></b-input>
               </b-field>
             </div>
           </div>
 
 
-          <b-button type="sbmt-btn">Submit</b-button>
 
+          <b-button type="sbmt-btn">Submit</b-button>
 
         </form>
       </card-component>
@@ -88,6 +92,7 @@
     data() {
       return {
         radio: 'default',
+         checkboxGroup: ['Flint'],
         isLoading: false,
         form: {
           name: null,
@@ -128,5 +133,6 @@
       }
     }
   }
+
 
 </script>

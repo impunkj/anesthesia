@@ -4,7 +4,7 @@
     <section class="section is-main-section">
       <card-component title="Patient Information" icon="account">
         <form @submit.prevent="submit">
-          <div class="columns">
+          <div class="columns is-tablet">
             <div class="column is-one-third">
               <b-field label="Date">
                 <b-datepicker>
@@ -35,7 +35,7 @@
               </b-field>
             </div>
 
-            <div class="column is-one-third cstm-radio-btn">
+            <div class="column is-one-third cstm-radio-btn ">
               <div class="block">
                 <b-field label="Sex">
                   <b-radio v-model="radio" name="name" native-value="male" type="is-info">
@@ -53,7 +53,7 @@
           </div>
 
 
-          <div class="columns mb-0">
+          <div class="columns ">
             <div class="column is-one-third ">
               <b-field label="IP">
                 <b-input maxlength="300" type="textarea"></b-input>
@@ -133,7 +133,7 @@
           </div>
 
           <div class="columns">
-            <div class="column is-full cstm-radio-btn">
+            <div class="column is-full cstm-radio-btn asa-physical">
               <div class="block">
                 <b-field label="ASA Physical Status">
                   <b-radio v-model="radio" name="name" native-value="zero" type="is-info">
@@ -162,7 +162,7 @@
             </div>
           </div>
 
-          <b-button type="sbmt-btn">Primary</b-button>
+          <b-button type="sbmt-btn">Submit</b-button>
 
         </form>
       </card-component>

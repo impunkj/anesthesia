@@ -80,7 +80,7 @@
 
           </div>
 
-          <b-button type="sbmt-btn">Primary</b-button>
+          <b-button type="sbmt-btn">Submit</b-button>
 
 
         </form>

@@ -1,6 +1,10 @@
-body{font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
+body{font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";     background: #f5fcff; box-shadow: none !important;}
 .logo-section .aside-tools{display: inline-table !important; padding-bottom: 18px;
     padding-top: 15px;}
+    footer{position: fixed; bottom: 0; width: 100%;
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+        box-shadow: 0px 1px 10px #0000002e;}
     .menu-list{padding-left: 15px;}
 .logo-section .logo-img{display: flex; line-height: 20px;}
 .logo-section .logo-img span{ padding-top: 10px; font-size: 18px;}
@@ -77,9 +81,23 @@ body{font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",
     font-weight: 700;}
     .login-form{    box-shadow: 0px 2px 25px #00000014;
         border-radius: 8px;}
+.form-section .is-invisible{display: none;}
+.form-section .field.has-addons{display: block;}
+.form-section .field-body{height: auto; padding-top: 10px;}
+.cstm-heading{font-size: 20px; font-weight: 600;}
+.cstm-heading2{font-size: 18px; font-weight: 500;}
+.blue-color{color: #007bff;}
+.footer-copyright{font: 14px;}
 
     @media screen and (min-width: 1024px){
 html.has-aside-left.has-aside-expanded nav.navbar, html.has-aside-left.has-aside-expanded body {
     padding-left: 14rem;
     box-shadow: 0px 2px 15px #00000017;
+}}
+
+
+@media screen and (min-width: 769px){
+.column.is-one-third, .column.is-one-third-tablet {
+    flex: none;
+    width: 33.3333% !important;
 }}

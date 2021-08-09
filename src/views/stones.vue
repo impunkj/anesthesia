@@ -2,60 +2,50 @@
   <div>
 
     <section class="section is-main-section">
-      <card-component title="Stroke">
+      <card-component title="Stones">
         <form @submit.prevent="submit">
 
 
-
-
           <div class="columns">
-            <div class="column is-half">
-              <b-field label="When"> </b-field>
-              <div class="columns">
-                <div class="column is-one-third">
-                  <b-field label="">
-                    <b-input placeholder="YYYY">
-                    </b-input>
-                  </b-field>
-                </div>
-                <div class="column is-one-third">
-                  <b-field label="">
-                    <b-input placeholder="MM">
-                    </b-input>
-                  </b-field>
-                </div>
-                <div class="column is-one-third">
-                  <b-field label="">
-                    <b-input placeholder="DD">
-                    </b-input>
-                  </b-field>
-                </div>
-              </div>
+
+            <div class="column is-one-half">
+              <b-field label="Present">
+                <b-input>
+                </b-input>
+              </b-field>
             </div>
 
-             <div class="column is-half cstm-radio-btn">
-              <div class="block">
-                   <b-field label="Present status">
-                  <b-radio v-model="radio" name="urti" native-value="residual" type="is-info">
-                    Residual
-                  </b-radio>
-                  <b-radio v-model="radio" name="urti" native-value="recovered" type="is-info">
-                    Recovered
-                  </b-radio>
- </b-field>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="columns mb-0">
-            <div class="column is-full">
-              <b-field label="What treatment">
-                <b-input maxlength="300" type="textarea"></b-input>
+            <div class="column is-one-half">
+              <b-field label="Passed">
+                <b-input>
+                </b-input>
               </b-field>
             </div>
           </div>
 
+
+          <div class="columns">
+            <div class="column cstm-radio-btn">
+              <div class="block">
+                <b-field label="Surgery needed">
+                  <b-radio v-model="radio" name="surgeryNeeded" native-value="surgeryNeededYes" type="is-info">
+                    Yes
+                  </b-radio>
+                  <b-radio v-model="radio" name="surgeryNeeded" native-value="surgeryNeededNo" type="is-info">
+                    No
+                  </b-radio>
+                </b-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns">
+            <div class="column is-full">
+              <b-field label="What surgery">
+                <b-input maxlength="300" type="textarea"></b-input>
+              </b-field>
+            </div>
+          </div>
 
           <b-button type="sbmt-btn">Submit</b-button>
 
