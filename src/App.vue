@@ -139,7 +139,7 @@
                   icon: 'circle-outline'
                 },
                 {
-                  to: '#void',
+                  to: '/renl-failure',
                   label: 'Failure',
                   icon: 'circle-outline'
                 },
@@ -181,11 +181,28 @@
                   icon: 'circle-outline'
                 },
                 {
-                  to: '#void',
+                  to: '/fraility',
                   label: 'Fraility',
                   icon: 'circle-outline'
                 },
               ]
+            },
+            {
+              label: 'Anaesthetic History',
+              to : '/anaesthetic-history',
+              subLabel: 'Submenus Example',
+              icon: 'hand-heart',
+              /* menu: [{
+                  to: '/thyroid',
+                  label: 'Thyroid',
+                  icon: 'circle-outline'
+                },
+                {
+                  to: '/fraility',
+                  label: 'Fraility',
+                  icon: 'circle-outline'
+                },
+              ] */
             }
           ]
         ]

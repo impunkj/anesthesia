@@ -20,10 +20,10 @@
         <div class="column is-full  cstm-radio-btn">
           <div class="block">
             <b-field label="Sugar check at home">
-              <b-radio v-model="radio" name="mild" native-value="mildone" type="is-info">
+              <b-radio v-model="radio" name="sugerCheck" native-value="sugerCheckone" type="is-info">
                 Yes
               </b-radio>
-              <b-radio v-model="radio" name="mild" native-value="mildtwo" type="is-info">
+              <b-radio v-model="radio" name="sugerCheck" native-value="sugerChecktwo" type="is-info">
                 No
               </b-radio>
             </b-field>

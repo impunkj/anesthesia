@@ -219,6 +219,30 @@ const routes = [
     name: 'Thyroid',
     component: () => import(/* webpackChunkName: "forms" */ '../views/thyroid.vue')
   },
+  {
+    meta: {
+      title: 'Failure'
+    },
+    path: '/renl-failure',
+    name: 'Failure',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/renl-failure.vue')
+  },
+  {
+    meta: {
+      title: 'Fraility'
+    },
+    path: '/fraility',
+    name: 'Fraility',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/fraility.vue')
+  },
+  {
+    meta: {
+      title: 'Anaesthetic History'
+    },
+    path: '/anaesthetic-history',
+    name: 'Anaesthetic History',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/anaesthetic-history.vue')
+  },
 ]
 
 const router = new VueRouter({
