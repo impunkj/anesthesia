@@ -246,11 +246,11 @@
 
 
 
-      <b-modal v-model="isCardModalActive" :width="640" >
+      <b-modal v-model="isCardModalActive" :width="640">
         <div class="card">
-
+          <h3 class="popup-heading"> Treatment </h3>
           <div class="card-content">
-            <h3 class="popup-heading"> Treatment </h3>
+
 
             <div class="columns">
               <div class="column is-half  cstm-radio-btn">
@@ -318,7 +318,7 @@
             </div>
 
 
- <b-button type="sbmt-btn">Primary</b-button>
+            <b-button type="sbmt-btn">Primary</b-button>
 
           </div>
         </div>

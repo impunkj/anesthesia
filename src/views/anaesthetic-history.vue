@@ -66,13 +66,18 @@
           <div class="columns">
             <div class="column cstm-radio-btn">
               <div class="block">
+
                 <b-field label="">
-                  <b-checkbox v-model="checkboxGroup" native-value="neck" type="is-info">
-                    Neck
-                  </b-checkbox>
-                  <b-checkbox v-model="checkboxGroup" native-value="teeth" type="is-info">
-                    Teeth
-                  </b-checkbox>
+                  <span @click="isNeckModal = true">
+                    <b-checkbox v-model="checkboxGroup" native-value="neck" type="is-info">
+                      Neck
+                    </b-checkbox>
+                  </span>
+                  <span @click="isTeethModal = true">
+                    <b-checkbox v-model="checkboxGroup" native-value="teeth" type="is-info">
+                      Teeth
+                    </b-checkbox>
+                  </span>
                 </b-field>
               </div>
             </div>
@@ -104,7 +109,7 @@
 
             <div class="column is-half cstm-radio-btn2">
 
-              <div class="block">
+              <div class="block" @click="isPupilsModal = true">
                 <b-field label="">
                   <b-checkbox v-model="checkboxGroup" native-value="pupils" type="is-info">
                     Pupils
@@ -234,13 +239,14 @@
                   </b-checkbox>
 
                 </b-field>
+                <p> <b>  "Explain Risks "</b> </p>
               </div>
             </div>
           </div>
 
-           <div class="columns">
+          <div class="columns">
             <div class="column">
-               <b-field label="Current medications">
+              <b-field label="Current medications">
                 <b-input maxlength="300" type="textarea"></b-input>
               </b-field>
             </div>
@@ -252,8 +258,167 @@
         </form>
       </card-component>
 
+
+
+
+      <!-- Neck Modal -->
+      <b-modal v-model="isNeckModal" :width="640">
+        <div class="card">
+          <h3 class="popup-heading"> Neck </h3>
+          <div class="card-content">
+
+
+            <div class="columns">
+              <div class="column  cstm-radio-btn">
+                <div class="block">
+                  <b-field label="Antiplatelet">
+                    <b-radio v-model="radio" name="neck" native-value="neckNormal" type="is-info">
+                      Normal
+                    </b-radio>
+                    <b-radio v-model="radio" name="neck" native-value="neckAbnormal" type="is-info">
+                      Abnormal
+                    </b-radio>
+                  </b-field>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="columns">
+              <div class="column">
+                <b-field label="Expanded">
+                  <b-select placeholder="Select One" expanded>
+                    <option value="flint">Fixed</option>
+                    <option value="silver">Extension Problems</option>
+                    <option value="silver">Flexion Problems</option>
+                  </b-select>
+                </b-field>
+              </div>
+            </div>
+
+            <b-button type="sbmt-btn">Primary</b-button>
+
+          </div>
+        </div>
+      </b-modal>
+      <!-- Neck modal end -->
+
+
+      <!-- Teeth Modal -->
+      <b-modal v-model="isTeethModal" :width="640">
+        <div class="card">
+          <h3 class="popup-heading"> Teeth </h3>
+          <div class="card-content">
+
+
+            <div class="columns">
+              <div class="column  cstm-radio-btn">
+                <div class="block">
+                  <b-field label="">
+                    <b-checkbox v-model="checkboxGroup" native-value="teethLoose" type="is-info">
+                      Loose
+                    </b-checkbox>
+                    <b-checkbox v-model="checkboxGroup" native-value="teethCaps" type="is-info">
+                      Caps
+                    </b-checkbox>
+                    <b-checkbox v-model="checkboxGroup" native-value="teethCrowns" type="is-info">
+                      Crowns
+                    </b-checkbox>
+                    <b-checkbox v-model="checkboxGroup" native-value="teethDenture" type="is-info">
+                      Denture
+                    </b-checkbox>
+                  </b-field>
+                  <p> <b> "Dental Protection Needed" </b> </p>
+                </div>
+
+              </div>
+            </div>
+
+
+            <div class="columns">
+              <div class="column  cstm-radio-btn">
+                <div class="block">
+                  <b-field label="">
+                    <b-radio v-model="radio" name="neck" native-value="neckNormal" type="is-info">
+                      Fixed
+                    </b-radio>
+                    <b-radio v-model="radio" name="neck" native-value="neckAbnormal" type="is-info">
+                      Removeable
+                    </b-radio>
+                  </b-field>
+                </div>
+              </div>
+            </div>
+
+            <b-button type="sbmt-btn">Primary</b-button>
+
+          </div>
+        </div>
+      </b-modal>
+      <!-- Teeth modal end -->
+
+
+      <!-- Pupil Modal -->
+      <b-modal v-model="isPupilsModal" :width="640">
+        <div class="card">
+          <h3 class="popup-heading"> Pupil </h3>
+          <div class="card-content">
+
+
+            <div class="columns">
+              <div class="column  cstm-radio-btn">
+                <div class="block">
+                  <b-field label="">
+                    <b-radio v-model="radio" name="neck" native-value="pupilEqual" type="is-info">
+                      Equal
+                    </b-radio>
+                    <b-radio v-model="radio" name="neck" native-value="pupilUnqqual" type="is-info">
+                      Unequal
+                    </b-radio>
+                  </b-field>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="columns">
+              <div class="column is-half">
+                <b-field label="Right">
+                <b-input>
+                </b-input>
+              </b-field>
+              </div>
+
+               <div class="column is-half">
+                <b-field label="Left">
+                <b-input>
+                </b-input>
+              </b-field>
+              </div>
+            </div>
+
+
+            <div class="columns">
+              <div class="column">
+
+              </div>
+
+            </div>
+
+            <b-button type="sbmt-btn">Primary</b-button>
+
+          </div>
+        </div>
+      </b-modal>
+      <!-- Pupil modal end -->
+
     </section>
   </div>
+
+
+
+
+
 </template>
 
 <script>
@@ -276,6 +441,9 @@
     },
     data() {
       return {
+        isTeethModal: false,
+        isNeckModal: false,
+        isPupilsModal: false,
         radio: 'default',
         checkboxGroup: ['Flint'],
         isLoading: false,
