@@ -69,6 +69,12 @@ footer {
     background-color: #007bff;
     border-color: #007bff;
     color: #fff;
+    padding: 9px 18px;
+    display: inline-block;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+cursor: pointer;
 }
 
 .sbmt-btn:hover {
@@ -197,6 +203,26 @@ footer {
     color: #fff;
     margin-top: 20px;
     margin-bottom: 25px !important;
+}
+
+aside.aside{overflow-y: auto ;}
+aside.aside::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #2e323a;
+}
+
+aside.aside::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #2e323a;
+}
+
+aside.aside::-webkit-scrollbar-thumb
+{
+
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #5b616b;
 }
 
 @media screen and (min-width: 1024px) {
