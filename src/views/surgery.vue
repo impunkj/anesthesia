@@ -35,6 +35,12 @@
                   <b-input maxlength="300" type="textarea"></b-input>
                 </b-field>
               </div>
+
+               <div class="column ">
+                <b-field label="Residual effect">
+                  <b-input maxlength="300" type="textarea"></b-input>
+                </b-field>
+              </div>
           </div>
 
 
