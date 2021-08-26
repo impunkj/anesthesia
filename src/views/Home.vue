@@ -5,53 +5,11 @@
       Dashboard
     </hero-bar> -->
     <section class="section is-main-section">
-      <tiles>
-        <card-widget
-          class="tile is-child"
-          type="is-primary"
-          icon="account-multiple"
-          :number="512"
-          label="Clients"
-        />
-        <card-widget
-          class="tile is-child"
-          type="is-info"
-          icon="cart-outline"
-          :number="7770"
-          prefix="$"
-          label="Sales"
-        />
-        <card-widget
-          class="tile is-child"
-          type="is-success"
-          icon="chart-timeline-variant"
-          :number="256"
-          suffix="%"
-          label="Performance"
-        />
-      </tiles>
 
-      <card-component
-        title="Performance"
-        icon="finance"
-        header-icon="reload"
-        @header-icon-click="fillChartData"
-      >
-        <div v-if="defaultChart.chartData" class="chart-area">
-          <line-chart
-            ref="bigChart"
-            style="height: 100%;"
-            chart-id="big-line-chart"
-            :chart-data="defaultChart.chartData"
-            :extra-options="defaultChart.extraOptions"
-          >
-          </line-chart>
-        </div>
-      </card-component>
 
-      <card-component title="Clients" class="has-table has-mobile-sort-spaced">
+      <card-component title="Patients" class="has-table has-mobile-sort-spaced">
         <clients-table-sample
-          :data-url="`${$router.options.base}data-sources/clients.json`"
+          :data-url="this.$store.state.siteURL + 'api/patient_informations'"
         />
       </card-component>
     </section>
@@ -81,6 +39,7 @@ export default {
   },
   data () {
     return {
+      pathURL: this.$store.state.siteURL + 'api/patient_informations',
       defaultChart: {
         chartData: null,
         extraOptions: chartConfig.chartOptionsMain

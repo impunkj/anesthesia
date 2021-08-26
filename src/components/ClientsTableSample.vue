@@ -22,28 +22,25 @@
           <img :src="props.row.avatar" class="is-rounded">
         </div>
       </b-table-column>
+      <b-table-column label="Patient ID" field="id" sortable v-slot="props">
+        {{ props.row.patientNo }}
+      </b-table-column>
+      <b-table-column label="Date Of Admission" field="dateOfAdmission" sortable v-slot="props">
+        {{ forMatDate(props.row.dateOfAdmission) }}
+      </b-table-column>
+      <b-table-column label="Proposed Operation" field="proposedOperation" sortable v-slot="props">
+        {{ props.row.proposedOperation }}
+      </b-table-column>
+
+
+
       <b-table-column label="Name" field="name" sortable v-slot="props">
         {{ props.row.name }}
       </b-table-column>
-      <b-table-column label="Company" field="company" sortable v-slot="props">
-        {{ props.row.company }}
-      </b-table-column>
-      <b-table-column label="City" field="city" sortable v-slot="props">
-        {{ props.row.city }}
-      </b-table-column>
-      <b-table-column cell-class="is-progress-col" label="Progress" field="progress" sortable v-slot="props">
-        <progress class="progress is-small is-primary" :value="props.row.progress" max="100">{{ props.row.progress }}</progress>
-      </b-table-column>
-      <b-table-column label="Created" v-slot="props">
-        <small class="has-text-grey is-abbr-like" :title="props.row.created">{{ props.row.created }}</small>
-      </b-table-column>
-      <b-table-column custom-key="actions" cell-class="is-actions-cell" v-slot="props">
-        <div class="buttons is-right">
-          <router-link :to="{name:'client.edit', params: {id: props.row.id}}" class="button is-small is-primary">
-            <b-icon icon="account-edit" size="is-small"/>
-          </router-link>
-          <button class="button is-small is-danger" type="button" @click.prevent="trashModal(props.row)">
-            <b-icon icon="trash-can" size="is-small"/>
+      <b-table-column  label="Report"  custom-key="actions" cell-class="is-actions-cell" v-slot="props">
+        <div class="buttons ">
+          <button class="button is-small is-primary"  @click="DownloadPDF(props.row.patientNo )">
+            <b-icon icon="file-document" size="is-small"/>
           </button>
         </div>
       </b-table-column>
@@ -71,7 +68,7 @@
 <script>
 import axios from 'axios'
 import ModalBox from '@/components/ModalBox'
-
+import dayjs from 'dayjs'
 export default {
   name: 'ClientsTableSample',
   components: { ModalBox },
@@ -107,6 +104,7 @@ export default {
   },
   mounted () {
     if (this.dataUrl) {
+      console.log(this.dataUrl);
       this.isLoading = true
       axios
         .get(this.dataUrl)
@@ -129,6 +127,25 @@ export default {
     }
   },
   methods: {
+  DownloadPDF(patientNo){
+        let PDFURL = this.$store.state.siteURL + 'api/patientreport';
+        let pad = {
+          params: {
+            patientID: patientNo
+          }};
+        axios
+          .get(PDFURL,pad)
+          .then((r) => {
+            this.Download(r.data.path);
+        })
+  },
+  Download(url){
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'file.pdf'); //or any other extension
+    document.body.appendChild(link);
+    link.click();
+  },
     trashModal (trashObject) {
       this.trashObject = trashObject
       this.isModalActive = true
@@ -142,6 +159,10 @@ export default {
     },
     trashCancel () {
       this.isModalActive = false
+    },
+    forMatDate(v){
+        return dayjs(new Date(v).toLocaleString("en-US", {timeZone: "America/New_York"})).format('MMM D, YYYY')
+      /// return dayjs(v).format('MMM D, YYYY')
     }
   }
 }

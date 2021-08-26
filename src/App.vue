@@ -210,8 +210,8 @@
     },
     created() {
       this.$store.commit('user', {
-        name: 'John Doe',
-        email: 'john@example.com',
+        name: 'Admin',
+        email: 'admin@panalinks.com',
         avatar: 'https://avatars.dicebear.com/v2/gridy/John-Doe.svg'
       })
     }

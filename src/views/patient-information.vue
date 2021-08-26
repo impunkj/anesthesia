@@ -7,14 +7,14 @@
           <div class="columns is-tablet">
             <div class="column is-one-third">
               <b-field label="Date">
-                <b-datepicker>
+                <b-datepicker  v-model="form.dateOfAdmission">
                 </b-datepicker>
               </b-field>
             </div>
 
             <div class="column is-one-third ">
               <b-field label="Time">
-                <b-timepicker>
+                <b-timepicker  v-model="form.timeOfAdmission" >
                 </b-timepicker>
               </b-field>
             </div>
@@ -23,14 +23,14 @@
           <div class="columns">
             <div class="column is-one-third ">
               <b-field label="Name">
-                <b-input>
+                <b-input  v-model="form.name">
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third ">
               <b-field label="DOB">
-                <b-datepicker placeholder="DOB">
+                <b-datepicker placeholder="DOB"  v-model="form.dateOfBirth" >
                 </b-datepicker>
               </b-field>
             </div>
@@ -38,13 +38,13 @@
             <div class="column is-one-third cstm-radio-btn ">
               <div class="block">
                 <b-field label="Sex">
-                  <b-radio v-model="radio" name="name" native-value="male" type="is-info">
+                  <b-radio v-model="form.gender" name="name" native-value="male" type="is-info">
                     Male
                   </b-radio>
-                  <b-radio v-model="radio" name="name" native-value="female" type="is-info">
+                  <b-radio v-model="form.gender" name="name" native-value="female" type="is-info">
                     Female
                   </b-radio>
-                  <b-radio v-model="radio" name="name" native-value="other" type="is-info">
+                  <b-radio v-model="form.gender" name="name" native-value="other" type="is-info">
                     Other
                   </b-radio>
                 </b-field>
@@ -56,19 +56,19 @@
           <div class="columns ">
             <div class="column is-one-third ">
               <b-field label="IP">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea"  v-model="form.IP" ></b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third ">
               <b-field label="Proposed Operation">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.proposedOperation" ></b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third ">
               <b-field label="Pre-Operative Diagnosis">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300"  v-model="form.preOperativeDiagnosis" type="textarea"></b-input>
               </b-field>
             </div>
           </div>
@@ -79,14 +79,14 @@
               <div class="columns">
                 <div class="column is-half">
                   <b-field label="BP">
-                    <b-input>
+                    <b-input  v-model="form.BP" >
                     </b-input>
                   </b-field>
                 </div>
 
                 <div class="column is-half ">
                   <b-field label="HR">
-                    <b-input>
+                    <b-input v-model="form.HR"  >
                     </b-input>
                   </b-field>
                 </div>
@@ -99,14 +99,14 @@
               <div class="columns">
                 <div class="column is-half">
                   <b-field label="Sao2">
-                    <b-input>
+                    <b-input v-model="form.sao2">
                     </b-input>
                   </b-field>
                 </div>
 
                 <div class="column is-half">
                   <b-field label="Height(cm)">
-                    <b-input>
+                    <b-input v-model="form.height">
                     </b-input>
                   </b-field>
                 </div>
@@ -117,14 +117,14 @@
               <div class="columns">
                 <div class="column is-half">
                   <b-field label="Weight (kg)">
-                    <b-input>
+                    <b-input v-model="form.weight">
                     </b-input>
                   </b-field>
                 </div>
 
                 <div class="column is-half">
                   <b-field label="BMI">
-                    <b-input>
+                    <b-input v-model="form.BMI">
                     </b-input>
                   </b-field>
                 </div>
@@ -136,25 +136,25 @@
             <div class="column is-full cstm-radio-btn asa-physical">
               <div class="block">
                 <b-field label="ASA Physical Status">
-                  <b-radio v-model="radio" name="name" native-value="zero" type="is-info">
+                  <b-radio v-model="form.ASAPhysicalStatus" name="name" native-value="zero" type="is-info">
                     0
                   </b-radio>
-                  <b-radio v-model="radio" name="name" native-value="one" type="is-info">
+                  <b-radio v-model="form.ASAPhysicalStatus" name="name" native-value="one" type="is-info">
                     1
                   </b-radio>
-                  <b-radio v-model="radio" name="name" native-value="two" type="is-info">
+                  <b-radio v-model="form.ASAPhysicalStatus" name="name" native-value="two" type="is-info">
                     2
                   </b-radio>
-                  <b-radio v-model="radio" name="name" native-value="two" type="is-info">
+                  <b-radio v-model="form.ASAPhysicalStatus" name="name" native-value="two" type="is-info">
                     3
                   </b-radio>
-                  <b-radio v-model="radio" name="name" native-value="two" type="is-info">
+                  <b-radio v-model="form.ASAPhysicalStatus" name="name" native-value="two" type="is-info">
                     4
                   </b-radio>
-                  <b-radio v-model="radio" name="name" native-value="two" type="is-info">
+                  <b-radio v-model="form.ASAPhysicalStatus" name="name" native-value="two" type="is-info">
                     5
                   </b-radio>
-                  <b-radio v-model="radio" name="name" native-value="two" type="is-info">
+                  <b-radio v-model="form.ASAPhysicalStatus" name="name" native-value="two" type="is-info">
                     E
                   </b-radio>
                 </b-field>
@@ -162,7 +162,7 @@
             </div>
           </div>
 
-          <b-button type="sbmt-btn">Submit</b-button>
+          <b-button type="sbmt-btn"  @click="submit">Submit</b-button>
 
         </form>
       </card-component>
@@ -172,6 +172,7 @@
 </template>
 
 <script>
+ import axios from "axios";
   import mapValues from 'lodash/mapValues'
   import TitleBar from '@/components/TitleBar'
   import CardComponent from '@/components/CardComponent'
@@ -216,7 +217,18 @@
       }
     },
     methods: {
-      submit() {},
+      submit() {
+        var baseURL = this.$store.state.siteURL + 'api/patient_informations';
+        axios.post(baseURL, this.form).then((r) => {
+              console.log(r);
+              console.log(r.data.data.id);
+                this.$buefy.snackbar.open({
+                  message: r.data.message,
+                  queue: false
+                }) ;
+           localStorage.setItem('patientID', r.data.data.id) ;
+        })
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {

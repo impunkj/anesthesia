@@ -19,8 +19,14 @@
       <b-navbar-item href="#">
                 Dashboard
       </b-navbar-item>
-      <b-navbar-item href="#">
-                Reports
+        <router-link
+              to="/"
+              class="navbar-item"
+              exact-active-class="is-active"
+            >
+            Reports
+        </router-link>
+
       </b-navbar-item>
       <b-navbar-item href="#">
                 Settings
