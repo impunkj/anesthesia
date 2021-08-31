@@ -39,7 +39,7 @@
           [{
               label: 'CSV',
               subLabel: 'Submenus Example',
-              icon: 'hotel',
+              icon: 'heart',
               menu: [{
                   to: '/htn',
                   label: 'HTN',

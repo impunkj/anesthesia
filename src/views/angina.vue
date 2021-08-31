@@ -5,6 +5,32 @@
       <card-component title="Angina">
         <form @submit.prevent="submit">
 
+  <!-- <div >
+    <div class="checkbox">
+        <label><input type="checkbox" v-model="checked">Options</label>
+    </div>
+    <div  v-if="checked">
+        <p>Text is visible</p>
+    </div>
+   </div> -->
+
+<div class="columns">
+   <div class="column is-full cstm-radio-btn"  >
+              <div class="block">
+                <b-field label="">
+                  <b-radio v-model="checked" name="checkVal" native-value="yes" type="is-info">
+                    Yes
+                  </b-radio>
+                  <b-radio  v-model="checked"   name="checkVal" native-value="no" type="is-info">
+                    No
+                  </b-radio>
+                </b-field>
+              </div>
+      </div>
+</div>
+
+ <div  v-if="checked === 'yes'">
+
           <div class="columns">
             <div class="column is-one-third">
               <ul class="cstm-ul-li">
@@ -92,7 +118,7 @@
                       </b-field>
             </div>
           </div>
-
+</div>
 
 
 
@@ -130,6 +156,8 @@
     },
     data() {
       return {
+        checked: false,
+        //  checkboxGroup: "",
         radio: 'default',
         isLoading: false,
         form: {
@@ -155,6 +183,8 @@
       }
     },
     methods: {
+
+
       submit() {},
       reset() {
         this.form = mapValues(this.form, (item) => {
@@ -169,6 +199,7 @@
           queue: false
         })
       }
+
     }
   }
 

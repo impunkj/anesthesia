@@ -133,6 +133,7 @@ cursor: pointer;
 
 .form-section {
     box-shadow: 0px 2px 15px #00000017;
+    margin-bottom: 40px;
 }
 
 .b-radio.radio:not(.button) {
@@ -177,7 +178,8 @@ cursor: pointer;
 
 .form-section .field-body {
     height: auto;
-    padding-top: 10px;
+    padding-top: 8px;
+    padding-bottom: 3px;
 }
 
 .cstm-heading {

@@ -2,36 +2,70 @@
   <div>
 
     <section class="section is-main-section">
-      <card-component title="HTN">
+      <card-component title="HTN (Hypertension)">
         <form @submit.prevent="submit">
+
           <div class="columns">
-            <div class="column is-one-third">
-               <b-field label="Duration">
-                <b-input>
-                </b-input>
-              </b-field>
+
+            <div class="column is-8">
+              <b-field label="How long"> </b-field>
+              <div class="columns">
+                <div class="column is-4">
+                  <b-field label="">
+                    <b-input placeholder="YY">
+                    </b-input>
+                  </b-field>
+                </div>
+
+                <div class="column is-4 ">
+                  <b-field label="">
+                    <b-input placeholder="MM">
+                    </b-input>
+                  </b-field>
+                </div>
+                <div class="column is-4 ">
+                  <b-field label="">
+                    <b-input placeholder="DD">
+                    </b-input>
+                  </b-field>
+                </div>
+              </div>
             </div>
 
-            <div class="column is-one-third ">
-               <b-field label="Months">
-                <b-input>
-                </b-input>
-              </b-field>
+            <div class="column is-4">
+              <b-field label="Stress/Angio"> </b-field>
+              <div class="columns">
+                <div class="column is-full  cstm-radio-btn">
+                  <div class="block">
+                    <b-field label="">
+                      <b-radio v-model="radio" name="strees" native-value="stressYes" type="is-info">
+                        Yes
+                      </b-radio>
+                      <b-radio v-model="radio" name="strees" native-value="stressNo" type="is-info">
+                        No
+                      </b-radio>
+                    </b-field>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="column is-one-third ">
-              <b-field label="Days">
-                <b-input>
-                </b-input>
-              </b-field>
-            </div>
+
+
           </div>
 
+
           <div class="columns">
-            <div class="column is-one-third ">
-              <b-field label="Medication">
-                <b-input>
-                </b-input>
+            <div class="column is-12">
+              <b-field label="Treatment">
+                <b-input maxlength="300" type="textarea"></b-input>
               </b-field>
+            </div>
+
+          </div>
+
+          <!-- <div class="columns">
+            <div class="column is-one-third ">
+
             </div>
 
             <div class="column is-one-third cstm-radio-btn">
@@ -53,9 +87,9 @@
                 </b-input>
               </b-field>
             </div>
-          </div>
+          </div> -->
 
-         <b-button type="sbmt-btn">Submit</b-button>
+          <b-button type="sbmt-btn">Submit</b-button>
 
 
         </form>
