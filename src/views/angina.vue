@@ -5,15 +5,6 @@
       <card-component title="Angina">
         <form @submit.prevent="submit">
 
-  <!-- <div >
-    <div class="checkbox">
-        <label><input type="checkbox" v-model="checked">Options</label>
-    </div>
-    <div  v-if="checked">
-        <p>Text is visible</p>
-    </div>
-   </div> -->
-
 <div class="columns">
    <div class="column is-full cstm-radio-btn"  >
               <div class="block">
@@ -57,10 +48,10 @@
              <div class="column is-half cstm-radio-btn">
               <div class="block">
                 <b-field label="Status">
-                  <b-radio v-model="radio" name="name" native-value="stable" type="is-info">
+                  <b-radio  name="status" native-value="stable" type="is-info">
                     Stable
                   </b-radio>
-                  <b-radio v-model="radio" name="name" native-value="unstable" type="is-info">
+                  <b-radio  name="status" native-value="unstable" type="is-info">
                     Unstable
                   </b-radio>
                 </b-field>
@@ -70,10 +61,10 @@
               <div class="column is-half cstm-radio-btn">
               <div class="block">
                 <b-field label="Taking treatment">
-                  <b-radio v-model="radio" name="name" native-value="treatmentYes" type="is-info">
+                  <b-radio  name="treatment" native-value="treatmentYes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="radio" name="name" native-value="treatmentNo" type="is-info">
+                  <b-radio  name="treatment" native-value="treatmentNo" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -81,7 +72,7 @@
             </div>
           </div>
 
-          <div class="columns mb-0">
+          <div class="columns">
              <div class="column is-half">
               <b-field label="What causes Angina?">
                 <b-input maxlength="300" type="textarea"></b-input>
@@ -96,24 +87,26 @@
           </div>
 
 
-          <div class="columns">
+        <b-field label="Duration of treatment?"></b-field>
+          <div class="columns mb-3">
+
             <div class="column is-one-third">
-               <b-field label="Duration of treatment?">
-                        <b-input>
+               <b-field  >
+                        <b-input placeholder="YY">
                         </b-input>
                       </b-field>
             </div>
 
             <div class="column is-one-third">
-              <b-field label="Months">
-                        <b-input>
+              <b-field  >
+                        <b-input placeholder="MM">
                         </b-input>
                       </b-field>
             </div>
 
             <div class="column is-one-third">
-             <b-field label="Days">
-                        <b-input>
+             <b-field  >
+                        <b-input placeholder="DD">
                         </b-input>
                       </b-field>
             </div>

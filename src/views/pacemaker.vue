@@ -15,31 +15,32 @@
             </div>
 
             <div class="column is-half">
-              <b-field label="Pacemaker make?">
+              <b-field label="Pacemaker make / Type?">
                 <b-input maxlength="300" type="textarea"></b-input>
               </b-field>
             </div>
           </div>
 
 
+<b-field label="When" class=""> </b-field>
           <div class="columns">
             <div class="column is-one-third">
-              <b-field label="When">
-                <b-input>
+              <b-field label="">
+                <b-input placeholder="YY">
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
-              <b-field label="Months">
-                <b-input>
+              <b-field label="">
+                <b-input placeholder="MM">
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
-              <b-field label="Days">
-                <b-input>
+              <b-field label="">
+                <b-input placeholder="DD">
                 </b-input>
               </b-field>
             </div>
@@ -47,10 +48,10 @@
 
 
           <b-field class="checkOut">
-            <b-checkbox type="is-info">Check paperwork / Card</b-checkbox>
+            <b-checkbox type="is-info" v-model="checkboxClick">Check paperwork / Card / Chest xRay</b-checkbox>
           </b-field>
 
-          <div class="mt-2 cardiology whencheckboxclicked">
+          <div  v-if="checkboxClick" class="mt-2 mb-5">
             <b>"Needs Cardiology Evaluation"</b>
           </div>
 
@@ -86,6 +87,7 @@
     },
     data() {
       return {
+        checkboxClick : false,
         radio: 'default',
         checkboxGroup: ['Flint'],
         isLoading: false,

@@ -92,11 +92,11 @@ const routes = [
   },
   {
     meta: {
-      title: 'Asthama'
+      title: 'Asthma'
     },
-    path: '/asthama',
-    name: 'Asthama',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/asthama.vue')
+    path: '/asthma',
+    name: 'Asthma',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/asthma.vue')
   },
   {
     meta: {

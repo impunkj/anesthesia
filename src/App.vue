@@ -77,8 +77,8 @@
               subLabel: 'Submenus Example',
               icon: 'lungs',
               menu: [{
-                  to: '/asthama',
-                  label: 'Asthama',
+                  to: '/asthma',
+                  label: 'Asthma',
                   icon: 'circle-outline'
                 },
                 {
