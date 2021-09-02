@@ -5,33 +5,55 @@
       <card-component title="Jaundice">
         <form @submit.prevent="submit">
 
-        <div class="columns">
+          <div class="columns">
+   <div class="column is-full cstm-radio-btn"  >
+              <div class="block">
+                <b-field label="">
+                  <b-radio v-model="checked" name="checkVal" native-value="yes" type="is-info">
+                    Yes
+                  </b-radio>
+                  <b-radio  v-model="checked"   name="checkVal" native-value="no" type="is-info">
+                    No
+                  </b-radio>
+                </b-field>
+              </div>
+      </div>
+</div>
+
+ <div  v-if="checked === 'yes'">
+
+        <b-field label="When?">
+          </b-field>
+          <div class="columns mb-3">
+
             <div class="column is-one-third">
-              <b-field label="When">
-                <b-input>
+              <b-field label="">
+                <b-input placeholder="YYYY">
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
-              <b-field label="Months">
-                <b-input>
+              <b-field label="">
+                <b-input placeholder="MM">
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
-              <b-field label="Days">
-                <b-input>
+              <b-field label="">
+                <b-input placeholder="DD">
                 </b-input>
               </b-field>
             </div>
+
           </div>
 
             <b-field class="checkOut" >
-            <b-checkbox  type="is-info"> Needed hospitalisation </b-checkbox>
+            <b-checkbox v-model="checkboxClick" type="is-info"> Needed hospitalisation </b-checkbox>
         </b-field>
 
+ <div  v-if="checkboxClick">
           <div class="columns">
             <div class="column is-half">
               <b-field label="Cause">
@@ -59,10 +81,13 @@
               </b-field>
             </div>
           </div>
+          </div>
+
+           </div>
 
 
 
-          <b-button type="sbmt-btn">Submit</b-button>
+          <b-button type="sbmt-btn mt-5">Submit</b-button>
 
         </form>
       </card-component>
@@ -91,6 +116,8 @@
     },
     data() {
       return {
+        checkboxClick : false,
+        checked: false,
         radio: 'default',
          checkboxGroup: ['Flint'],
         isLoading: false,

@@ -25,14 +25,15 @@
           </div>
 
           <b-field>
-            <b-checkbox type="is-info">Dialysis</b-checkbox>
+            <b-checkbox  v-model="checkboxClick" type="is-info">Dialysis</b-checkbox>
           </b-field>
 
+<div v-if="checkboxClick">
           <b-field>
-            <b-checkbox type="is-info">Hemo</b-checkbox>
+            <b-checkbox v-model="checkboxClick2" type="is-info">Hemo</b-checkbox>
           </b-field>
 
-          <div class="columns">
+          <div class="columns" v-if="checkboxClick2">
             <div class="column is-one-half">
               <b-field>
                 <b-select placeholder="Select One" expanded>
@@ -53,10 +54,10 @@
 
 
           <b-field>
-            <b-checkbox type="is-info">Fistula</b-checkbox>
+            <b-checkbox v-model="checkboxClick3" type="is-info">Fistual</b-checkbox>
           </b-field>
 
-          <div class="columns">
+          <div class="columns" v-if="checkboxClick3">
             <div class="column is-full">
               <b-field label="Site">
                 <b-input>
@@ -67,10 +68,10 @@
           </div>
 
           <b-field>
-            <b-checkbox type="is-info">Peritoneal</b-checkbox>
+            <b-checkbox type="is-info" v-model="checkboxClick4">Peritoneal</b-checkbox>
           </b-field>
 
-          <div class="columns">
+          <div class="columns " v-if="checkboxClick4">
             <div class="column is-full">
               <b-field label="How many times">
                 <b-input>
@@ -78,9 +79,9 @@
               </b-field>
             </div>
           </div>
+</div>
 
-
-          <b-button type="sbmt-btn">Submit</b-button>
+          <b-button type="sbmt-btn mt-5">Submit</b-button>
 
 
         </form>
@@ -110,6 +111,10 @@
     },
     data() {
       return {
+        checkboxClick : false,
+        checkboxClick2 : false,
+        checkboxClick3 : false,
+        checkboxClick4 : false,
         radio: 'default',
         isLoading: false,
         form: {

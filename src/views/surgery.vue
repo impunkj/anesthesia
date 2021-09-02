@@ -7,13 +7,13 @@
 
           <div class="columns">
             <div class="column pb-0">
-              <b-field>
-                <b-checkbox type="is-info">Brain</b-checkbox>
-              </b-field>
+              <b-field class="checkOut">
+            <b-checkbox type="is-info" v-model="checkboxClick">Brain</b-checkbox>
+          </b-field>
             </div>
           </div>
 
-          <div class="columns">
+          <div class="columns" v-if="checkboxClick">
                <div class="column ">
                 <b-field label="What surgery?">
                   <b-input maxlength="300" type="textarea"></b-input>
@@ -24,12 +24,12 @@
            <div class="columns">
             <div class="column pb-0">
               <b-field>
-                <b-checkbox type="is-info">Spinal Cord</b-checkbox>
+                <b-checkbox v-model="checkboxClick2" type="is-info">Spinal Cord</b-checkbox>
               </b-field>
             </div>
           </div>
 
-          <div class="columns">
+          <div class="columns" v-if="checkboxClick2">
                <div class="column">
                 <b-field label="What surgery?">
                   <b-input maxlength="300" type="textarea"></b-input>
@@ -75,6 +75,8 @@
     },
     data() {
       return {
+         checkboxClick : false,
+         checkboxClick2 : false,
         radio: 'default',
         isLoading: false,
         form: {

@@ -504,7 +504,7 @@
             </div>
           </div> -->
 
-          <div class="columns mb-0">
+          <div class="columns mb-3">
             <div class="column is-full">
               <b-field label="2D Echo">
                 <b-input maxlength="300" v-model="form.DEcho" type="textarea"></b-input>

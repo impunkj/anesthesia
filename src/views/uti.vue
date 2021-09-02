@@ -4,8 +4,48 @@
     <section class="section is-main-section">
       <card-component title="UTI">
         <form  method="post" @submit.prevent="getUtiFormData">
+
+          <div class="columns">
+   <div class="column is-full cstm-radio-btn"  >
+              <div class="block">
+                <b-field label="">
+                  <b-radio v-model="checked" name="checkVal" native-value="yes" type="is-info">
+                    Yes
+                  </b-radio>
+                  <b-radio  v-model="checked"   name="checkVal" native-value="no" type="is-info">
+                    No
+                  </b-radio>
+                </b-field>
+              </div>
+      </div>
+</div>
+
+ <div  v-if="checked === 'yes'">
 <!-- <form> -->
-        <div class="columns">
+  <b-field label="When" class=""> </b-field>
+          <div class="columns">
+            <div class="column is-one-third">
+              <b-field label="">
+                <b-input placeholder="YY">
+                </b-input>
+              </b-field>
+            </div>
+
+            <div class="column is-one-third">
+              <b-field label="">
+                <b-input placeholder="MM">
+                </b-input>
+              </b-field>
+            </div>
+
+            <div class="column is-one-third">
+              <b-field label="">
+                <b-input placeholder="DD">
+                </b-input>
+              </b-field>
+            </div>
+          </div>
+       <!--  <div class="columns">
             <div class="column is-one-third">
               <b-field label="When">
                 <b-input v-model="utiForm.when">
@@ -26,7 +66,24 @@
                 </b-input>
               </b-field>
             </div>
-          </div>
+          </div> -->
+
+                 <div class="columns">
+   <div class="column is-full cstm-radio-btn"  >
+              <div class="block">
+                <b-field label="Treated">
+                  <b-radio v-model="checked2" name="checkVal2" native-value="yes" type="is-info">
+                    Yes
+                  </b-radio>
+                  <b-radio  v-model="checked2"   name="checkVal2" native-value="no" type="is-info">
+                    No
+                  </b-radio>
+                </b-field>
+              </div>
+      </div>
+</div>
+
+ <div  v-if="checked2 === 'yes'">
 
           <div class="columns">
             <div class="column is-one-third">
@@ -47,10 +104,10 @@
               </b-field>
             </div>
           </div>
+          </div>
+ </div>
 
-
-
-          <button class="sbmt-btn" type="submit" >Submit</button>
+          <button class="sbmt-btn mt-5" type="submit" >Submit</button>
 <!-- v-on:click="getUtiFormData" -->
         </form>
       </card-component>
@@ -82,6 +139,8 @@
     },
     data() {
       return {
+        checked: false,
+        checked2: false,
         utiForm : {
           when : null,
           months : null,

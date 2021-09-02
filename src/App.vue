@@ -37,7 +37,7 @@
           ],
           'Medical History',
           [{
-              label: 'CSV',
+              label: 'CVS',
               subLabel: 'Submenus Example',
               icon: 'heart',
               menu: [{
@@ -148,17 +148,22 @@
                   label: 'UTI',
                   icon: 'circle-outline'
                 },
-                {
+                /* {
                   to: '/diabetes',
                   label: 'Diabetes',
                   icon: 'circle-outline'
-                },
+                }, */
               ]
+            },
+            {
+               to: '/diabetes',
+                  label: 'Diabetes',
+                  icon: 'diabetes'
             },
             {
               label: 'Hepatic/GE',
               subLabel: 'Submenus Example',
-              icon: 'monitor-star',
+              icon: 'alpha-h-circle',
               menu: [{
                   to: '/jaundice',
                   label: 'Jaundice',
@@ -180,11 +185,11 @@
                   label: 'Thyroid',
                   icon: 'circle-outline'
                 },
-                {
+                /* {
                   to: '/fraility',
                   label: 'Fraility',
                   icon: 'circle-outline'
-                },
+                }, */
               ]
             },
             {
