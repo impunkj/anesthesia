@@ -5,14 +5,14 @@
       <card-component title="Laboratory Data" icon="filter">
         <form @submit.prevent="submit">
 
-          <div class="columns">
+          <!--  <div class="columns">
             <div class="column is-full">
               <b-field label="GFR(Calc)">
                 <b-input v-model="form.GFR">
                 </b-input>
               </b-field>
             </div>
-          </div>
+          </div> -->
 
           <div class="columns">
             <div class="column is-full">
@@ -32,13 +32,6 @@
             </div>
 
             <div class="column is-one-fifth">
-              <b-field label="Alk Phos" v-model="form.alkPhos">
-                <b-input>
-                </b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-one-fifth">
               <b-field label="Dir. Bil">
                 <b-input v-model="form.dirBil">
                 </b-input>
@@ -46,31 +39,44 @@
             </div>
 
             <div class="column is-one-fifth">
+              <b-field label="Alk Phos" v-model="form.alkPhos">
+                <b-input>
+                </b-input>
+              </b-field>
+            </div>
+
+            <div class="column is-one-fifth">
+              <b-field label="Amylase">
+                <b-input v-model="form.Amylase">
+                </b-input>
+              </b-field>
+            </div>
+
+
+
+            <div class="column is-one-fifth">
               <b-field label="LDH">
                 <b-input v-model="form.LDH">
                 </b-input>
               </b-field>
             </div>
-
-            <div class="column is-one-fifth cstm-radio-btn">
-              <div class="block">
-                <b-field label="HIV">
-                  <b-radio v-model="form.HIV" name="name" native-value="hivplusve" type="is-info">
-                    +ve
-                  </b-radio>
-                  <b-radio v-model="form.HIV" name="name" native-value="hivminusve" type="is-info">
-                    -ve
-                  </b-radio>
-                </b-field>
-              </div>
-            </div>
           </div>
 
 
           <div class="columns">
+
+
+
             <div class="column is-one-fifth">
-              <b-field label="Platelets">
-                <b-input v-model="form.Platelets">
+              <b-field label="Urea">
+                <b-input v-model="form.Urea">
+                </b-input>
+              </b-field>
+            </div>
+
+            <div class="column is-one-fifth">
+              <b-field label="Creatine">
+                <b-input v-model="form.Creatine">
                 </b-input>
               </b-field>
             </div>
@@ -83,11 +89,24 @@
             </div>
 
             <div class="column is-one-fifth">
+              <b-field label="K">
+                <b-input v-model="form.K">
+                </b-input>
+              </b-field>
+            </div>
+
+  <div class="column is-one-fifth">
               <b-field label="Ca" v-model="form.Ca">
                 <b-input>
                 </b-input>
               </b-field>
             </div>
+          </div>
+
+
+
+          <div class="columns">
+
 
             <div class="column is-one-fifth">
               <b-field label="Mg">
@@ -96,23 +115,8 @@
               </b-field>
             </div>
 
-            <div class="column is-one-fifth cstm-radio-btn">
-              <div class="block">
-                <b-field label="HBS Ag">
-                  <b-radio v-model="form.HBSAg" name="hbs" native-value="hbsagplussve" type="is-info">
-                    +ve
-                  </b-radio>
-                  <b-radio v-model="form.HBSAg" name="hbs" native-value="hbsagminusve" type="is-info">
-                    -ve
-                  </b-radio>
-                </b-field>
-              </div>
-            </div>
-          </div>
 
 
-
-          <div class="columns">
             <div class="column is-one-fifth">
               <b-field label="Hb">
                 <b-input v-model="form.Hb">
@@ -127,7 +131,7 @@
               </b-field>
             </div>
 
-            <div class="column is-one-fifth">
+             <div class="column is-one-fifth">
               <b-field label="Protein" v-model="form.Protein">
                 <b-input>
                 </b-input>
@@ -141,7 +145,126 @@
               </b-field>
             </div>
 
+
+          </div>
+
+
+          <div class="columns">
+
+
+
+
+            <div class="column is-one-fifth">
+              <b-field label="PC">
+                <b-input v-model="form.PC">
+                </b-input>
+              </b-field>
+            </div>
+
+
+
+            <div class="column is-one-fifth">
+              <b-field label="Alb">
+                <b-input v-model="form.Alb">
+                </b-input>
+              </b-field>
+            </div>
+
+             <div class="column is-one-fifth">
+              <b-field label="ECG">
+                <b-input v-model="form.ECG">
+                </b-input>
+              </b-field>
+            </div>
+
+
+
+            <div class="column is-one-fifth">
+              <b-field label="INR">
+                <b-input v-model="form.INR">
+                </b-input>
+              </b-field>
+            </div>
+            <div class="column is-one-fifth">
+              <b-field label="APTT">
+                <b-input v-model="form.APTT">
+                </b-input>
+              </b-field>
+            </div>
+
+
+          </div>
+
+
+          <div class="columns">
+
+
+            <div class="column is-one-fifth">
+              <b-field label="PT">
+                <b-input v-model="form.PT">
+                </b-input>
+              </b-field>
+            </div>
+
+            <div class="column is-one-fifth">
+              <b-field label="Platelets">
+                <b-input v-model="form.Platelets">
+                </b-input>
+              </b-field>
+            </div>
+
+             <div class="column is-one-fifth">
+              <b-field label="WBC">
+                <b-input v-model="form.WBC">
+                </b-input>
+              </b-field>
+            </div>
+
+
+
+            <div class="column is-one-fourth">
+              <b-field label="GFR(Calc)">
+                <b-input v-model="form.GFR">
+                </b-input>
+              </b-field>
+            </div>
+          </div>
+
+
+
+          <!--  -->
+          <div class="columns">
+
+          </div>
+
+          <div class="columns">
+ <div class="column is-one-fifth cstm-radio-btn">
+              <div class="block">
+                <b-field label="HIV">
+                  <b-radio v-model="form.HIV" name="name" native-value="hivplusve" type="is-info">
+                    +ve
+                  </b-radio>
+                  <b-radio v-model="form.HIV" name="name" native-value="hivminusve" type="is-info">
+                    -ve
+                  </b-radio>
+                </b-field>
+              </div>
+            </div>
+
             <div class="column is-one-fifth cstm-radio-btn">
+              <div class="block">
+                <b-field label="HBS Ag">
+                  <b-radio v-model="form.HBSAg" name="hbs" native-value="hbsagplussve" type="is-info">
+                    +ve
+                  </b-radio>
+                  <b-radio v-model="form.HBSAg" name="hbs" native-value="hbsagminusve" type="is-info">
+                    -ve
+                  </b-radio>
+                </b-field>
+              </div>
+            </div>
+
+              <div class="column is-one-fifth cstm-radio-btn">
               <div class="block">
                 <b-field label="HCV">
                   <b-radio v-model="form.HCV" name="hcv" native-value="hcvplussve" type="is-info">
@@ -153,84 +276,8 @@
                 </b-field>
               </div>
             </div>
-          </div>
 
-
-          <div class="columns">
-            <div class="column is-one-fifth">
-              <b-field label="PC">
-                <b-input v-model="form.PC">
-                </b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-one-fifth">
-              <b-field label="Urea">
-                <b-input v-model="form.Urea">
-                </b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-one-fifth">
-              <b-field label="Alb">
-                <b-input v-model="form.Alb">
-                </b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-one-fifth">
-              <b-field label="ECG">
-                <b-input v-model="form.ECG">
-                </b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-one-fifth cstm-radio-btn">
-              <div class="block">
-                <b-field label="Stress/Angio">
-                  <b-radio v-model="form.stressAngio" name="stress" native-value="stressplussve" type="is-info">
-                    +ve
-                  </b-radio>
-                  <b-radio v-model="form.stressAngio" name="stress" native-value="stressminusve" type="is-info">
-                    -ve
-                  </b-radio>
-                </b-field>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="columns">
-               <div class="column is-one-fifth">
-              <b-field label="INR">
-                <b-input v-model="form.INR">
-                </b-input>
-              </b-field>
-            </div>
-            <div class="column is-one-fifth">
-              <b-field label="PTT">
-                <b-input v-model="form.PTT">
-                </b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-one-fifth">
-              <b-field label="PT">
-                <b-input v-model="form.PT">
-                </b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-one-fifth">
-              <b-field label="K">
-                <b-input v-model="form.K">
-                </b-input>
-              </b-field>
-            </div>
-
-
-
-            <div class="column is-one-fifth cstm-radio-btn">
+              <div class="column is-one-fifth cstm-radio-btn">
               <div class="block">
                 <b-field label="RTPCR">
                   <b-radio v-model="form.rtpcr" name="rtpcr" native-value="rtpcrPlus" type="is-info">
@@ -245,33 +292,13 @@
           </div>
 
 
-
-          <!--  -->
-          <div class="columns">
-
-
-            <div class="column is-one-fifth">
-              <b-field label="Amylase">
-                <b-input v-model="form.Amylase">
-                </b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-one-fifth">
-              <b-field label="WBC">
-                <b-input v-model="form.WBC">
-                </b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-one-fifth">
-              <b-field label="Creatine">
-                <b-input v-model="form.Creatine">
-                </b-input>
+          <div class="columns mb-3">
+            <div class="column is-full">
+              <b-field label="2D Echo">
+                <b-input maxlength="300" v-model="form.DEcho" type="textarea"></b-input>
               </b-field>
             </div>
           </div>
-
 
 
           <!--  <div class="columns">
@@ -504,13 +531,8 @@
             </div>
           </div> -->
 
-          <div class="columns mb-3">
-            <div class="column is-full">
-              <b-field label="2D Echo">
-                <b-input maxlength="300" v-model="form.DEcho" type="textarea"></b-input>
-              </b-field>
-            </div>
-          </div>
+
+
 
 
 

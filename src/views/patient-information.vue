@@ -32,9 +32,20 @@
             </div>
 
             <div class="column is-one-third ">
-              <b-field label="Pincode">
+              <div class="columns">
+                <div class="column is-6">
+                   <b-field label="Age">
+                <b-input v-model="form.Age"></b-input>
+              </b-field>
+                </div>
+                <div class="column is-6">
+                   <b-field label="Pincode">
                 <b-input v-model="form.pincode"></b-input>
               </b-field>
+                </div>
+              </div>
+
+
             </div>
           </div>
 
