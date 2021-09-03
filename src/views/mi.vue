@@ -112,12 +112,12 @@
               </div>
             </div>
 
-            <div class="column is-one-third">
+           <!--  <div class="column is-one-third">
               <b-field label="What medication ">
                 <b-input>
                 </b-input>
               </b-field>
-            </div>
+            </div> -->
 
             <div class="column is-one-third  cstm-radio-btn">
               <div class="block" >
@@ -160,7 +160,7 @@
             <div class="column is-one-third  cstm-radio-btn">
               <div class="block">
                 <b-field label="CABG">
-                  <b-radio  name="cabg" native-value="cabgYes" type="is-info">
+                  <b-radio v-model="isCardModalActive3" name="cabg" native-value="cabgYes" type="is-info">
                     Yes
                   </b-radio>
                   <b-radio  name="cabg" native-value="cabgNo" type="is-info">
@@ -264,7 +264,7 @@
 
           <div class="columns">
             <div class="column is-full">
-              <b-field label="What treatment">
+              <b-field label="Type of Graft">
                 <b-input maxlength="300" type="textarea"></b-input>
               </b-field>
             </div>
@@ -409,11 +409,43 @@
           <div class="columns">
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="YY">
+                <b-input placeholder="MM">
                 </b-input>
               </b-field>
             </div>
 
+            <div class="column is-one-third">
+              <b-field label="">
+                <b-input placeholder="DD">
+                </b-input>
+              </b-field>
+            </div>
+
+            <div class="column is-one-third">
+              <b-field label="">
+                <b-input placeholder="HH">
+                </b-input>
+              </b-field>
+            </div>
+          </div>
+
+            <b-button type="sbmt-btn">Submit</b-button>
+
+          </div>
+        </div>
+      </b-modal>
+     <!-- stopped modal end -->
+
+
+     <!-- cABG modal start-->
+     <b-modal  v-model="isCardModalActive3" :width="640">
+        <div class="card">
+          <h3 class="popup-heading"> CABG </h3>
+          <div class="card-content">
+
+
+            <b-field label="When" class=""> </b-field>
+          <div class="columns">
             <div class="column is-one-third">
               <b-field label="">
                 <b-input placeholder="MM">
@@ -427,19 +459,21 @@
                 </b-input>
               </b-field>
             </div>
+
+            <div class="column is-one-third">
+              <b-field label="">
+                <b-input placeholder="HH">
+                </b-input>
+              </b-field>
+            </div>
           </div>
-
-
-
-
-
 
             <b-button type="sbmt-btn">Submit</b-button>
 
           </div>
         </div>
       </b-modal>
-     <!-- stopped modal end -->
+     <!-- cABG modal end -->
 
 
 
@@ -474,6 +508,7 @@
         isImageModalActive: false,
         isCardModalActive: false,
         isCardModalActive2: false,
+        isCardModalActive3: false,
         radio: 'default',
         isLoading: false,
         form: {

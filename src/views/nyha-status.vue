@@ -23,7 +23,7 @@
       </div>
 
 
-      <div class="columns mt-3">
+      <div class="columns mt-3 mb-0">
         <div class="column is-full">
           <ul class="cstm-ul-li">
             <li> <b> Class I (Mild) </b> Patients with cardiac disease but without resulting in limitation of physical
@@ -41,8 +41,8 @@
           </ul>
         </div>
 
-
       </div>
+        <p class="mb-4"><b> "Cardiology Referral" </b></p>
           <b-button type="sbmt-btn">Submit</b-button>
 
     </card-component>

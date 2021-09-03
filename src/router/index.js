@@ -82,14 +82,14 @@ const routes = [
     name: 'Pacemaker',
     component: () => import(/* webpackChunkName: "forms" */ '../views/pacemaker.vue')
   },
-  {
+  /* {
     meta: {
       title: 'Failure'
     },
     path: '/failure',
     name: 'Failure',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/failure.vue')
-  },
+    component: () => import(  '../views/failure.vue')
+  }, */
   {
     meta: {
       title: 'Asthma'

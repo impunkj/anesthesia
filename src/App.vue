@@ -65,11 +65,11 @@
                   label: 'Pacemaker',
                   icon: 'circle-outline'
                 },
-                {
+                /* {
                   to: '/failure',
                   label: 'Failure',
                   icon: 'circle-outline'
-                },
+                }, */
               ]
             },
             {
