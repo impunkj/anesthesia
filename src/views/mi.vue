@@ -50,7 +50,8 @@
               </div>
             </div>
 
-            <div class="column is-one-third">
+
+            <div class="column is-one-third medicalrx">
               <b-field label="Medical ">
                 <b-input>
                 </b-input>
@@ -74,7 +75,7 @@
 
           <div class="columns mb-0">
             <div class="column is-full">
-              <b-field label="What treatment" class="d-inline-block">  </b-field> <img class="align-middle" src="../assets/rx.png" alt="">
+              <b-field label="Treatment" class="d-inline-block">  </b-field> <!-- <img class="align-middle" src="../assets/rx.png" alt=""> -->
               <b-field >
                 <b-input maxlength="300" type="textarea"></b-input>
               </b-field>
@@ -119,9 +120,9 @@
             </div>
 
             <div class="column is-one-third  cstm-radio-btn">
-              <div class="block">
-                <b-field label="Stopped Antiplatelet">
-                  <b-radio  name="antiplatelet" native-value="antiplateletYes" type="is-info">
+              <div class="block" >
+                <b-field label="Stopped Antiplatelet"  >
+                  <b-radio  v-model="isCardModalActive2" name="antiplatelet" native-value="antiplateletYes" type="is-info">
                     Yes
                   </b-radio>
                   <b-radio  name="antiplatelet" native-value="antiplateletNo" type="is-info">
@@ -393,6 +394,58 @@
           </div>
         </div>
       </b-modal>
+
+
+
+
+     <!-- Stpped modal start-->
+     <b-modal  v-model="isCardModalActive2" :width="640">
+        <div class="card">
+          <h3 class="popup-heading"> Stopped Antiplatelet </h3>
+          <div class="card-content">
+
+
+            <b-field label="When" class=""> </b-field>
+          <div class="columns">
+            <div class="column is-one-third">
+              <b-field label="">
+                <b-input placeholder="YY">
+                </b-input>
+              </b-field>
+            </div>
+
+            <div class="column is-one-third">
+              <b-field label="">
+                <b-input placeholder="MM">
+                </b-input>
+              </b-field>
+            </div>
+
+            <div class="column is-one-third">
+              <b-field label="">
+                <b-input placeholder="DD">
+                </b-input>
+              </b-field>
+            </div>
+          </div>
+
+
+
+
+
+
+            <b-button type="sbmt-btn">Submit</b-button>
+
+          </div>
+        </div>
+      </b-modal>
+     <!-- stopped modal end -->
+
+
+
+
+
+
     </section>
   </div>
 </template>
@@ -420,6 +473,7 @@
          checked: false,
         isImageModalActive: false,
         isCardModalActive: false,
+        isCardModalActive2: false,
         radio: 'default',
         isLoading: false,
         form: {

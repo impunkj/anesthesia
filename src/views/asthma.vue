@@ -124,7 +124,7 @@
          <div class=" field-body">
             <b-field label="">
                 <b-checkbox  native-value="admission" type="is-info">
-                  Adversary Physician Consult
+                  Advisory  Physician Consult
                 </b-checkbox>
 
                  </b-field>

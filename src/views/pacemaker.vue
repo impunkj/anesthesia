@@ -55,9 +55,6 @@
             <b>"Needs Cardiology Evaluation"</b>
           </div>
 
-
-
-
           <b-button type="sbmt-btn">Submit</b-button>
 
         </form>
