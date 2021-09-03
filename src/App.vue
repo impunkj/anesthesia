@@ -130,7 +130,7 @@
               ]
             },
             {
-              label: 'RENL',
+              label: 'RENAL',
               subLabel: 'Submenus Example',
               icon: 'medical-bag',
               menu: [{
@@ -193,21 +193,23 @@
               ]
             },
             {
-              label: 'Anaesthetic History',
-              to : '/anaesthetic-history',
+              label: 'Anaesthetic',
+              // to : '/anaesthetic-history',
               subLabel: 'Submenus Example',
-              icon: 'hand-heart',
-              /* menu: [{
-                  to: '/thyroid',
-                  label: 'Thyroid',
+              icon: 'needle',
+              menu: [
+                {
+                  to: '/anaesthetic-history',
+                  label: 'Hisotry',
                   icon: 'circle-outline'
                 },
                 {
-                  to: '/fraility',
-                  label: 'Fraility',
+                  to: '/physical-exam',
+                  label: 'Physical Exam',
                   icon: 'circle-outline'
                 },
-              ] */
+
+              ]
             }
           ]
         ]

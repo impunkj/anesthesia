@@ -5,9 +5,28 @@
       <card-component title="Reflux">
         <form @submit.prevent="submit">
 
+          <div class="columns">
+   <div class="column is-full cstm-radio-btn"  >
+              <div class="block">
+                <b-field label="">
+                  <b-radio v-model="checked" name="checkVal" native-value="yes" type="is-info">
+                    Yes
+                  </b-radio>
+                  <b-radio  v-model="checked"   name="checkVal" native-value="no" type="is-info">
+                    No
+                  </b-radio>
+                </b-field>
+              </div>
+      </div>
+</div>
+
+ <div  v-if="checked === 'yes'">
+
+
 <div>
    <p class="mb-4"> <b> "Prescribe H2 / PPI / Metoclopramide Warning Rapid Sequence No LMA."
  </b> </p>
+</div>
 </div>
 
 
@@ -41,6 +60,7 @@
     },
     data() {
       return {
+        checked :false,
         radio: 'default',
         isLoading: false,
         form: {

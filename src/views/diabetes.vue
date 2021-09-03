@@ -34,7 +34,7 @@
           </div>
         </div>
 
-        <div class="columns">
+        <div class="columns mb-3">
           <div class="column is-full  cstm-radio-btn">
             <div class="block">
               <b-field label="Sugar check at home">
@@ -51,14 +51,14 @@
 
         <div v-if="checked2 === 'sugerCheckone'">
           <div class="columns">
-            <div class="column is-4">
+            <div class="column is-12">
               <b-field label="How much ?">
                 <b-input>
                 </b-input>
               </b-field>
             </div>
 
-            <div class="column is-4">
+            <!-- <div class="column is-4">
               <b-field label="Rx?">
                 <b-select placeholder="Select Value" expanded>
                   <option value="Insulin">Insulin</option>
@@ -85,7 +85,7 @@
                   </b-checkbox>
                 </b-field>
               </div>
-            </div>
+            </div> -->
           </div>
 
 
@@ -98,6 +98,36 @@
               <b-input maxlength="300" type="textarea"></b-input>
             </b-field>
           </div>
+        </div>
+
+
+        <div class="columns">
+
+             <div class="column is-6">
+              <b-field label="Rx?">
+                <b-select placeholder="Select Value" expanded>
+                  <option value="Insulin">Insulin</option>
+                  <option value="OHA">OHA</option>
+                  <option value="Both">Both</option>
+                </b-select>
+              </b-field>
+            </div>
+
+           <div class="column is-6 cstm-radio-btn">
+              <div class="block">
+                <b-field label="Complications">
+                  <b-checkbox  name="urti" native-value="urtiYes" type="is-info">
+                    Vascular
+                  </b-checkbox>
+                  <b-checkbox  name="urti" native-value="urtiNo" type="is-info">
+                    Eyes
+                  </b-checkbox>
+                  <b-checkbox  name="urti" native-value="urtiNo" type="is-info">
+                    kidney
+                  </b-checkbox>
+                </b-field>
+              </div>
+            </div>
         </div>
 
          <!--  <div class="columns">
@@ -121,7 +151,7 @@
             </div>
           </div> -->
 
-           <div class="columns  ">
+           <div class="columns  mb-3">
             <div class="column is-full cstm-radio-btn">
               <div class="block">
                    <b-field label="">
@@ -144,7 +174,7 @@
       </div>
 
 
-      <b-button class="mt-5" type="sbmt-btn">Submit</b-button>
+      <b-button class="" type="sbmt-btn">Submit</b-button>
 
     </card-component>
   </section>

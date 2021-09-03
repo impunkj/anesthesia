@@ -6,8 +6,8 @@
         <form @submit.prevent="submit">
 
 
-
-          <div class="columns mb-3">
+<!--
+          <div class="columns mb-0">
             <div class="column is-half">
               <b-field label="Past Anaesthetic History">
                 <b-input maxlength="300" type="textarea"></b-input>
@@ -19,10 +19,10 @@
                 <b-input maxlength="300" type="textarea"></b-input>
               </b-field>
             </div>
-          </div>
+          </div> -->
 
 
-        <!--   <div class="columns">
+          <div class="columns">
             <div class="column is-half">
               <div class="columns">
                 <div class="column is-half">
@@ -250,7 +250,7 @@
                 <b-input maxlength="300" type="textarea"></b-input>
               </b-field>
             </div>
-          </div> -->
+          </div>
 
 
           <b-button type="sbmt-btn">Submit</b-button>
@@ -324,7 +324,7 @@
                     <b-checkbox v-model="checkboxGroup" native-value="teethCrowns" type="is-info">
                       Crowns
                     </b-checkbox>
-                    <b-checkbox v-model="checkboxGroup" native-value="teethDenture" type="is-info">
+                    <b-checkbox v-model="checkboxClick" native-value="teethDenture" type="is-info">
                       Denture
                     </b-checkbox>
                   </b-field>
@@ -335,7 +335,7 @@
             </div>
 
 
-            <div class="columns">
+            <div class="columns" v-if="checkboxClick">
               <div class="column  cstm-radio-btn">
                 <div class="block">
                   <b-field label="">
@@ -441,6 +441,7 @@
     },
     data() {
       return {
+        checkboxClick : false,
         isTeethModal: false,
         isNeckModal: false,
         isPupilsModal: false,

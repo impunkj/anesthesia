@@ -4,7 +4,22 @@
     <section class="section is-main-section">
       <card-component title="Failure">
         <form @submit.prevent="submit">
+  <div class="columns">
+   <div class="column is-full cstm-radio-btn"  >
+              <div class="block">
+                <b-field label="">
+                  <b-radio v-model="checked" name="checkVal" native-value="yes" type="is-info">
+                    Yes
+                  </b-radio>
+                  <b-radio  v-model="checked"   name="checkVal" native-value="no" type="is-info">
+                    No
+                  </b-radio>
+                </b-field>
+              </div>
+      </div>
+</div>
 
+ <div  v-if="checked === 'yes'">
 
           <div class="columns">
 
@@ -36,7 +51,7 @@
           <div class="columns" v-if="checkboxClick2">
             <div class="column is-one-half">
               <b-field>
-                <b-select placeholder="Select One" expanded>
+                <b-select placeholder="Frequency" expanded>
                   <option value="flint">Ony Once</option>
                   <option value="silver">Everyday</option>
                   <option value="silver">Times in a week</option>
@@ -54,6 +69,33 @@
 
 
           <b-field>
+            <b-checkbox type="is-info" v-model="checkboxClick4">Peritoneal</b-checkbox>
+          </b-field>
+
+<div v-if="checkboxClick4">
+
+          <div class="columns mb-3" >
+
+            <div class="column is-6">
+              <b-field>
+                <b-select placeholder="Frequency" expanded>
+                  <option value="flint">Ony Once</option>
+                  <option value="silver">Everyday</option>
+                  <option value="silver">Times in a week</option>
+                </b-select>
+              </b-field>
+            </div>
+
+             <div class="column is-6">
+              <b-field label="">
+                <b-input>
+                </b-input>
+              </b-field>
+            </div>
+          </div>
+          </div>
+
+           <b-field>
             <b-checkbox v-model="checkboxClick3" type="is-info">Fistual</b-checkbox>
           </b-field>
 
@@ -67,19 +109,9 @@
             </div>
           </div>
 
-          <b-field>
-            <b-checkbox type="is-info" v-model="checkboxClick4">Peritoneal</b-checkbox>
-          </b-field>
 
-          <div class="columns " v-if="checkboxClick4">
-            <div class="column is-full">
-              <b-field label="How many times">
-                <b-input>
-                </b-input>
-              </b-field>
-            </div>
-          </div>
 </div>
+ </div>
 
           <b-button type="sbmt-btn mt-5">Submit</b-button>
 
@@ -111,6 +143,7 @@
     },
     data() {
       return {
+        checked:false,
         checkboxClick : false,
         checkboxClick2 : false,
         checkboxClick3 : false,

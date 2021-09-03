@@ -243,6 +243,15 @@ const routes = [
     name: 'Anaesthetic History',
     component: () => import(/* webpackChunkName: "forms" */ '../views/anaesthetic-history.vue')
   },
+  ,
+  {
+    meta: {
+      title: 'Physical Exam'
+    },
+    path: '/physical-exam',
+    name: 'Physical Exam',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/physical-exam.vue')
+  },
 ]
 
 const router = new VueRouter({

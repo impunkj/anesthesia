@@ -12,7 +12,7 @@
               <div class="columns">
                 <div class="column is-4">
                   <b-field label="">
-                    <b-input placeholder="YYYY">
+                    <b-input placeholder="YY">
                     </b-input>
                   </b-field>
                 </div>

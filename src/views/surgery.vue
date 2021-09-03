@@ -13,9 +13,15 @@
             </div>
           </div>
 
-          <div class="columns" v-if="checkboxClick">
-               <div class="column ">
+         <div class="columns" v-if="checkboxClick">
+               <div class="column">
                 <b-field label="What surgery?">
+                  <b-input maxlength="300" type="textarea"></b-input>
+                </b-field>
+              </div>
+
+               <div class="column ">
+                <b-field label="Residual effect">
                   <b-input maxlength="300" type="textarea"></b-input>
                 </b-field>
               </div>

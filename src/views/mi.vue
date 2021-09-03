@@ -28,7 +28,7 @@
               <div class="columns">
                 <div class="column is-one-third">
                   <b-field label=" ">
-                    <b-input  placeholder="YY">
+                    <b-input  placeholder="YYYY">
                     </b-input>
                   </b-field>
                 </div>
@@ -90,7 +90,7 @@
               <div class="columns">
                 <div class="column is-one-third">
                   <b-field label=" ">
-                    <b-input  placeholder="YY">
+                    <b-input  placeholder="YYYY">
                     </b-input>
                   </b-field>
                 </div>
@@ -175,7 +175,7 @@
               <div class="columns">
                 <div class="column is-one-third">
                   <b-field label=" ">
-                    <b-input  placeholder="YY">
+                    <b-input  placeholder="YYYY">
                     </b-input>
                   </b-field>
                 </div>

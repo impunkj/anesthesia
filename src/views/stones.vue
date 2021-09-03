@@ -22,7 +22,7 @@
 
  <div  v-if="checked === 'yes'">
 
-          <div class="columns">
+         <!--  <div class="columns">
 
             <div class="column is-one-half">
               <b-field label="Present">
@@ -37,22 +37,39 @@
                 </b-input>
               </b-field>
             </div>
-          </div>
+          </div> -->
 
-
+ <b-field label="Surgery needed"> </b-field>
           <div class="columns">
-            <div class="column cstm-radio-btn">
+
+             <div class="column cstm-radio-btn is-half">
               <div class="block">
-                <b-field label="Surgery needed">
-                  <b-radio v-model="radio" name="surgeryNeeded" native-value="surgeryNeededYes" type="is-info">
+                <b-field label="">
+                  <b-radio   name="surgeryNeeded" native-value="surgeryNeededYes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="radio" name="surgeryNeeded" native-value="surgeryNeededNo" type="is-info">
+                  <b-radio   name="surgeryNeeded" native-value="surgeryNeededNo" type="is-info">
                     No
                   </b-radio>
                 </b-field>
               </div>
             </div>
+
+
+             <div class="column cstm-radio-btn is-half">
+              <div class="block">
+                <b-field label="">
+                  <b-radio   name="passed" native-value="present" type="is-info">
+                    Present
+                  </b-radio>
+                  <b-radio   name="passed" native-value="passed" type="is-info">
+                    Passed
+                  </b-radio>
+                </b-field>
+              </div>
+            </div>
+
+
           </div>
 
           <div class="columns mb-3">
