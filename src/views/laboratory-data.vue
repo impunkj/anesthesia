@@ -181,7 +181,7 @@
               </b-field>
             </div> -->
 
-            <div class="column is-one-fifth">
+           <!--  <div class="column is-one-fifth">
               <b-field label="X-Ray">
                 <b-input v-model="form.xRay">
                 </b-input>
@@ -193,7 +193,7 @@
                 <b-input v-model="form.ECG">
                 </b-input>
               </b-field>
-            </div>
+            </div> -->
 
             <!--  <div class="column is-one-fifth">
               <b-field label="PC">
@@ -220,15 +220,7 @@
             </div>
 
 
-
-
-
-          </div>
-
-
-          <div class="columns">
-
-            <div class="column is-one-fifth">
+  <div class="column is-one-fifth">
               <b-field label="APTT">
                 <b-input v-model="form.APTT">
                 </b-input>
@@ -243,12 +235,43 @@
             </div>
 
 
+          </div>
+
+
+          <div class="columns">
+
+
+
+
             <div class="column is-one-fifth">
               <b-field label="INR">
                 <b-input v-model="form.INR">
                 </b-input>
               </b-field>
             </div>
+
+              <div class="column is-one-fifth">
+              <b-field label="RBS">
+                <b-input v-model="form.Rbs">
+                </b-input>
+              </b-field>
+            </div>
+
+              <div class="column is-one-fifth">
+              <b-field label="PPBS">
+                <b-input v-model="form.Ppbs">
+                </b-input>
+              </b-field>
+            </div>
+
+              <div class="column is-one-fifth">
+              <b-field label="HbA1c">
+                <b-input v-model="form.Hba">
+                </b-input>
+              </b-field>
+            </div>
+
+
 
 
             <!--  <div class="column is-one-fifth">
@@ -343,6 +366,24 @@
             </div>
           </div>
  -->
+
+ <div class="columns">
+            <div class="column is-6">
+              <b-field label="Ecg ">
+                <b-input maxlength="300" v-model="form.Ecg" type="textarea"></b-input>
+              </b-field>
+            </div>
+
+             <div class="column is-6">
+              <b-field label="Chest X-Ray">
+                <b-input maxlength="300" v-model="form.ChestXray" type="textarea"></b-input>
+              </b-field>
+            </div>
+          </div>
+
+          <div class="columns">
+
+          </div>
 
  <div class="columns">
             <div class="column is-full">

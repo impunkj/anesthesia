@@ -252,6 +252,14 @@ const routes = [
     name: 'Physical Exam',
     component: () => import(/* webpackChunkName: "forms" */ '../views/physical-exam.vue')
   },
+  {
+    meta: {
+      title: 'Document Upload'
+    },
+    path: '/documnet-upload',
+    name: 'Document Upload',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/documnet-upload.vue')
+  },
 ]
 
 const router = new VueRouter({
