@@ -28,21 +28,21 @@
               <div class="columns">
                 <div class="column is-one-third">
                   <b-field label=" ">
-                    <b-input  placeholder="YYYY">
+                    <b-input  placeholder="YYYY" v-model="form.whyy">
                     </b-input>
                   </b-field>
                 </div>
 
                 <div class="column is-one-third">
                   <b-field label=" ">
-                    <b-input placeholder="MM">
+                    <b-input placeholder="MM" v-model="form.whmm">
                     </b-input>
                   </b-field>
                 </div>
 
                 <div class="column is-one-third">
                   <b-field label=" ">
-                    <b-input placeholder="DD">
+                    <b-input placeholder="DD" v-model="form.whdd">
                     </b-input>
                   </b-field>
                 </div>
@@ -53,7 +53,7 @@
 
             <div class="column is-one-third medicalrx">
               <b-field label="Medical ">
-                <b-input>
+                <b-input v-model="form.medical">
                 </b-input>
               </b-field>
             </div>
@@ -61,10 +61,10 @@
             <div class="column is-one-third  cstm-radio-btn">
               <div class="block">
                 <b-field label="Stented">
-                  <b-radio  name="stented" native-value="stentedYes" type="is-info">
+                  <b-radio  name="stented" native-value="stentedYes" type="is-info" v-model="form.stented">
                     Yes
                   </b-radio>
-                  <b-radio  name="stented" native-value="stentedNo" type="is-info">
+                  <b-radio  name="stented" native-value="stentedNo" type="is-info" v-model="form.stented">
                     No
                   </b-radio>
                 </b-field>
@@ -77,7 +77,7 @@
             <div class="column is-full">
               <b-field label="Treatment" class="d-inline-block">  </b-field> <!-- <img class="align-middle" src="../assets/rx.png" alt=""> -->
               <b-field >
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.treatMent"></b-input>
               </b-field>
             </div>
           </div>
@@ -90,21 +90,21 @@
               <div class="columns">
                 <div class="column is-one-third">
                   <b-field label=" ">
-                    <b-input  placeholder="YYYY">
+                    <b-input  placeholder="YYYY" v-model="form.twhyy">
                     </b-input>
                   </b-field>
                 </div>
 
                 <div class="column is-one-third">
                   <b-field label=" ">
-                    <b-input placeholder="MM">
+                    <b-input placeholder="MM" v-model="form.twhmm">
                     </b-input>
                   </b-field>
                 </div>
 
                 <div class="column is-one-third">
                   <b-field label=" ">
-                    <b-input placeholder="DD">
+                    <b-input placeholder="DD" v-model="form.twhdd">
                     </b-input>
                   </b-field>
                 </div>
@@ -137,7 +137,7 @@
           <div class="columns ">
             <div class="column is-full " @click="isCardModalActive = true">
               <b-field label="What treatment">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.whatTreatment"></b-input>
               </b-field>
             </div>
           </div>
@@ -147,10 +147,10 @@
             <div class="column is-one-third  cstm-radio-btn">
               <div class="block">
                 <b-field label="Symptoms Improved">
-                  <b-radio  name="symptomsImproved" native-value="symptomsImprovedYes" type="is-info">
+                  <b-radio  name="symptomsImp" native-value="symptomsImprovedYes" type="is-info" v-model="form.symptomsImproved">
                     Yes
                   </b-radio>
-                  <b-radio  name="symptomsImproved" native-value="symptomsImprovedNo" type="is-info">
+                  <b-radio  name="symptomsImp" native-value="symptomsImprovedNo" type="is-info" v-model="form.symptomsImproved">
                     No
                   </b-radio>
                 </b-field>
@@ -175,21 +175,21 @@
               <div class="columns">
                 <div class="column is-one-third">
                   <b-field label=" ">
-                    <b-input  placeholder="YYYY">
+                    <b-input  placeholder="YYYY"  >
                     </b-input>
                   </b-field>
                 </div>
 
                 <div class="column is-one-third">
                   <b-field label=" ">
-                    <b-input placeholder="MM">
+                    <b-input placeholder="MM" >
                     </b-input>
                   </b-field>
                 </div>
 
                 <div class="column is-one-third">
                   <b-field label=" ">
-                    <b-input placeholder="DD">
+                    <b-input placeholder="DD" >
                     </b-input>
                   </b-field>
                 </div>
@@ -229,7 +229,7 @@
 
             <div class="column is-one-third">
               <b-field label="What medication ">
-                <b-input>
+                <b-input v-model="form.medication">
                 </b-input>
               </b-field>
             </div>
@@ -237,10 +237,10 @@
             <div class="column is-one-third  cstm-radio-btn">
               <div class="block">
                 <b-field label="Symptoms improved">
-                  <b-radio  name="symptoms" native-value="symptomsYes" type="is-info">
+                  <b-radio  name="symptoms" native-value="symptomsYes" type="is-info" v-model="form.treatment">
                     Yes
                   </b-radio>
-                  <b-radio  name="symptoms" native-value="symptomsNo" type="is-info">
+                  <b-radio  name="symptoms" native-value="symptomsNo" type="is-info" v-model="form.treatment">
                     No
                   </b-radio>
                 </b-field>
@@ -250,10 +250,10 @@
             <div class="column is-one-third  cstm-radio-btn">
               <div class="block">
                 <b-field label="Both Stented and CABG">
-                  <b-radio name="stendedCabg" native-value="stendedCabgYes" type="is-info">
+                  <b-radio name="stendedCabg" native-value="stendedCabgYes" type="is-info" v-model="form.BStentedCABG">
                     Yes
                   </b-radio>
-                  <b-radio name="stendedCabg" native-value="stendedCabgNo" type="is-info">
+                  <b-radio name="stendedCabg" native-value="stendedCabgNo" type="is-info" v-model="form.BStentedCABG">
                     No
                   </b-radio>
                 </b-field>
@@ -265,7 +265,7 @@
           <div class="columns">
             <div class="column is-full">
               <b-field label="Type of Graft">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.typeofGraft"></b-input>
               </b-field>
             </div>
           </div>
@@ -303,7 +303,7 @@
           <div class="columns mb-3">
              <div class="column is-full ">
               <b-field label="Repeat CAG">
-                <b-input>
+                <b-input v-model="form.repeatCag">
                 </b-input>
               </b-field>
             </div>

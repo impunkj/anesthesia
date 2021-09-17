@@ -35,7 +35,7 @@
               <div class="columns">
                 <div class="column is-6">
                    <b-field label="Age">
-                <b-input v-model="form.Age"></b-input>
+                <b-input v-model="form.age"></b-input>
               </b-field>
                 </div>
                 <div class="column is-6">
@@ -85,7 +85,7 @@
           <div class="columns ">
             <div class="column is-one-third ">
               <b-field label="Registration No.">
-                <b-input maxlength="300" type="textarea" v-model="form.registrationNo"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.registerNumber"></b-input>
               </b-field>
             </div>
 

@@ -25,13 +25,13 @@
           <div class="columns mb-0">
             <div class="column is-half">
               <b-field label="What causes">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.whatCause"></b-input>
               </b-field>
             </div>
 
             <div class="column is-half">
               <b-field label="Treatment">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.treatment"></b-input>
               </b-field>
             </div>
           </div>
@@ -44,19 +44,19 @@
               <div class="columns">
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="YY">
+                    <b-input placeholder="YY" v-model="form.hlyy">
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="MM">
+                    <b-input placeholder="MM" v-model="form.hlmm">
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="DD">
+                    <b-input placeholder="DD" v-model="form.hldd">
                     </b-input>
                   </b-field>
                 </div>
@@ -69,19 +69,19 @@
 
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="YY">
+                    <b-input placeholder="YY" v-model="form.layy">
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="MM">
+                    <b-input placeholder="MM" v-model="form.lamm">
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="DD">
+                    <b-input placeholder="DD" v-model="form.ladd">
                     </b-input>
                   </b-field>
                 </div>
@@ -94,10 +94,10 @@
             <div class="column is-half cstm-radio-btn">
               <div class="block">
                    <b-field label="How do you treat it?">
-                <b-checkbox  native-value="admission" type="is-info">
+                <b-checkbox  native-value="admission" type="is-info" v-model="form.howDoyouTreat">
                   Admission
                 </b-checkbox>
-                <b-checkbox  native-value="ventilation" type="is-info">
+                <b-checkbox  native-value="ventilation" type="is-info" >
                   Ventilation in ICU
                 </b-checkbox>
                  </b-field>
@@ -107,10 +107,10 @@
             <div class="column is-half cstm-radio-btn">
               <div class="block">
                 <b-field label="URTI LRTI Present">
-                  <b-radio  name="urti" native-value="urtiYes" type="is-info">
+                  <b-radio  name="urti" native-value="urtiYes" type="is-info" v-model="form.urti">
                     Yes
                   </b-radio>
-                  <b-radio  name="urti" native-value="urtiNo" type="is-info">
+                  <b-radio  name="urti" native-value="urtiNo" type="is-info" v-model="form.urti">
                     No
                   </b-radio>
                 </b-field>
@@ -123,7 +123,7 @@
             <div class="column is-full cstm-radio-btn">
          <div class=" field-body">
             <b-field label="">
-                <b-checkbox  native-value="admission" type="is-info">
+                <b-checkbox  native-value="admission" type="is-info" v-model="form.advised">
                   Advisory  Physician Consult
                 </b-checkbox>
 

@@ -26,14 +26,14 @@
           <div class="columns">
             <div class="column is-one-fifth">
               <b-field label="Total Bil">
-                <b-input v-model="form.totalBil">
+                <b-input v-model="form.totalBill">
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-fifth">
               <b-field label="Dir. Bil">
-                <b-input v-model="form.dirBil">
+                <b-input v-model="form.dirBill">
                 </b-input>
               </b-field>
             </div>
@@ -46,14 +46,14 @@
             </div>
 
             <div class="column is-one-fifth">
-              <b-field label="SGOT" v-model="form.alkPhos">
+              <b-field label="SGOT" v-model="form.sgot">
                 <b-input>
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-fifth">
-              <b-field label="SGPT" v-model="form.alkPhos">
+              <b-field label="SGPT" v-model="form.sgpt">
                 <b-input>
                 </b-input>
               </b-field>
@@ -78,7 +78,7 @@
 
             <div class="column is-one-fifth">
               <b-field label="LDH">
-                <b-input v-model="form.LDH">
+                <b-input v-model="form.Ldh">
                 </b-input>
               </b-field>
             </div>
@@ -388,7 +388,7 @@
  <div class="columns">
             <div class="column is-full">
               <b-field label="Other">
-                <b-input maxlength="300" v-model="form.GFR" type="textarea"></b-input>
+                <b-input maxlength="300" v-model="form.Other" type="textarea"></b-input>
               </b-field>
             </div>
           </div>
