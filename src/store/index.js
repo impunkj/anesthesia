@@ -5,7 +5,10 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    /* User */
+    /* User http://127.0.0.1:8000/
+
+    https://anesthesia.routingflow.com/crudgen/public/
+    */
     siteURL: 'https://anesthesia.routingflow.com/crudgen/public/',
     userName: null,
     userEmail: null,

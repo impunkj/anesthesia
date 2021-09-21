@@ -35,7 +35,7 @@
               <div class="columns">
                 <div class="column is-6">
                    <b-field label="Age">
-                <b-input v-model="form.Age"></b-input>
+                <b-input required v-model="form.age"></b-input>
               </b-field>
                 </div>
                 <div class="column is-6">
@@ -52,7 +52,7 @@
           <div class="columns">
             <div class="column is-one-third ">
               <b-field label="Name">
-                <b-input v-model="form.name">
+                <b-input  required v-model="form.name">
                 </b-input>
               </b-field>
             </div>
@@ -67,13 +67,13 @@
             <div class="column is-one-third cstm-radio-btn ">
               <div class="block">
                 <b-field label="Sex">
-                  <b-radio v-model="form.gender" name="name" native-value="male" type="is-info">
+                  <b-radio v-model="form.gender" name="gender" required  native-value="male" type="is-info">
                     Male
                   </b-radio>
-                  <b-radio v-model="form.gender" name="name" native-value="female" type="is-info">
+                  <b-radio v-model="form.gender" name="gender"  native-value="female" type="is-info">
                     Female
                   </b-radio>
-                  <b-radio v-model="form.gender" name="name" native-value="other" type="is-info">
+                  <b-radio v-model="form.gender"  name="gender" native-value="other" type="is-info">
                     Other
                   </b-radio>
                 </b-field>
@@ -85,7 +85,7 @@
           <div class="columns ">
             <div class="column is-one-third ">
               <b-field label="Registration No.">
-                <b-input maxlength="300" type="textarea" v-model="form.registrationNo"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.registerNumber"></b-input>
               </b-field>
             </div>
 
@@ -108,14 +108,14 @@
               <div class="columns">
                 <div class="column is-half">
                   <b-field label="BP">
-                    <b-input v-model="form.BP">
+                    <b-input required v-model="form.BP">
                     </b-input>
                   </b-field>
                 </div>
 
                 <div class="column is-half ">
                   <b-field label="HR">
-                    <b-input v-model="form.HR">
+                    <b-input required v-model="form.HR">
                     </b-input>
                   </b-field>
                 </div>
@@ -128,7 +128,7 @@
               <div class="columns">
                 <div class="column is-half">
                   <b-field label="SaO2">
-                    <b-input v-model="form.sao2">
+                    <b-input  required v-model="form.sao2">
                     </b-input>
                   </b-field>
                 </div>
@@ -146,16 +146,20 @@
               <div class="columns">
                 <div class="column is-half">
                   <b-field label="Weight (kg)">
-                    <b-input v-model="form.weight">
+                    <b-input  required v-model="form.weight"  @input="calculateBMI()" >
                     </b-input>
                   </b-field>
-                </div>
 
+                </div>
                 <div class="column is-half">
+              <b-tooltip
+                 label="BMI calculate based on height and weight"
+                  multilined>
                   <b-field label="BMI">
                     <b-input v-model="form.BMI">
                     </b-input>
                   </b-field>
+                     </b-tooltip>
                 </div>
               </div>
             </div>
@@ -173,22 +177,22 @@
             <div class="column is-full cstm-radio-btn asa-physical">
               <div class="block">
                 <b-field label="ASA Physical Status">
-                  <b-radio v-model="form.ASAPhysicalStatus" name="name" native-value="one" type="is-info">
+                  <b-radio v-model="form.ASAPhysicalStatus"  name="ASAPhysicalStatus"  required native-value="1" type="is-info">
                     1
                   </b-radio>
-                  <b-radio v-model="form.ASAPhysicalStatus" name="name" native-value="two" type="is-info">
+                  <b-radio v-model="form.ASAPhysicalStatus"  name="ASAPhysicalStatus" native-value="2" type="is-info">
                     2
                   </b-radio>
-                  <b-radio v-model="form.ASAPhysicalStatus" name="name" native-value="three" type="is-info">
+                  <b-radio v-model="form.ASAPhysicalStatus" name="ASAPhysicalStatus" native-value="3" type="is-info">
                     3
                   </b-radio>
-                  <b-radio v-model="form.ASAPhysicalStatus" name="name" native-value="four" type="is-info">
+                  <b-radio v-model="form.ASAPhysicalStatus" name="ASAPhysicalStatus" native-value="4" type="is-info">
                     4
                   </b-radio>
-                  <b-radio v-model="form.ASAPhysicalStatus" name="name" native-value="five" type="is-info">
+                  <b-radio v-model="form.ASAPhysicalStatus" name="ASAPhysicalStatus" native-value="5" type="is-info">
                     5
                   </b-radio>
-                  <b-radio v-model="form.ASAPhysicalStatusE" name="nameE" native-value="six" type="is-info">
+                  <b-radio v-model="form.isemergency" name="nameE" native-value="1" type="is-info">
                     E
                   </b-radio>
                 </b-field>
@@ -197,7 +201,7 @@
             </div>
           </div>
 
-          <b-button type="sbmt-btn" @click="submit">Submit</b-button>
+          <b-button type="sbmt-btn" native-type="submit">Submit</b-button>
 
         </form>
       </card-component>
@@ -253,8 +257,12 @@
     },
     methods: {
       submit() {
+        const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
         var baseURL = this.$store.state.siteURL + 'api/patient_informations';
         axios.post(baseURL, this.form).then((r) => {
+          loadingComponent.close();
           console.log(r);
           console.log(r.data.data.id);
           this.$buefy.snackbar.open({
@@ -262,7 +270,19 @@
             queue: false
           });
           localStorage.setItem('patientID', r.data.data.id);
-        })
+        }).catch(error => {
+           console.log(error.data.error.message);
+           console.log(error.response);
+      });
+      },
+      calculateBMI(){
+        console.log(this.form.weight);
+        console.log(this.form.height);
+          let bmivalue = 0;
+          if(this.form.height){
+            bmivalue = this.form.weight / (this.form.height * this.form.height)
+          }
+          this.form.BMI = (bmivalue * 10000).toFixed(2);
       },
       reset() {
         this.form = mapValues(this.form, (item) => {

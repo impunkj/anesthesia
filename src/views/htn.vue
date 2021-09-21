@@ -12,20 +12,20 @@
               <div class="columns">
                 <div class="column is-4">
                   <b-field label="">
-                    <b-input placeholder="YY">
+                    <b-input  maxlength="2" v-model="form.whyy" placeholder="YY">
                     </b-input>
                   </b-field>
                 </div>
 
                 <div class="column is-4 ">
                   <b-field label="">
-                    <b-input placeholder="MM">
+                    <b-input maxlength="2" v-model="form.whmm" placeholder="MM">
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-4 ">
                   <b-field label="">
-                    <b-input placeholder="DD">
+                    <b-input maxlength="2" placeholder="DD">
                     </b-input>
                   </b-field>
                 </div>
@@ -57,37 +57,11 @@
           <div class="columns">
             <div class="column is-12">
               <b-field label="Treatment">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="500" type="textarea"></b-input>
               </b-field>
             </div>
 
           </div>
-
-          <!-- <div class="columns">
-            <div class="column is-one-third ">
-
-            </div>
-
-            <div class="column is-one-third cstm-radio-btn">
-              <div class="block">
-                <b-field label="Stress/Angio">
-                  <b-radio v-model="radio" name="strees" native-value="stressYes" type="is-info" >
-                    Yes
-                  </b-radio>
-                  <b-radio v-model="radio" name="strees" native-value="stressNo" type="is-info">
-                    No
-                  </b-radio>
-                </b-field>
-              </div>
-            </div>
-
-            <div class="column is-one-third ">
-              <b-field label="BP">
-                <b-input>
-                </b-input>
-              </b-field>
-            </div>
-          </div> -->
 
           <b-button type="sbmt-btn">Submit</b-button>
 
