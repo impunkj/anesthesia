@@ -48,10 +48,10 @@
              <div class="column is-half cstm-radio-btn">
               <div class="block">
                 <b-field label="Status">
-                  <b-radio  name="status" native-value="stable" type="is-info">
+                  <b-radio v-model="form.status" name="status" native-value="stable" type="is-info">
                     Stable
                   </b-radio>
-                  <b-radio  name="status" native-value="unstable" type="is-info">
+                  <b-radio v-model="form.status" name="status" native-value="unstable" type="is-info">
                     Unstable
                   </b-radio>
                 </b-field>
@@ -61,10 +61,10 @@
               <div class="column is-half cstm-radio-btn">
               <div class="block">
                 <b-field label="Taking treatment">
-                  <b-radio  name="treatment" native-value="treatmentYes" type="is-info">
+                  <b-radio v-model="form.takingTreatment" name="treatment" native-value="treatmentYes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio  name="treatment" native-value="treatmentNo" type="is-info">
+                  <b-radio v-model="form.takingTreatment" name="treatment" native-value="treatmentNo" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -75,13 +75,13 @@
           <div class="columns">
              <div class="column is-half">
               <b-field label="What causes Angina?">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input v-model="form.causeAngina" maxlength="300" type="textarea"></b-input>
               </b-field>
             </div>
 
               <div class="column is-half">
               <b-field label="How it stops?">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input v-model="form.howItStop" maxlength="300" type="textarea"></b-input>
               </b-field>
             </div>
           </div>
@@ -92,21 +92,21 @@
 
             <div class="column is-one-third">
                <b-field  >
-                        <b-input placeholder="YY">
+                        <b-input placeholder="YY" v-model="form.dtyy">
                         </b-input>
                       </b-field>
             </div>
 
             <div class="column is-one-third">
               <b-field  >
-                        <b-input placeholder="MM">
+                        <b-input placeholder="MM" v-model="form.dtmm">
                         </b-input>
                       </b-field>
             </div>
 
             <div class="column is-one-third">
              <b-field  >
-                        <b-input placeholder="DD">
+                        <b-input placeholder="DD" v-model="form.dtdd">
                         </b-input>
                       </b-field>
             </div>

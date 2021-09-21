@@ -25,7 +25,8 @@
                 </div>
                 <div class="column is-4 ">
                   <b-field label="">
-                    <b-input maxlength="2" placeholder="DD">
+                    <b-input placeholder="DD" v-model="form.hldd">
+
                     </b-input>
                   </b-field>
                 </div>
@@ -38,10 +39,10 @@
                 <div class="column is-full  cstm-radio-btn">
                   <div class="block">
                     <b-field label="">
-                      <b-radio v-model="radio" name="strees" native-value="stressYes" type="is-info">
+                      <b-radio v-model="form.stress" name="strees" native-value="stressYes" type="is-info">
                         Yes
                       </b-radio>
-                      <b-radio v-model="radio" name="strees" native-value="stressNo" type="is-info">
+                      <b-radio v-model="form.stress" name="strees" native-value="stressNo" type="is-info">
                         No
                       </b-radio>
                     </b-field>
@@ -49,15 +50,11 @@
                 </div>
               </div>
             </div>
-
-
           </div>
-
-
           <div class="columns">
             <div class="column is-12">
               <b-field label="Treatment">
-                <b-input maxlength="500" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.treatment"></b-input>
               </b-field>
             </div>
 

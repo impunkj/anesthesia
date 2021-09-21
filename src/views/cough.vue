@@ -30,21 +30,21 @@
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="YY">
+                <b-input placeholder="YY" v-model="form.hlyy">
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="MM">
+                <b-input placeholder="MM" v-model="form.hlmm">
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="DD">
+                <b-input placeholder="DD" v-model="form.hldd">
                 </b-input>
               </b-field>
             </div>
@@ -55,7 +55,7 @@
           <div class="columns mb-3">
             <div class="column is-full">
               <b-field label="What Cause">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.cause"></b-input>
               </b-field>
             </div>
           </div>

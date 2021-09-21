@@ -29,19 +29,19 @@
               <div class="columns">
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="YYYY">
+                    <b-input placeholder="YYYY"  v-model="form.whyy">
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="MM">
+                    <b-input placeholder="MM"  v-model="form.whmm">
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="DD">
+                    <b-input placeholder="DD"  v-model="form.whdd">
                     </b-input>
                   </b-field>
                 </div>
@@ -51,10 +51,10 @@
              <div class="column is-half cstm-radio-btn">
               <div class="block">
                    <b-field label="Present status">
-                  <b-radio v-model="radio" name="urti" native-value="residual" type="is-info">
+                  <b-radio  v-model="form.pStatus" name="urti" native-value="residual" type="is-info" >
                     Residual
                   </b-radio>
-                  <b-radio v-model="radio" name="urti" native-value="recovered" type="is-info">
+                  <b-radio  v-model="form.pStatus" name="urti" native-value="recovered" type="is-info">
                     Recovered
                   </b-radio>
  </b-field>
@@ -66,7 +66,7 @@
           <div class="columns mb-3">
             <div class="column is-full">
               <b-field label="What treatment">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea"  v-model="form.treatment"></b-input>
               </b-field>
             </div>
           </div>

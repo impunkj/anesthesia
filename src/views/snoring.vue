@@ -25,7 +25,7 @@
           <div class="columns mb-0">
             <div class="column is-one-third">
               <b-field label="Stop BANG Score">
-                <b-input>
+                <b-input v-model="form.stopBangScore">
                 </b-input>
               </b-field>
             </div>
@@ -33,10 +33,10 @@
             <div class="column is-one-third cstm-radio-btn">
               <div class="block">
                 <b-field label="Sleep Study">
-                  <b-radio v-model="radio" name="study" native-value="studyYes" type="is-info">
+                  <b-radio v-model="form.sleepStudy" name="study" native-value="studyYes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="radio" name="study" native-value="studyNo" type="is-info">
+                  <b-radio v-model="form.sleepStudy" name="study" native-value="studyNo" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -46,10 +46,10 @@
             <div class="column is-one-third cstm-radio-btn">
               <div class="block">
                 <b-field label="CPAP">
-                  <b-radio v-model="radio" name="cpap" native-value="cpapYes" type="is-info">
+                  <b-radio v-model="form.cpap" name="cpap" native-value="cpapYes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="radio" name="cpap" native-value="cpapNo" type="is-info">
+                  <b-radio v-model="form.cpap" name="cpap" native-value="cpapNo" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -62,10 +62,10 @@
             <div class="column is-one-third cstm-radio-btn">
               <div class="block">
                 <b-field label="OSA will be">
-                  <b-radio v-model="radio" name="wake" native-value="wakeYes" type="is-info">
+                  <b-radio v-model="form.OSAW" name="wake" native-value="wakeYes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="radio" name="wake" native-value="wakeNo" type="is-info">
+                  <b-radio v-model="form.OSAW" name="wake" native-value="wakeNo" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -75,10 +75,10 @@
             <div class="column is-two-thirds  cstm-radio-btn">
               <div class="block">
                 <b-field label="Do you fall asleep in the daytime">
-                  <b-radio v-model="radio" name="asleep" native-value="asleepYes" type="is-info">
+                  <b-radio v-model="form.duFSleep" name="asleep" native-value="asleepYes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="radio" name="asleep" native-value="asleepNo" type="is-info">
+                  <b-radio v-model="form.duFSleep" name="asleep" native-value="asleepNo" type="is-info">
                     No
                   </b-radio>
                 </b-field>

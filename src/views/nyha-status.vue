@@ -5,16 +5,16 @@
         <div class="column is-full  cstm-radio-btn">
           <div class="block">
             <b-field label="NYHA Class (Patients with Cardiac Disease (Description of HF Related Symptoms)">
-              <b-radio v-model="radio" name="mild" native-value="mildone" type="is-info">
+              <b-radio v-model="Nclass" name="mild" native-value="mildone" type="is-info">
                 Class I (Mild)
               </b-radio>
-              <b-radio v-model="radio" name="mild" native-value="mildtwo" type="is-info">
+              <b-radio v-model="Nclass" name="mild" native-value="mildtwo" type="is-info">
                 Class II (Mild)
               </b-radio>
-              <b-radio v-model="radio" name="mild" native-value="mildthree" type="is-info">
+              <b-radio v-model="Nclass" name="mild" native-value="mildthree" type="is-info">
                 Class III (Moderate)
               </b-radio>
-              <b-radio v-model="radio" name="mild" native-value="mildfourth" type="is-info">
+              <b-radio v-model="Nclass" name="mild" native-value="mildfourth" type="is-info">
                 Class IV (Severe)
               </b-radio>
             </b-field>

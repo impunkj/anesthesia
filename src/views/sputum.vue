@@ -9,7 +9,7 @@
    <div class="column is-full cstm-radio-btn"  >
               <div class="block">
                 <b-field label="">
-                  <b-radio v-model="checked" name="checkVal" native-value="yes" type="is-info">
+                  <b-radio v-model="checked" name="checkVal" native-value="yes" type="is-info" >
                     Yes
                   </b-radio>
                   <b-radio  v-model="checked"   name="checkVal" native-value="no" type="is-info">
@@ -28,21 +28,21 @@
               <div class="columns">
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="YY">
+                    <b-input placeholder="YY" v-model="form.hlyy">
                     </b-input>
                   </b-field>
                 </div>
 
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="MM">
+                    <b-input placeholder="MM" v-model="form.hlmm">
                     </b-input>
                   </b-field>
                 </div>
 
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="DD">
+                    <b-input placeholder="DD" v-model="form.hldd">
                     </b-input>
                   </b-field>
                 </div>
@@ -51,7 +51,7 @@
 
             <div class="column is-half">
                 <b-field label="Color">
-                <b-input >
+                <b-input v-model="form.color">
                 </b-input>
               </b-field>
             </div>
@@ -61,7 +61,7 @@
           <div class="columns">
             <div class="column is-full">
               <b-field label="What treatment">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.treatment"></b-input>
               </b-field>
             </div>
 
@@ -80,21 +80,21 @@
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="YY">
+                <b-input placeholder="YY" v-model="form.thlyy">
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="MM">
+                <b-input placeholder="MM" v-model="form.thlmm">
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="DD">
+                <b-input placeholder="DD" v-model="form.thldd">
                 </b-input>
               </b-field>
             </div>
