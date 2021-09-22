@@ -28,21 +28,21 @@
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="YYYY">
+                <b-input placeholder="YYYY" v-model="form.whyy">
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="MM">
+                <b-input placeholder="MM" v-model="form.whmm">
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="DD">
+                <b-input placeholder="DD" v-model="form.whdd">
                 </b-input>
               </b-field>
             </div>
@@ -57,13 +57,13 @@
           <div class="columns">
             <div class="column is-half">
               <b-field label="Cause">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.cause"></b-input>
               </b-field>
             </div>
 
             <div class="column is-half">
               <b-field label="Viral status">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.viralStatus"></b-input>
               </b-field>
             </div>
           </div>
@@ -71,13 +71,13 @@
           <div class="columns">
                <div class="column is-half">
               <b-field label="Child criteria">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.childCriteria"></b-input>
               </b-field>
             </div>
 
               <div class="column is-half">
               <b-field label="I.N.R">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.INR"></b-input>
               </b-field>
             </div>
           </div>

@@ -53,7 +53,7 @@
           <div class="columns">
             <div class="column is-12">
               <b-field label="How much ?">
-                <b-input>
+                <b-input  v-model="form.sugarCheckHome">
                 </b-input>
               </b-field>
             </div>
@@ -95,7 +95,7 @@
           <div class="column is-full">
             <b-field label="What treatment" class="d-inline-block"> </b-field>
             <b-field>
-              <b-input maxlength="300" type="textarea"></b-input>
+              <b-input maxlength="300" type="textarea" v-model="form.whatTreatment"></b-input>
             </b-field>
           </div>
         </div>
@@ -105,7 +105,7 @@
 
              <div class="column is-6">
               <b-field label="Rx?">
-                <b-select placeholder="Select Value" expanded>
+                <b-select placeholder="Select Value" expanded v-model="form.rxtreat">
                   <option value="Insulin">Insulin</option>
                   <option value="OHA">OHA</option>
                   <option value="Both">Both</option>
@@ -115,14 +115,14 @@
 
            <div class="column is-6 cstm-radio-btn">
               <div class="block">
-                <b-field label="Complications">
-                  <b-checkbox  name="urti" native-value="urtiYes" type="is-info">
+                <b-field label="Complications" v-model="form.complications">
+                  <b-checkbox  name="urti" native-value="urtiYes" type="is-info" >
                     Vascular
                   </b-checkbox>
-                  <b-checkbox  name="urti" native-value="urtiNo" type="is-info">
+                  <b-checkbox  name="urti" native-value="urtiNo" type="is-info" >
                     Eyes
                   </b-checkbox>
-                  <b-checkbox  name="urti" native-value="urtiNo" type="is-info">
+                  <b-checkbox  name="urti" native-value="urtiNo" type="is-info" >
                     kidney
                   </b-checkbox>
                 </b-field>
@@ -155,7 +155,7 @@
             <div class="column is-full cstm-radio-btn">
               <div class="block">
                    <b-field label="">
-                <b-checkbox  native-value="admission" type="is-info">
+                <b-checkbox  native-value="admission" type="is-info" v-model="form.dietcontrol">
                   Diet control
                 </b-checkbox>
 

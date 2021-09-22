@@ -9,7 +9,7 @@
           <div class="columns">
             <div class="column">
               <b-field label="Mini-Cog Score">
-                <b-input>
+                <b-input v-model="form.MiniCogScore">
                 </b-input>
               </b-field>
             </div>
@@ -25,11 +25,11 @@
                 Give the patient 3 tries to repeat the words. if unable after 3 tries, go to next item.</p>
 
               <b-field label="">
-                <b-select placeholder="Select Value" expanded>
-                  <option value="flint">0</option>
-                  <option value="silver">1</option>
-                  <option value="silver">2</option>
-                  <option value="silver">3</option>
+                <b-select placeholder="Select Value" expanded v-model="form.PatientAten">
+                  <option value="patient0">0</option>
+                  <option value="patient1">1</option>
+                  <option value="patient2">2</option>
+                  <option value="patient3">3</option>
                 </b-select>
               </b-field>
             </div>
@@ -43,11 +43,11 @@
               <p class="mt-3 mb-4"> If subject has not finished clock drawing in 3 minutes, discontinue and ask for recall items.</p>
 
               <b-field label="">
-                <b-select placeholder="Select Value" expanded>
-                  <option value="flint">0</option>
-                  <option value="silver">1</option>
-                  <option value="silver">2</option>
-                  <option value="silver">3</option>
+                <b-select placeholder="Select Value" expanded v-model="form.PharseTest">
+                  <option value="pharse0">0</option>
+                  <option value="pharse1">1</option>
+                  <option value="pharse2">2</option>
+                  <option value="pharse3">3</option>
                 </b-select>
               </b-field>
             </div>

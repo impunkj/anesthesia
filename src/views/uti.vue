@@ -26,21 +26,21 @@
           <div class="columns">
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="YYYY">
+                <b-input placeholder="YYYY" v-model="form.whyy" >
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="MM">
+                <b-input placeholder="MM"  v-model="form.whmm">
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="DD">
+                <b-input placeholder="DD"  v-model="form.whdd">
                 </b-input>
               </b-field>
             </div>
@@ -88,19 +88,19 @@
           <div class="columns">
             <div class="column is-one-third">
               <b-field label="Treated">
-                <b-input maxlength="300" type="textarea" v-model="utiForm.treated"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.treated"></b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
               <b-field label="CUE">
-                <b-input maxlength="300" type="textarea" v-model="utiForm.cue"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.cue"></b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
               <b-field label="What drugs">
-                <b-input maxlength="300" type="textarea" v-model="utiForm.drugs"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.whatdrugs"></b-input>
               </b-field>
             </div>
           </div>
@@ -141,13 +141,15 @@
       return {
         checked: false,
         checked2: false,
-        utiForm : {
-          when : null,
-          months : null,
-          days : null,
-          treated : null,
-          cue :  null,
-          drugs : null
+         radio: 'default',
+        isLoading: false,
+        form: {
+          name: null,
+          email: null,
+          phone: null,
+          department: null,
+          subject: null,
+          question: null
         },
 
 

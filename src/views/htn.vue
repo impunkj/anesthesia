@@ -12,14 +12,14 @@
               <div class="columns">
                 <div class="column is-4">
                   <b-field label="">
-                    <b-input  maxlength="2" v-model="form.whyy" placeholder="YY">
+                    <b-input  maxlength="2" v-model="form.hlyy" placeholder="YY">
                     </b-input>
                   </b-field>
                 </div>
 
                 <div class="column is-4 ">
                   <b-field label="">
-                    <b-input maxlength="2" v-model="form.whmm" placeholder="MM">
+                    <b-input maxlength="2" v-model="form.hlmm" placeholder="MM">
                     </b-input>
                   </b-field>
                 </div>

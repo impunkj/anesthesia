@@ -28,19 +28,19 @@
               <div class="columns">
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="YY">
+                    <b-input placeholder="YY" v-model="form.hlyy">
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="MM">
+                    <b-input placeholder="MM" v-model="form.hlmm">
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="DD">
+                    <b-input placeholder="DD" v-model="form.hldd">
                     </b-input>
                   </b-field>
                 </div>
@@ -53,19 +53,19 @@
 
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="YY">
+                    <b-input placeholder="YY" >
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="MM">
+                    <b-input placeholder="MM" >
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="DD">
+                    <b-input placeholder="DD" >
                     </b-input>
                   </b-field>
                 </div>
@@ -77,7 +77,7 @@
           <div class="columns mb-3">
             <div class="column is-half">
               <b-field label="Medication">
-                <b-input>
+                <b-input v-model="form.medication">
                 </b-input>
               </b-field>
             </div>
@@ -85,10 +85,10 @@
             <div class="column is-half cstm-radio-btn">
               <div class="block">
                 <b-field label="Neurology consult">
-                  <b-radio v-model="radio" name="neurology" native-value="neurologyYes" type="is-info">
+                  <b-radio v-model="form.Neurologyconsult" name="neurology" native-value="neurologyYes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="radio" name="neurology" native-value="neurologyNo" type="is-info">
+                  <b-radio v-model="form.Neurologyconsult" name="neurology" native-value="neurologyNo" type="is-info">
                     No
                   </b-radio>
                 </b-field>
