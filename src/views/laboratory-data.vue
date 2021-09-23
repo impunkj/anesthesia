@@ -31,11 +31,15 @@
             <div class="column is-one-fifth">
               <b-field label="SGOT" >
                 <b-input  v-model="form.sgot">
+                </b-input>
+                </b-field>
             </div>
 
             <div class="column is-one-fifth">
               <b-field label="SGPT">
                 <b-input v-model="form.sgpt">
+                </b-input>
+                </b-field>
             </div>
 
           </div>
