@@ -16,13 +16,13 @@
          <div class="columns" v-if="checkboxClick">
                <div class="column">
                 <b-field label="What surgery?">
-                  <b-input maxlength="300" type="textarea"></b-input>
+                  <b-input maxlength="300" type="textarea" v-model="form.brainwSurgery"></b-input>
                 </b-field>
               </div>
 
                <div class="column ">
                 <b-field label="Residual effect">
-                  <b-input maxlength="300" type="textarea"></b-input>
+                  <b-input maxlength="300" type="textarea" v-model="form.brainREffect"></b-input>
                 </b-field>
               </div>
           </div>
@@ -38,13 +38,13 @@
           <div class="columns" v-if="checkboxClick2">
                <div class="column">
                 <b-field label="What surgery?">
-                  <b-input maxlength="300" type="textarea"></b-input>
+                  <b-input maxlength="300" type="textarea" v-model="form.spinalwSurgery"></b-input>
                 </b-field>
               </div>
 
                <div class="column ">
                 <b-field label="Residual effect">
-                  <b-input maxlength="300" type="textarea"></b-input>
+                  <b-input maxlength="300" type="textarea" v-model="form.spinalREffect"></b-input>
                 </b-field>
               </div>
           </div>

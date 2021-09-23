@@ -8,13 +8,13 @@
           <div class="columns mb-0">
             <div class="column is-half">
               <b-field label="How Many">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.howmany"></b-input>
               </b-field>
             </div>
 
             <div class="column is-half">
               <b-field label="When did you stop it">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.whenStop"></b-input>
               </b-field>
             </div>
           </div>
@@ -27,21 +27,21 @@
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="YY">
+                <b-input placeholder="YY" v-model="form.hlyy">
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="MM">
+                <b-input placeholder="MM" v-model="form.hlmm">
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="DD">
+                <b-input placeholder="DD" v-model="form.hldd">
                 </b-input>
               </b-field>
             </div>

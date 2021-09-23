@@ -45,10 +45,10 @@
              <div class="column cstm-radio-btn is-half">
               <div class="block">
                 <b-field label="">
-                  <b-radio   name="surgeryNeeded" native-value="surgeryNeededYes" type="is-info">
+                  <b-radio v-model="form.SurgeryNeeded"  name="surgeryNeeded" native-value="surgeryNeededYes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio   name="surgeryNeeded" native-value="surgeryNeededNo" type="is-info">
+                  <b-radio v-model="form.SurgeryNeeded"  name="surgeryNeeded" native-value="surgeryNeededNo" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -59,10 +59,10 @@
              <div class="column cstm-radio-btn is-half">
               <div class="block">
                 <b-field label="">
-                  <b-radio   name="passed" native-value="present" type="is-info">
+                  <b-radio  v-model="form.status" name="passed" native-value="present" type="is-info">
                     Present
                   </b-radio>
-                  <b-radio   name="passed" native-value="passed" type="is-info">
+                  <b-radio  v-model="form.status" name="passed" native-value="passed" type="is-info">
                     Passed
                   </b-radio>
                 </b-field>
@@ -75,7 +75,7 @@
           <div class="columns mb-3">
             <div class="column is-full">
               <b-field label="What surgery">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.whatSurgery"></b-input>
               </b-field>
             </div>
           </div>

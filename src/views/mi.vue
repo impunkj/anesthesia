@@ -121,7 +121,7 @@
 
             <div class="column is-one-third  cstm-radio-btn">
               <div class="block" >
-                <b-field label="Stopped Antiplatelet"  >
+                <b-field label="Stopped Antiplatelet" >
                   <b-radio  v-model="isCardModalActive2" name="antiplatelet" native-value="antiplateletYes" type="is-info">
                     Yes
                   </b-radio>
@@ -237,10 +237,10 @@
             <div class="column is-one-third  cstm-radio-btn">
               <div class="block">
                 <b-field label="Symptoms improved">
-                  <b-radio  name="symptoms" native-value="symptomsYes" type="is-info" v-model="form.treatment">
+                  <b-radio  name="symptoms" native-value="symptomsYes" type="is-info" >
                     Yes
                   </b-radio>
-                  <b-radio  name="symptoms" native-value="symptomsNo" type="is-info" v-model="form.treatment">
+                  <b-radio  name="symptoms" native-value="symptomsNo" type="is-info" >
                     No
                   </b-radio>
                 </b-field>
