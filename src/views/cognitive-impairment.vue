@@ -4,17 +4,14 @@
     <section class="section is-main-section">
       <card-component title="Cognitive Impairment">
         <form @submit.prevent="submit">
-
-
           <div class="columns">
             <div class="column">
               <b-field label="Mini-Cog Score">
-                <b-input v-model="form.MiniCogScore">
+                <b-input   v-model="form.MiniCogScore" maxlength="2" >
                 </b-input>
               </b-field>
             </div>
           </div>
-
           <div class="columns">
             <div class="column">
               <h3 class="cstm-heading mb-3"> Mini-Cog: 3 Item Recall and Clock Draw </h3>
@@ -26,10 +23,10 @@
 
               <b-field label="">
                 <b-select placeholder="Select Value" expanded v-model="form.PatientAten">
-                  <option value="patient0">0</option>
-                  <option value="patient1">1</option>
-                  <option value="patient2">2</option>
-                  <option value="patient3">3</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
                 </b-select>
               </b-field>
             </div>
@@ -44,10 +41,10 @@
 
               <b-field label="">
                 <b-select placeholder="Select Value" expanded v-model="form.PharseTest">
-                  <option value="pharse0">0</option>
-                  <option value="pharse1">1</option>
-                  <option value="pharse2">2</option>
-                  <option value="pharse3">3</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
                 </b-select>
               </b-field>
             </div>
@@ -87,10 +84,7 @@
             </div>
           </div>
 
-
-
-
-          <b-button type="sbmt-btn">Submit</b-button>
+          <b-button type="sbmt-btn" native-type="submit" >Submit</b-button>
 
         </form>
       </card-component>
@@ -100,22 +94,13 @@
 </template>
 
 <script>
-  import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
-  import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
+import axios from "axios";
+import mapValues from 'lodash/mapValues'
+import CardComponent from '@/components/CardComponent'
   export default {
     name: 'Forms',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
-      CardComponent,
-      TitleBar
+      CardComponent
     },
     data() {
       return {
@@ -144,7 +129,22 @@
       }
     },
     methods: {
-      submit() {},
+        submit() {
+            const loadingComponent = this.$buefy.loading.open({
+                        container: this.isFullPage
+            })
+            var baseURL = this.$store.state.siteURL + 'api/cns_cognitives';
+            this.form.patientNo = localStorage.getItem('patientID');
+            axios.post(baseURL, this.form).then((r) => {
+              loadingComponent.close();
+                this.$buefy.snackbar.open({
+                  message: r.data.message,
+                  queue: false
+                });
+            }).catch(error => {
+                console.log("ERRRR:: ",error.response.data);
+            });
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {

@@ -4,7 +4,6 @@
     <section class="section is-main-section">
       <card-component title="HTN (Hypertension)">
         <form @submit.prevent="submit">
-
           <div class="columns">
 
             <div class="column is-8">
@@ -39,10 +38,10 @@
                 <div class="column is-full  cstm-radio-btn">
                   <div class="block">
                     <b-field label="">
-                      <b-radio v-model="form.stress" name="strees" native-value="stressYes" type="is-info">
+                      <b-radio v-model="form.stress" name="strees" native-value="1" type="is-info">
                         Yes
                       </b-radio>
-                      <b-radio v-model="form.stress" name="strees" native-value="stressNo" type="is-info">
+                      <b-radio v-model="form.stress" name="strees" native-value="2" type="is-info">
                         No
                       </b-radio>
                     </b-field>
@@ -60,7 +59,7 @@
 
           </div>
 
-          <b-button type="sbmt-btn">Submit</b-button>
+          <b-button type="sbmt-btn"  native-type="submit">Submit</b-button>
 
 
         </form>
@@ -71,10 +70,9 @@
 </template>
 
 <script>
+ import axios from "axios";
   import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
   import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
   import RadioPicker from '@/components/RadioPicker'
   import FilePicker from '@/components/FilePicker'
   import HeroBar from '@/components/HeroBar'
@@ -84,29 +82,19 @@
       HeroBar,
       FilePicker,
       RadioPicker,
-      CheckboxPicker,
       CardComponent,
-      TitleBar
     },
     data() {
       return {
         radio: 'default',
         isLoading: false,
-        form: {
-          name: null,
-          email: null,
-          phone: null,
-          department: null,
-          subject: null,
-          question: null
-        },
+        form: { },
         customElementsForm: {
           checkbox: [],
           radio: null,
           switch: true,
           file: null
-        },
-        departments: ['Business Development', 'Marketing', 'Sales']
+        }
       }
     },
     computed: {
@@ -115,7 +103,20 @@
       }
     },
     methods: {
-      submit() {},
+    submit(){
+      const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        var baseURL = this.$store.state.siteURL + 'api/cvs_htns';
+        this.form.patientNo = localStorage.getItem('patientID');
+        axios.post(baseURL, this.form).then((r) => {
+          loadingComponent.close();
+            this.$buefy.snackbar.open({
+              message: r.data.message,
+              queue: false
+            });
+        })
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {

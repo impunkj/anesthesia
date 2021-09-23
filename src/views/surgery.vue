@@ -8,12 +8,12 @@
           <div class="columns">
             <div class="column pb-0">
               <b-field class="checkOut">
-            <b-checkbox type="is-info" v-model="checkboxClick">Brain</b-checkbox>
+            <b-checkbox type="is-info" v-model="form.brain"  native-value="1">Brain</b-checkbox>
           </b-field>
             </div>
           </div>
 
-         <div class="columns" v-if="checkboxClick">
+         <div class="columns" v-if="form.brain">
                <div class="column">
                 <b-field label="What surgery?">
                   <b-input maxlength="300" type="textarea" v-model="form.brainwSurgery"></b-input>
@@ -30,12 +30,12 @@
            <div class="columns">
             <div class="column pb-0">
               <b-field>
-                <b-checkbox v-model="checkboxClick2" type="is-info">Spinal Cord</b-checkbox>
+                <b-checkbox v-model="form.spinal" native-value="1" type="is-info">Spinal Cord</b-checkbox>
               </b-field>
             </div>
           </div>
 
-          <div class="columns" v-if="checkboxClick2">
+          <div class="columns" v-if="form.spinal">
                <div class="column">
                 <b-field label="What surgery?">
                   <b-input maxlength="300" type="textarea" v-model="form.spinalwSurgery"></b-input>
@@ -48,11 +48,7 @@
                 </b-field>
               </div>
           </div>
-
-
-
-
-          <b-button type="sbmt-btn">Submit</b-button>
+          <b-button type="sbmt-btn"  native-type="submit">Submit</b-button>
 
         </form>
       </card-component>
@@ -62,22 +58,13 @@
 </template>
 
 <script>
-  import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
-  import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
+import axios from "axios";
+import mapValues from 'lodash/mapValues'
+import CardComponent from '@/components/CardComponent'
   export default {
     name: 'Forms',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
-      CardComponent,
-      TitleBar
+      CardComponent
     },
     data() {
       return {
@@ -108,7 +95,22 @@
       }
     },
     methods: {
-      submit() {},
+        submit() {
+            const loadingComponent = this.$buefy.loading.open({
+                        container: this.isFullPage
+            })
+            var baseURL = this.$store.state.siteURL + 'api/cns_surgeries';
+            this.form.patientNo = localStorage.getItem('patientID');
+            axios.post(baseURL, this.form).then((r) => {
+              loadingComponent.close();
+                this.$buefy.snackbar.open({
+                  message: r.data.message,
+                  queue: false
+                });
+            }).catch(error => {
+                console.log("ERRRR:: ",error.response.data);
+            });
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {

@@ -1,10 +1,8 @@
 <template>
   <div>
-
     <section class="section is-main-section">
       <card-component title="Snoring">
         <form @submit.prevent="submit">
-
           <div class="columns">
    <div class="column is-full cstm-radio-btn"  >
               <div class="block">
@@ -33,10 +31,10 @@
             <div class="column is-one-third cstm-radio-btn">
               <div class="block">
                 <b-field label="Sleep Study">
-                  <b-radio v-model="form.sleepStudy" name="study" native-value="studyYes" type="is-info">
+                  <b-radio v-model="form.sleepStudy" name="study" native-value="yes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="form.sleepStudy" name="study" native-value="studyNo" type="is-info">
+                  <b-radio v-model="form.sleepStudy" name="study" native-value="no" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -46,26 +44,24 @@
             <div class="column is-one-third cstm-radio-btn">
               <div class="block">
                 <b-field label="CPAP">
-                  <b-radio v-model="form.cpap" name="cpap" native-value="cpapYes" type="is-info">
+                  <b-radio v-model="form.cpap" name="cpap" native-value="Yes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="form.cpap" name="cpap" native-value="cpapNo" type="is-info">
+                  <b-radio v-model="form.cpap" name="cpap" native-value="No" type="is-info">
                     No
                   </b-radio>
                 </b-field>
               </div>
             </div>
           </div>
-
-
           <div class="columns mb-0">
             <div class="column is-one-third cstm-radio-btn">
               <div class="block">
                 <b-field label="OSA will be">
-                  <b-radio v-model="form.OSAW" name="wake" native-value="wakeYes" type="is-info">
+                  <b-radio v-model="form.OSAW" name="wake" native-value="Yes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="form.OSAW" name="wake" native-value="wakeNo" type="is-info">
+                  <b-radio v-model="form.OSAW" name="wake" native-value="No" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -75,10 +71,10 @@
             <div class="column is-two-thirds  cstm-radio-btn">
               <div class="block">
                 <b-field label="Do you fall asleep in the daytime">
-                  <b-radio v-model="form.duFSleep" name="asleep" native-value="asleepYes" type="is-info">
+                  <b-radio v-model="form.duFSleep" name="asleep" native-value="Yes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="form.duFSleep" name="asleep" native-value="asleepNo" type="is-info">
+                  <b-radio v-model="form.duFSleep" name="asleep" native-value="No" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -87,7 +83,7 @@
           </div>
           </div>
 
-          <b-button type="sbmt-btn mt-2">Submit</b-button>
+          <b-button type="sbmt-btn mt-2"  native-type="submit">Submit</b-button>
 
 
         </form>
@@ -98,43 +94,20 @@
 </template>
 
 <script>
-  import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
-  import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
+import axios from "axios";
+import mapValues from 'lodash/mapValues'
+import CardComponent from '@/components/CardComponent'
   export default {
-    name: 'Forms',
+    name: 'Snoring',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
       CardComponent,
-      TitleBar
     },
     data() {
       return {
-          checked: false,
+        checked: false,
         radio: 'default',
         isLoading: false,
-        form: {
-          name: null,
-          email: null,
-          phone: null,
-          department: null,
-          subject: null,
-          question: null
-        },
-        customElementsForm: {
-          checkbox: [],
-          radio: null,
-          switch: true,
-          file: null
-        },
-        departments: ['Business Development', 'Marketing', 'Sales']
+        form: {}
       }
     },
     computed: {
@@ -143,7 +116,22 @@
       }
     },
     methods: {
-      submit() {},
+       submit() {
+            const loadingComponent = this.$buefy.loading.open({
+                        container: this.isFullPage
+            })
+            var baseURL = this.$store.state.siteURL + 'api/resp_snorings';
+            this.form.patientNo = localStorage.getItem('patientID');
+            axios.post(baseURL, this.form).then((r) => {
+              loadingComponent.close();
+                this.$buefy.snackbar.open({
+                  message: r.data.message,
+                  queue: false
+                });
+            }).catch(error => {
+                console.log("ERRRR:: ",error.response.data);
+            });
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {

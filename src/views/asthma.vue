@@ -93,24 +93,26 @@
           <div class="columns mb-3">
             <div class="column is-half cstm-radio-btn">
               <div class="block">
-                   <b-field label="How do you treat it?">
-                <b-checkbox  native-value="admission" type="is-info" v-model="form.howDoyouTreat">
-                  Admission
-                </b-checkbox>
-                <b-checkbox  native-value="ventilation" type="is-info" >
-                  Ventilation in ICU
-                </b-checkbox>
-                 </b-field>
+                <b-field label="How do you treat it?">
+
+                  <b-radio  name="howdoyoutreat" native-value="Yes" type="is-info" v-model="form.howDoyouTreat">
+                    Admission
+                  </b-radio>
+                  <b-radio  name="howdoyoutreat" native-value="No" type="is-info" v-model="form.howDoyouTreat">
+                    Ventilation in ICU
+                  </b-radio>
+
+                </b-field>
               </div>
             </div>
 
             <div class="column is-half cstm-radio-btn">
               <div class="block">
                 <b-field label="URTI LRTI Present">
-                  <b-radio  name="urti" native-value="urtiYes" type="is-info" v-model="form.urti">
+                  <b-radio  name="urti" native-value="Yes" type="is-info" v-model="form.urti">
                     Yes
                   </b-radio>
-                  <b-radio  name="urti" native-value="urtiNo" type="is-info" v-model="form.urti">
+                  <b-radio  name="urti" native-value="No" type="is-info" v-model="form.urti">
                     No
                   </b-radio>
                 </b-field>
@@ -135,7 +137,7 @@
 
            </div>
 
-          <b-button type="sbmt-btn">Submit</b-button>
+          <b-button type="sbmt-btn"  native-type="submit">Submit</b-button>
 
 
         </form>
@@ -146,22 +148,14 @@
 </template>
 
 <script>
+   import axios from "axios";
   import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
   import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
   export default {
-    name: 'Forms',
+    name: 'Asthma',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
-      CardComponent,
-      TitleBar
+      CardComponent
+
     },
     data() {
       return {
@@ -191,7 +185,22 @@
       }
     },
     methods: {
-      submit() {},
+       submit() {
+       const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        var baseURL = this.$store.state.siteURL + 'api/resp_asthmas';
+        this.form.patientNo = localStorage.getItem('patientID');
+        axios.post(baseURL, this.form).then((r) => {
+          loadingComponent.close();
+            this.$buefy.snackbar.open({
+              message: r.data.message,
+              queue: false
+            });
+        }).catch(error => {
+            console.log("ERRRR:: ",error.response.data);
+          });
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {

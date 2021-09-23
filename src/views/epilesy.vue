@@ -53,19 +53,19 @@
 
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="YY" >
+                    <b-input  v-model="form.lsyy" placeholder="YY" >
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="MM" >
+                    <b-input v-model="form.lsmm" placeholder="MM" >
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-one-third">
                   <b-field label="">
-                    <b-input placeholder="DD" >
+                    <b-input v-model="form.lsdd" placeholder="DD" >
                     </b-input>
                   </b-field>
                 </div>
@@ -85,10 +85,10 @@
             <div class="column is-half cstm-radio-btn">
               <div class="block">
                 <b-field label="Neurology consult">
-                  <b-radio v-model="form.Neurologyconsult" name="neurology" native-value="neurologyYes" type="is-info">
+                  <b-radio v-model="form.Neurologyconsult" name="neurology" native-value="yes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="form.Neurologyconsult" name="neurology" native-value="neurologyNo" type="is-info">
+                  <b-radio v-model="form.Neurologyconsult" name="neurology" native-value="No" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -99,7 +99,7 @@
 
           </div>
 
-          <b-button type="sbmt-btn">Submit</b-button>
+          <b-button type="sbmt-btn"  native-type="submit" >Submit</b-button>
 
 
         </form>
@@ -112,22 +112,13 @@
 </template>
 
 <script>
-  import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
-  import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
+import axios from "axios";
+import mapValues from 'lodash/mapValues'
+import CardComponent from '@/components/CardComponent'
   export default {
     name: 'Forms',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
-      CardComponent,
-      TitleBar
+      CardComponent
     },
     data() {
       return {
@@ -157,7 +148,22 @@
       }
     },
     methods: {
-      submit() {},
+        submit() {
+            const loadingComponent = this.$buefy.loading.open({
+                        container: this.isFullPage
+            })
+            var baseURL = this.$store.state.siteURL + 'api/cnse_pilesies';
+            this.form.patientNo = localStorage.getItem('patientID');
+            axios.post(baseURL, this.form).then((r) => {
+              loadingComponent.close();
+                this.$buefy.snackbar.open({
+                  message: r.data.message,
+                  queue: false
+                });
+            }).catch(error => {
+                console.log("ERRRR:: ",error.response.data);
+            });
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {

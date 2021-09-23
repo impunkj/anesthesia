@@ -61,10 +61,10 @@
               <div class="column is-half cstm-radio-btn">
               <div class="block">
                 <b-field label="Taking treatment">
-                  <b-radio v-model="form.takingTreatment" name="treatment" native-value="treatmentYes" type="is-info">
+                  <b-radio v-model="form.takingTreatment" name="treatment" native-value="1" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="form.takingTreatment" name="treatment" native-value="treatmentNo" type="is-info">
+                  <b-radio v-model="form.takingTreatment" name="treatment" native-value="2" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -120,7 +120,7 @@
 
 
 
-          <b-button type="sbmt-btn">Submit</b-button>
+          <b-button type="sbmt-btn"  native-type="submit">Submit</b-button>
 
         </form>
       </card-component>
@@ -130,10 +130,9 @@
 </template>
 
 <script>
+ import axios from "axios";
   import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
   import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
   import RadioPicker from '@/components/RadioPicker'
   import FilePicker from '@/components/FilePicker'
   import HeroBar from '@/components/HeroBar'
@@ -143,9 +142,7 @@
       HeroBar,
       FilePicker,
       RadioPicker,
-      CheckboxPicker,
-      CardComponent,
-      TitleBar
+      CardComponent
     },
     data() {
       return {
@@ -166,8 +163,7 @@
           radio: null,
           switch: true,
           file: null
-        },
-        departments: ['Business Development', 'Marketing', 'Sales']
+        }
       }
     },
     computed: {
@@ -176,9 +172,25 @@
       }
     },
     methods: {
-
-
-      submit() {},
+      submit() {
+       const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        var baseURL = this.$store.state.siteURL + 'api/cvs_anginas';
+        this.form.patientNo = localStorage.getItem('patientID');
+        axios.post(baseURL, this.form).then((r) => {
+          loadingComponent.close();
+            this.$buefy.snackbar.open({
+              message: r.data.message,
+              queue: false
+            });
+        }).catch((r) => {
+            this.$buefy.snackbar.open({
+              message: r.data.message,
+              queue: false
+            });
+        })
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {
@@ -186,7 +198,6 @@
           }
           return null
         })
-
         this.$buefy.snackbar.open({
           message: 'Reset successfully',
           queue: false

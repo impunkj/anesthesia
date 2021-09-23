@@ -1,20 +1,21 @@
 <template>
   <section class="section is-main-section">
     <card-component title="NYHA Status">
+       <form @submit.prevent="submit">
       <div class="columns">
         <div class="column is-full  cstm-radio-btn">
           <div class="block">
             <b-field label="NYHA Class (Patients with Cardiac Disease (Description of HF Related Symptoms)">
-              <b-radio v-model="Nclass" name="mild" native-value="mildone" type="is-info">
+              <b-radio v-model="form.Nclass" name="mild" native-value="1" type="is-info">
                 Class I (Mild)
               </b-radio>
-              <b-radio v-model="Nclass" name="mild" native-value="mildtwo" type="is-info">
+              <b-radio v-model="form.Nclass" name="mild" native-value="2" type="is-info">
                 Class II (Mild)
               </b-radio>
-              <b-radio v-model="Nclass" name="mild" native-value="mildthree" type="is-info">
+              <b-radio v-model="form.Nclass" name="mild" native-value="3" type="is-info">
                 Class III (Moderate)
               </b-radio>
-              <b-radio v-model="Nclass" name="mild" native-value="mildfourth" type="is-info">
+              <b-radio v-model="form.Nclass" name="mild" native-value="4" type="is-info">
                 Class IV (Severe)
               </b-radio>
             </b-field>
@@ -43,36 +44,24 @@
 
       </div>
         <p class="mb-4"><b> "Cardiology Referral" </b></p>
-          <b-button type="sbmt-btn">Submit</b-button>
-
+          <b-button type="sbmt-btn"  native-type="submit">Submit</b-button>
+      </form>
     </card-component>
   </section>
 </template>
 
 
 <script>
+  import axios from "axios";
   import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
   import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
   export default {
-    name: 'Forms',
+    name: 'PaceMaker',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
       CardComponent,
-      TitleBar
     },
     data() {
       return {
-        isImageModalActive: false,
-        isCardModalActive: false,
-        radio: 'default',
         isLoading: false,
         form: {
           name: null,
@@ -87,8 +76,7 @@
           radio: null,
           switch: true,
           file: null
-        },
-        departments: ['Business Development', 'Marketing', 'Sales']
+        }
       }
     },
     computed: {
@@ -97,7 +85,25 @@
       }
     },
     methods: {
-      submit() {},
+      submit() {
+       const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        var baseURL = this.$store.state.siteURL + 'api/cvs_nyhas';
+        this.form.patientNo = localStorage.getItem('patientID');
+        axios.post(baseURL, this.form).then((r) => {
+          loadingComponent.close();
+            this.$buefy.snackbar.open({
+              message: r.data.message,
+              queue: false
+            });
+        }).catch((r) => {
+            this.$buefy.snackbar.open({
+              message: r.data.message,
+              queue: false
+            });
+        })
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {

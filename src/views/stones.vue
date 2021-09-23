@@ -21,42 +21,23 @@
 </div>
 
  <div  v-if="checked === 'yes'">
-
-         <!--  <div class="columns">
-
-            <div class="column is-one-half">
-              <b-field label="Present">
-                <b-input>
-                </b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-one-half">
-              <b-field label="Passed">
-                <b-input>
-                </b-input>
-              </b-field>
-            </div>
-          </div> -->
-
- <b-field label="Surgery needed"> </b-field>
           <div class="columns">
-
              <div class="column cstm-radio-btn is-half">
+                <b-field label="Surgery needed"> </b-field>
               <div class="block">
                 <b-field label="">
-                  <b-radio v-model="form.SurgeryNeeded"  name="surgeryNeeded" native-value="surgeryNeededYes" type="is-info">
+                  <b-radio v-model="form.SurgeryNeeded"  name="surgeryNeeded" native-value="Yes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="form.SurgeryNeeded"  name="surgeryNeeded" native-value="surgeryNeededNo" type="is-info">
+                  <b-radio v-model="form.SurgeryNeeded"  name="surgeryNeeded" native-value="No" type="is-info">
                     No
                   </b-radio>
                 </b-field>
               </div>
             </div>
 
-
              <div class="column cstm-radio-btn is-half">
+                <b-field label="Status"> </b-field>
               <div class="block">
                 <b-field label="">
                   <b-radio  v-model="form.status" name="passed" native-value="present" type="is-info">
@@ -68,20 +49,17 @@
                 </b-field>
               </div>
             </div>
-
-
           </div>
-
           <div class="columns mb-3">
             <div class="column is-full">
               <b-field label="What surgery">
                 <b-input maxlength="300" type="textarea" v-model="form.whatSurgery"></b-input>
               </b-field>
             </div>
-          </div>
+          </div><!--  columns -->
            </div>
 
-          <b-button type="sbmt-btn">Submit</b-button>
+          <b-button type="sbmt-btn"  native-type="submit">Submit</b-button>
 
 
         </form>
@@ -92,22 +70,13 @@
 </template>
 
 <script>
-  import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
-  import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
+import axios from "axios";
+import mapValues from 'lodash/mapValues'
+import CardComponent from '@/components/CardComponent'
   export default {
     name: 'Forms',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
       CardComponent,
-      TitleBar
     },
     data() {
       return {
@@ -115,12 +84,6 @@
         radio: 'default',
         isLoading: false,
         form: {
-          name: null,
-          email: null,
-          phone: null,
-          department: null,
-          subject: null,
-          question: null
         },
         customElementsForm: {
           checkbox: [],
@@ -137,7 +100,22 @@
       }
     },
     methods: {
-      submit() {},
+        submit() {
+            const loadingComponent = this.$buefy.loading.open({
+                        container: this.isFullPage
+            })
+            var baseURL = this.$store.state.siteURL + 'api/renal_stones';
+            this.form.patientNo = localStorage.getItem('patientID');
+            axios.post(baseURL, this.form).then((r) => {
+              loadingComponent.close();
+                this.$buefy.snackbar.open({
+                  message: r.data.message,
+                  queue: false
+                });
+            }).catch(error => {
+                console.log("ERRRR:: ",error.response.data);
+            });
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {
