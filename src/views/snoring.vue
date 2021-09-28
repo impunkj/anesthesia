@@ -57,7 +57,7 @@
           <div class="columns mb-0">
             <div class="column is-one-third cstm-radio-btn">
               <div class="block">
-                <b-field label="OSA will be">
+                <b-field label="OSA">
                   <b-radio v-model="form.OSAW" name="wake" native-value="Yes" type="is-info">
                     Yes
                   </b-radio>

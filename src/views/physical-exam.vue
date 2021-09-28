@@ -268,20 +268,6 @@
           <div class="card-content">
 
 
-            <div class="columns">
-              <div class="column  cstm-radio-btn">
-                <div class="block">
-                  <b-field label="Antiplatelet">
-                    <b-radio v-model="radio" name="neck" native-value="neckNormal" type="is-info">
-                      Normal
-                    </b-radio>
-                    <b-radio v-model="radio" name="neck" native-value="neckAbnormal" type="is-info">
-                      Abnormal
-                    </b-radio>
-                  </b-field>
-                </div>
-              </div>
-            </div>
 
 
             <div class="columns">

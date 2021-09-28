@@ -4,7 +4,21 @@
     <section class="section is-main-section">
       <card-component title="Smoking">
         <form @submit.prevent="submit">
-
+  <div class="columns">
+   <div class="column is-full cstm-radio-btn"  >
+              <div class="block">
+                <b-field label="">
+                  <b-radio v-model="checked" name="checkVal" native-value="yes" type="is-info">
+                    Yes
+                  </b-radio>
+                  <b-radio  v-model="checked"   name="checkVal" native-value="no" type="is-info">
+                    No
+                  </b-radio>
+                </b-field>
+              </div>
+      </div>
+</div>
+<div class="wrapcompo"  v-if="checked === 'yes'">
           <div class="columns mb-0">
             <div class="column is-half">
               <b-field label="How Many">
@@ -47,7 +61,7 @@
 
           <b-button type="sbmt-btn"  native-type="submit">Submit</b-button>
 
-
+      </div>
         </form>
       </card-component>
 
@@ -68,6 +82,7 @@ import CardComponent from '@/components/CardComponent'
       return {
         radio: 'default',
         isLoading: false,
+        checked: false,
         form: {
         },
         customElementsForm: {

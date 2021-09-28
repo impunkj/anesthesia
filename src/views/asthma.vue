@@ -93,7 +93,7 @@
           <div class="columns mb-3">
             <div class="column is-half cstm-radio-btn">
               <div class="block">
-                <b-field label="How do you treat it?">
+                <b-field label="How was it treat?">
 
                   <b-radio  name="howdoyoutreat" native-value="Yes" type="is-info" v-model="form.howDoyouTreat">
                     Admission
@@ -124,9 +124,9 @@
           <div class="columns mb-3">
             <div class="column is-full cstm-radio-btn">
          <div class=" field-body">
-            <b-field label="">
+            <b-field label="Advisory">
                 <b-checkbox  native-value="admission" type="is-info" v-model="form.advised">
-                  Advisory  Physician Consult
+                   Physician Consult
                 </b-checkbox>
 
                  </b-field>

@@ -14,11 +14,7 @@
               </b-field>
             </div>
 
-            <div class="column is-half">
-              <b-field label="Physical Exam">
-                <b-input maxlength="300" type="textarea" v-model="form.physicalExam"></b-input>
-              </b-field>
-            </div>
+
           </div>
 
 

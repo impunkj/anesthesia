@@ -200,7 +200,7 @@
               menu: [
                 {
                   to: '/anaesthetic-history',
-                  label: 'Hisotry',
+                  label: 'History',
                   icon: 'circle-outline'
                 },
                 {

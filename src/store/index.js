@@ -9,7 +9,7 @@ export default new Vuex.Store({
 
     https://anesthesia.routingflow.com/crudgen/public/
     */
-    siteURL: 'http://127.0.0.1:8000/',
+    siteURL: 'https://anesthesia.routingflow.com/crudgen/public/',
     userName: null,
     userEmail: null,
     userAvatar: null,

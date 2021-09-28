@@ -3,6 +3,7 @@
 
     <section class="section is-main-section">
       <card-component title="Patient Information" icon="account">
+    <ValidationObserver  v-slot="{ handleSubmit }" ref="form">
         <form @submit.prevent="submit">
           <div class="columns is-tablet">
 
@@ -34,9 +35,16 @@
             <div class="column is-one-third ">
               <div class="columns">
                 <div class="column is-6">
-                   <b-field label="Age">
-                <b-input required v-model="form.age"></b-input>
-              </b-field>
+                <ValidationProvider
+                  rules="required"
+                  vid="age"
+                  name="Age"
+                  v-slot="{ errors }"
+                  >
+                  <b-field label="Age"  :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
+                    <b-input v-model="form.age"></b-input>
+                  </b-field>
+                </ValidationProvider>
                 </div>
                 <div class="column is-6">
                    <b-field label="Pincode">
@@ -51,10 +59,17 @@
 
           <div class="columns">
             <div class="column is-one-third ">
-              <b-field label="Name">
-                <b-input  required v-model="form.name">
-                </b-input>
-              </b-field>
+                <ValidationProvider
+                  rules="required"
+                  vid="name"
+                  name="name"
+                  v-slot="{ errors }"
+                  >
+                  <b-field label="Name"   :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors">
+                    <b-input  name="name"  v-model="form.name"   >
+                    </b-input>
+                  </b-field>
+                </ValidationProvider>
             </div>
 
             <div class="column is-one-third ">
@@ -66,36 +81,71 @@
 
             <div class="column is-one-third cstm-radio-btn ">
               <div class="block">
-                <b-field label="Sex">
-                  <b-radio v-model="form.gender" name="gender" required  native-value="male" type="is-info">
-                    Male
-                  </b-radio>
-                  <b-radio v-model="form.gender" name="gender"  native-value="female" type="is-info">
-                    Female
-                  </b-radio>
-                  <b-radio v-model="form.gender"  name="gender" native-value="other" type="is-info">
-                    Other
-                  </b-radio>
-                </b-field>
+                <ValidationProvider
+                  rules="required"
+                  vid="gender"
+                  name="gender"
+                  v-slot="{ errors }"
+                  >
+                  <b-field label="Sex"  :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
+                    <b-radio v-model="form.gender" name="gender"   native-value="male" type="is-info">
+                      Male
+                    </b-radio>
+                    <b-radio v-model="form.gender" name="gender"  native-value="female" type="is-info">
+                      Female
+                    </b-radio>
+                    <b-radio v-model="form.gender"  name="gender" native-value="other" type="is-info">
+                      Other
+                    </b-radio>
+                  </b-field>
+                  </ValidationProvider>
               </div>
             </div>
           </div>
 
 
           <div class="columns ">
-            <div class="column is-one-third ">
+            <div class="column is-one-fourth ">
               <b-field label="Registration No.">
                 <b-input maxlength="300" type="textarea" v-model="form.registerNumber"></b-input>
               </b-field>
             </div>
-
-            <div class="column is-one-third ">
-              <b-field label="Proposed Operation">
+           <div class="column is-one-fourth ">
+               <ValidationProvider
+                  rules="required"
+                  vid="proposedOperation"
+                  name="proposedOperation"
+                  v-slot="{ errors }"
+                  >
+              <b-field label="Proposed Operation"  :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors"  >
                 <b-input maxlength="300" type="textarea" v-model="form.proposedOperation"></b-input>
               </b-field>
+                 </ValidationProvider>
             </div>
 
-            <div class="column is-one-third ">
+            <div class="column is-one-fourth ">
+                <ValidationProvider
+                  rules="required"
+                  vid="side"
+                  name="Side Operations"
+                  v-slot="{ errors }"
+                  >
+              <b-field label="Side" :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors"   >
+                <div class="select is-normal">
+                  <select     v-model="form.side">
+                    <option value="">Side</option>
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                    <option value="none" >None</option>
+                  </select>
+                </div>
+                 </b-field>
+                </ValidationProvider>
+            </div>
+
+
+
+            <div class="column is-one-fourth ">
               <b-field label="Pre-Operative Diagnosis">
                 <b-input maxlength="300" v-model="form.preOperativeDiagnosis" type="textarea"></b-input>
               </b-field>
@@ -107,17 +157,32 @@
             <div class="column is-one-third ">
               <div class="columns">
                 <div class="column is-half">
-                  <b-field label="BP">
-                    <b-input required v-model="form.BP">
+                <ValidationProvider
+                  rules="required"
+                  vid="BP"
+                  name="BP"
+                  v-slot="{ errors }"
+                  >
+
+                  <b-field label="BP" :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
+                    <b-input  v-model="form.BP">
                     </b-input>
                   </b-field>
+                      </ValidationProvider>
                 </div>
 
                 <div class="column is-half ">
-                  <b-field label="HR">
-                    <b-input required v-model="form.HR">
+                 <ValidationProvider
+                  rules="required"
+                  vid="HR"
+                  name="HR"
+                  v-slot="{ errors }"
+                  >
+                  <b-field label="HR" :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors"  >
+                    <b-input  v-model="form.HR">
                     </b-input>
                   </b-field>
+                      </ValidationProvider>
                 </div>
 
 
@@ -127,10 +192,17 @@
             <div class="column is-one-third ">
               <div class="columns">
                 <div class="column is-half">
-                  <b-field label="SaO2">
-                    <b-input  required v-model="form.sao2">
+                 <ValidationProvider
+                  rules="required"
+                  vid="sao2"
+                  name="Sao2"
+                  v-slot="{ errors }"
+                  >
+                  <b-field label="SaO2"  :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
+                    <b-input   v-model="form.sao2">
                     </b-input>
                   </b-field>
+                      </ValidationProvider>
                 </div>
 
                 <div class="column is-half">
@@ -145,10 +217,17 @@
             <div class="column is-one-third ">
               <div class="columns">
                 <div class="column is-half">
-                  <b-field label="Weight (kg)">
-                    <b-input  required v-model="form.weight"  @input="calculateBMI()" >
+                 <ValidationProvider
+                  rules="required"
+                  vid="weight"
+                  name="Weight"
+                  v-slot="{ errors }"
+                  >
+                  <b-field label="Weight (kg)" :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
+                    <b-input   v-model="form.weight"  @input="calculateBMI()" >
                     </b-input>
                   </b-field>
+                </ValidationProvider>
 
                 </div>
                 <div class="column is-half">
@@ -177,7 +256,7 @@
             <div class="column is-full cstm-radio-btn asa-physical">
               <div class="block">
                 <b-field label="ASA Physical Status">
-                  <b-radio v-model="form.ASAPhysicalStatus"  name="ASAPhysicalStatus"  required native-value="1" type="is-info">
+                  <b-radio v-model="form.ASAPhysicalStatus"  name="ASAPhysicalStatus"   native-value="1" type="is-info">
                     1
                   </b-radio>
                   <b-radio v-model="form.ASAPhysicalStatus"  name="ASAPhysicalStatus" native-value="2" type="is-info">
@@ -201,9 +280,10 @@
             </div>
           </div>
 
-          <b-button type="sbmt-btn" native-type="submit">Submit</b-button>
+          <b-button type="sbmt-btn"   @click="handleSubmit(submit)"  >Submit</b-button>
 
         </form>
+         </ValidationObserver>
       </card-component>
 
     </section>
@@ -213,28 +293,28 @@
 <script>
   import axios from "axios";
   import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
   import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
+  import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
+  import * as rules from 'vee-validate/dist/rules';
+
+Object.keys(rules).forEach(rule => {
+  extend(rule, rules[rule]);
+});
+
   export default {
     name: 'Forms',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
       CardComponent,
-      TitleBar
+      ValidationProvider,
+      ValidationObserver
     },
     data() {
       return {
         radio: 'default',
         isLoading: false,
         form: {
-          name: null,
+          side: "",
+          name:null,
           email: null,
           phone: null,
           department: null,

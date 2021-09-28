@@ -4,7 +4,24 @@
     <section class="section is-main-section">
       <card-component title="HTN (Hypertension)">
         <form @submit.prevent="submit">
-          <div class="columns">
+
+
+ <div class="columns">
+   <div class="column is-full cstm-radio-btn"  >
+              <div class="block">
+                <b-field label="">
+                  <b-radio v-model="checked" name="checkVal" native-value="yes" type="is-info">
+                    Yes
+                  </b-radio>
+                  <b-radio  v-model="checked"   name="checkVal" native-value="no" type="is-info">
+                    No
+                  </b-radio>
+                </b-field>
+              </div>
+      </div>
+</div>
+<div class="wrapcompo"  v-if="checked === 'yes'">
+          <div class="columns"  >
 
             <div class="column is-8">
               <b-field label="How long"> </b-field>
@@ -60,7 +77,7 @@
           </div>
 
           <b-button type="sbmt-btn"  native-type="submit">Submit</b-button>
-
+</div>
 
         </form>
       </card-component>
@@ -88,6 +105,7 @@
       return {
         radio: 'default',
         isLoading: false,
+                checked: false,
         form: { },
         customElementsForm: {
           checkbox: [],
