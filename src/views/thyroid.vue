@@ -64,10 +64,11 @@
               </b-field>
             </div>
           </div> -->
+           <b-button type="sbmt-btn ">Submit</b-button>
           </div>
 
 
-          <b-button type="sbmt-btn ">Submit</b-button>
+
 
         </form>
       </card-component>

@@ -2,7 +2,7 @@
   <div>
 
     <section class="section is-main-section">
-      <card-component title="Jaundice">
+      <card-component title="Advisory">
         <form @submit.prevent="submit">
 
           <div class="columns">
@@ -22,68 +22,15 @@
 
  <div  v-if="checked === 'yes'">
 
-        <b-field label="When?">
-          </b-field>
-          <div class="columns mb-3">
 
-            <div class="column is-one-third">
-              <b-field label="">
-                <b-input placeholder="YYYY" v-model="form.whyy">
-                </b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-one-third">
-              <b-field label="">
-                <b-input placeholder="MM" v-model="form.whmm">
-                </b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-one-third">
-              <b-field label="">
-                <b-input placeholder="DD" v-model="form.whdd">
-                </b-input>
-              </b-field>
-            </div>
-
-          </div>
-
-            <b-field class="checkOut" >
-            <b-checkbox v-model="checkboxClick" type="is-info"> Needed hospitalisation </b-checkbox>
+<div>
+   <p class="mb-4">  <b-field class="checkOut">
+            <b-checkbox type="is-info"> <b> Supplement Steroid pre-op  </b>  </b-checkbox>
         </b-field>
-
- <div  v-if="checkboxClick">
-          <div class="columns">
-            <div class="column is-half">
-              <b-field label="Cause">
-                <b-input maxlength="300" type="textarea" v-model="form.cause"></b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-half">
-              <b-field label="Viral status">
-                <b-input maxlength="300" type="textarea" v-model="form.viralStatus"></b-input>
-              </b-field>
-            </div>
-          </div>
-
-          <div class="columns mb-4">
-               <div class="column is-half">
-              <b-field label="Child criteria">
-                <b-input maxlength="300" type="textarea" v-model="form.childCriteria"></b-input>
-              </b-field>
-            </div>
-
-              <div class="column is-half">
-              <b-field label="I.N.R">
-                <b-input maxlength="300" type="textarea" v-model="form.INR"></b-input>
-              </b-field>
-            </div>
-          </div>
-          </div>
- <b-button type="sbmt-btn">Submit</b-button>
-           </div>
+</p>
+</div>
+  <b-button type="sbmt-btn">Submit</b-button>
+</div>
 
 
 
@@ -116,10 +63,8 @@
     },
     data() {
       return {
-        checkboxClick : false,
-        checked: false,
+        checked :false,
         radio: 'default',
-         checkboxGroup: ['Flint'],
         isLoading: false,
         form: {
           name: null,

@@ -27,11 +27,12 @@
    <p class="mb-4"> <b> "Prescribe H2 / PPI / Metoclopramide Warning Rapid Sequence No LMA."
  </b> </p>
 </div>
+  <b-button type="sbmt-btn">Submit</b-button>
 </div>
 
 
 
-          <b-button type="sbmt-btn">Submit</b-button>
+
 
         </form>
       </card-component>

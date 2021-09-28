@@ -308,9 +308,9 @@
               </b-field>
             </div>
           </div>
-
+  <b-button type="sbmt-btn" class=" ">Submit</b-button>
 </div>
-          <b-button type="sbmt-btn" class=" ">Submit</b-button>
+
 
         </form>
       </card-component>

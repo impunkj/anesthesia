@@ -235,6 +235,8 @@ aside.aside::-webkit-scrollbar-thumb
     margin-left: 58px;
 }
 
+.w-100{width: 100%;}
+
 @media screen and (min-width: 1024px) {
 
     html.has-aside-left.has-aside-expanded nav.navbar,

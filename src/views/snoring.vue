@@ -81,9 +81,10 @@
               </div>
             </div>
           </div>
+           <b-button type="sbmt-btn mt-2"  native-type="submit">Submit</b-button>
           </div>
 
-          <b-button type="sbmt-btn mt-2"  native-type="submit">Submit</b-button>
+
 
 
         </form>

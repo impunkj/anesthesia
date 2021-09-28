@@ -85,7 +85,7 @@
 
  <div  v-if="checked2 === 'yes'">
 
-          <div class="columns">
+          <div class="columns mb-4">
             <div class="column is-one-third">
               <b-field label="Treated">
                 <b-input maxlength="300" type="textarea" v-model="form.treated"></b-input>
@@ -105,9 +105,10 @@
             </div>
           </div>
           </div>
+           <button class="sbmt-btn" type="submit" >Submit</button>
  </div>
 
-          <button class="sbmt-btn mt-5" type="submit" >Submit</button>
+
 <!-- v-on:click="getUtiFormData" -->
         </form>
       </card-component>

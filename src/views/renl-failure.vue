@@ -95,7 +95,7 @@
           </div>
           </div>
 
-           <b-field>
+           <b-field class="mb-4">
             <b-checkbox v-model="checkboxClick3" type="is-info">Fistual</b-checkbox>
           </b-field>
 
@@ -105,15 +105,16 @@
                 <b-input>
                 </b-input>
               </b-field>
-              <p> <b> "Protect Fistula Site No BP Recording From That Arm" </b> </p>
+              <p class="mb-4"> <b> "Protect Fistula Site No BP Recording From That Arm" </b> </p>
             </div>
           </div>
 
 
 </div>
+  <b-button type="sbmt-btn ">Submit</b-button>
  </div>
 
-          <b-button type="sbmt-btn mt-5">Submit</b-button>
+
 
 
         </form>

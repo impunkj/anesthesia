@@ -185,6 +185,11 @@
                   label: 'Thyroid',
                   icon: 'circle-outline'
                 },
+                {
+                  to: '/advisory',
+                  label: 'Advisory',
+                  icon: 'circle-outline'
+                },
                 /* {
                   to: '/fraility',
                   label: 'Fraility',

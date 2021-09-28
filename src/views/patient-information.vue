@@ -131,8 +131,8 @@
                   v-slot="{ errors }"
                   >
               <b-field label="Side" :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors"   >
-                <div class="select is-normal">
-                  <select     v-model="form.side">
+                <div class="select is-normal w-100" >
+                  <select  class="w-100"   v-model="form.side" expanded>
                     <option value="">Side</option>
                     <option value="left">Left</option>
                     <option value="right">Right</option>

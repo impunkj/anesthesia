@@ -96,10 +96,10 @@
             </div>
 
           </div>
-
+ <b-button type="sbmt-btn"  native-type="submit" >Submit</b-button>
           </div>
 
-          <b-button type="sbmt-btn"  native-type="submit" >Submit</b-button>
+
 
 
         </form>

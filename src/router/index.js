@@ -260,6 +260,14 @@ const routes = [
     name: 'Document Upload',
     component: () => import(/* webpackChunkName: "forms" */ '../views/documnet-upload.vue')
   },
+  {
+    meta: {
+      title: 'Advisory'
+    },
+    path: '/advisory',
+    name: 'Advisory',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/advisory.vue')
+  },
 ]
 
 const router = new VueRouter({
