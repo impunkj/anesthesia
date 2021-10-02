@@ -36,20 +36,27 @@
               <div class="columns">
                 <div class="column is-6">
                 <ValidationProvider
-                  rules="required"
+                  rules="required|numeric|max:2"
                   vid="age"
                   name="Age"
                   v-slot="{ errors }"
                   >
                   <b-field label="Age"  :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
-                    <b-input v-model="form.age"></b-input>
+                    <b-input   v-model="form.age"></b-input>
                   </b-field>
                 </ValidationProvider>
                 </div>
                 <div class="column is-6">
-                   <b-field label="Pincode">
-                <b-input v-model="form.pincode"></b-input>
-              </b-field>
+                <ValidationProvider
+                  rules="required|numeric|max:6"
+                  vid="age"
+                  name="Age"
+                  v-slot="{ errors }" >
+                <b-field label="Pincode"  :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
+                      <b-input v-model="form.pincode"></b-input>
+                </b-field>
+                </ValidationProvider>
+
                 </div>
               </div>
 

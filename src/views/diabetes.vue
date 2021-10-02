@@ -18,15 +18,16 @@
       </div>
 
       <div v-if="checked === 'yes'">
-
+      <ValidationObserver  v-slot="{ handleSubmit }" ref="form">
+        <form  method="post" @submit.prevent="submit">
         <div class="columns">
           <div class="column is-full  cstm-radio-btn">
             <div class="block">
               <b-field label="">
-                <b-radio v-model="radio" name="mild" native-value="mildone" type="is-info">
+                <b-radio v-model="form.typeOfD" name="mild" native-value="type1" type="is-info">
                   Type 1
                 </b-radio>
-                <b-radio v-model="radio" name="mild" native-value="mildtwo" type="is-info">
+                <b-radio v-model="form.typeOfD" name="mild" native-value="type2" type="is-info">
                   Type 2
                 </b-radio>
               </b-field>
@@ -34,58 +35,26 @@
           </div>
         </div>
 
-        <div class="columns mb-3">
-          <div class="column is-full  cstm-radio-btn">
-            <div class="block">
-              <b-field label="Sugar check at home">
-                <b-radio v-model="checked2" name="sugerCheck" native-value="sugerCheckone" type="is-info">
-                  Yes
-                </b-radio>
-                <b-radio v-model="checked2" name="sugerCheck" native-value="sugerChecktwo" type="is-info">
-                  No
-                </b-radio>
-              </b-field>
-            </div>
-          </div>
-        </div>
-
-        <div v-if="checked2 === 'sugerCheckone'">
-          <div class="columns">
-            <div class="column is-12">
-              <b-field label="How much ?">
-                <b-input  v-model="form.sugarCheckHome">
-                </b-input>
-              </b-field>
-            </div>
-
-            <!-- <div class="column is-4">
+        <div class="columns mb-3"  v-if="form.typeOfD">
+             <div class="column is-6">
               <b-field label="Rx?">
-                <b-select placeholder="Select Value" expanded>
+                <b-select placeholder="Select Value" expanded v-model="form.rxtreat">
                   <option value="Insulin">Insulin</option>
                   <option value="OHA">OHA</option>
                   <option value="Both">Both</option>
                 </b-select>
               </b-field>
             </div>
+        </div>
 
-             <div class="column is-4 cstm-radio-btn">
-              <div class="block">
-                <b-field label="Sequelae?">
-                  <b-checkbox  name="urti" native-value="urtiYes" type="is-info">
-                    Vascular
-                  </b-checkbox>
-                  <b-checkbox  name="urti" native-value="urtiNo" type="is-info">
-                    Eyes
-                  </b-checkbox>
-                  <b-checkbox  name="urti" native-value="urtiNo" type="is-info">
-                    Infections
-                  </b-checkbox>
-                  <b-checkbox  name="urti" native-value="urtiNo" type="is-info">
-                    kidney
-                  </b-checkbox>
-                </b-field>
-              </div>
-            </div> -->
+     <div class="columns">
+            <div class="column is-12">
+              <b-field label="How much ?">
+                <b-input  v-model="form.howmuch">
+                </b-input>
+              </b-field>
+            </div>
+
           </div>
 
 
@@ -103,78 +72,58 @@
 
         <div class="columns">
 
-             <div class="column is-6">
-              <b-field label="Rx?">
-                <b-select placeholder="Select Value" expanded v-model="form.rxtreat">
-                  <option value="Insulin">Insulin</option>
-                  <option value="OHA">OHA</option>
-                  <option value="Both">Both</option>
-                </b-select>
-              </b-field>
-            </div>
+
 
            <div class="column is-6 cstm-radio-btn">
               <div class="block">
-                <b-field label="Complications" v-model="form.complications">
-                  <b-checkbox  name="urti" native-value="urtiYes" type="is-info" >
+                <b-field label="Complications" >
+                  <b-checkbox  v-model="form.complications"  name="complications" native-value="vascular" type="is-info" >
                     Vascular
                   </b-checkbox>
-                  <b-checkbox  name="urti" native-value="urtiNo" type="is-info" >
+                  <b-checkbox  v-model="form.complications" name="complications" native-value="eyes" type="is-info" >
                     Eyes
                   </b-checkbox>
-                  <b-checkbox  name="urti" native-value="urtiNo" type="is-info" >
+                  <b-checkbox  v-model="form.complications" name="complications" native-value="kidney" type="is-info" >
                     kidney
                   </b-checkbox>
                 </b-field>
               </div>
             </div>
-        </div>
-
-         <!--  <div class="columns">
-             <div class="column is-full cstm-radio-btn">
+              <div class="column  cstm-radio-btn">
               <div class="block">
-                <b-field label="Sequelae?">
-                  <b-checkbox  name="urti" native-value="urtiYes" type="is-info">
-                    Vascular
-                  </b-checkbox>
-                  <b-checkbox  name="urti" native-value="urtiNo" type="is-info">
-                    Eyes
-                  </b-checkbox>
-                  <b-checkbox  name="urti" native-value="urtiNo" type="is-info">
-                    Infections
-                  </b-checkbox>
-                  <b-checkbox  name="urti" native-value="urtiNo" type="is-info">
-                    kidney
-                  </b-checkbox>
-                </b-field>
-              </div>
-            </div>
-          </div> -->
-
-           <div class="columns  mb-3">
-            <div class="column is-full cstm-radio-btn">
-              <div class="block">
-                   <b-field label="">
-                <b-checkbox  native-value="admission" type="is-info" v-model="form.dietcontrol">
-                  Diet control
-                </b-checkbox>
-
+                <b-field label="Diet">
+                    <b-checkbox   type="is-info"  name="dietcontrol" v-model="form.dietcontrol"  native-value="yes" >
+                      Diet control
+                    </b-checkbox>
                  </b-field>
               </div>
             </div>
+        </div>
 
+        <div class="columns mb-3">
+          <div class="column is-full  cstm-radio-btn">
+            <div class="block">
+              <b-field label="Sugar check at home">
+                <b-radio v-model="form.sugarCheckHome" name="sugerCheck" native-value="Yes" type="is-info">
+                  Yes
+                </b-radio>
+                <b-radio v-model="form.sugarCheckHome" name="sugerCheck" native-value="No" type="is-info">
+                  No
+                </b-radio>
+              </b-field>
+            </div>
           </div>
+        </div>
 
+            <b-button type="sbmt-btn"   @click="handleSubmit(submit)"  >Submit</b-button>
+
+            </form>
+
+   </ValidationObserver>
 
         </div>
 
 
-
-
-      </div>
-
-
-      <b-button class="" type="sbmt-btn">Submit</b-button>
 
     </card-component>
   </section>
@@ -182,22 +131,20 @@
 
 
 <script>
+ import axios from "axios";
   import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
   import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
+  import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
+  import * as rules from 'vee-validate/dist/rules';
+  Object.keys(rules).forEach(rule => {
+    extend(rule, rules[rule]);
+  });
   export default {
-    name: 'Forms',
+    name: 'Diabetes',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
       CardComponent,
-      TitleBar
+      ValidationProvider,
+      ValidationObserver
     },
     data() {
       return {
@@ -213,7 +160,9 @@
           phone: null,
           department: null,
           subject: null,
-          question: null
+          question: null,
+          dietcontrol: null,
+          complications:[]
         },
         customElementsForm: {
           checkbox: [],
@@ -230,7 +179,22 @@
       }
     },
     methods: {
-      submit() {},
+    submit(){
+      const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        this.form.complications = JSON.stringify(this.form.complications);
+        var baseURL = this.$store.state.siteURL + 'api/diabetes';
+        this.form.patientNo = localStorage.getItem('patientID');
+        this.form.whatTreatment = JSON.stringify(this.form.whatTreatment);
+        axios.post(baseURL, this.form).then((r) => {
+          loadingComponent.close();
+            this.$buefy.snackbar.open({
+              message: r.data.message,
+              queue: false
+            });
+        })
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {

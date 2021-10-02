@@ -3,6 +3,7 @@
 
     <section class="section is-main-section">
       <card-component title="UTI">
+      <ValidationObserver  v-slot="{ handleSubmit }" ref="form">
         <form  method="post" @submit.prevent="getUtiFormData">
 
           <div class="columns">
@@ -26,62 +27,40 @@
           <div class="columns">
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="YYYY" v-model="form.whyy" >
+                <b-input placeholder="YY" v-model="form.whyy"  maxlength="2" >
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="MM"  v-model="form.whmm">
+                <b-input placeholder="MM"  v-model="form.whmm"  maxlength="2" >
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="DD"  v-model="form.whdd">
+                <b-input placeholder="DD"  v-model="form.whdd"  maxlength="2" >
                 </b-input>
               </b-field>
             </div>
           </div>
-       <!--  <div class="columns">
-            <div class="column is-one-third">
-              <b-field label="When">
-                <b-input v-model="utiForm.when">
-                </b-input>
-              </b-field>
-            </div>
 
-            <div class="column is-one-third">
-              <b-field label="Months" >
-                <b-input v-model="utiForm.months">
-                </b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-one-third">
-              <b-field label="Days">
-                <b-input v-model="utiForm.days">
-                </b-input>
-              </b-field>
-            </div>
-          </div> -->
-
-                 <div class="columns">
-   <div class="column is-full cstm-radio-btn"  >
-              <div class="block">
-                <b-field label="Treated">
-                  <b-radio v-model="checked2" name="checkVal2" native-value="yes" type="is-info">
-                    Yes
-                  </b-radio>
-                  <b-radio  v-model="checked2"   name="checkVal2" native-value="no" type="is-info">
-                    No
-                  </b-radio>
-                </b-field>
-              </div>
-      </div>
-</div>
+                <div class="columns">
+                    <div class="column is-full cstm-radio-btn"  >
+                              <div class="block">
+                                <b-field label="Treated">
+                                    <b-radio v-model="checked2" name="checkVal2" native-value="yes" type="is-info">
+                                      Yes
+                                    </b-radio>
+                                    <b-radio  v-model="checked2"   name="checkVal2" native-value="no" type="is-info">
+                                      No
+                                    </b-radio>
+                                </b-field>
+                              </div>
+                      </div>
+                </div>
 
  <div  v-if="checked2 === 'yes'">
 
@@ -105,12 +84,13 @@
             </div>
           </div>
           </div>
-           <button class="sbmt-btn" type="submit" >Submit</button>
+   <b-button type="sbmt-btn"   @click="handleSubmit(submit)"  >Submit</b-button>
  </div>
 
 
 <!-- v-on:click="getUtiFormData" -->
         </form>
+                </ValidationObserver>
       </card-component>
 
     </section>
@@ -118,25 +98,21 @@
 </template>
 
 <script>
+ import axios from "axios";
   import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
   import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
-  import Axios from 'axios'
-  import VueAxios from 'vue-axios'
+  import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
+  import * as rules from 'vee-validate/dist/rules';
+  Object.keys(rules).forEach(rule => {
+    extend(rule, rules[rule]);
+  });
 
   export default {
-    name: 'Forms',
+    name: 'UTI',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
       CardComponent,
-      TitleBar
+      ValidationProvider,
+      ValidationObserver
     },
     data() {
       return {
@@ -153,22 +129,6 @@
           question: null
         },
 
-
-        /* form: {
-          name: null,
-          email: null,
-          phone: null,
-          department: null,
-          subject: null,
-          question: null
-        },
-        customElementsForm: {
-          checkbox: [],
-          radio: null,
-          switch: true,
-          file: null
-        }, */
-
       }
     },
     computed: {
@@ -177,16 +137,27 @@
       }
     },
     methods: {
+    submit(){
+      const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        var baseURL = this.$store.state.siteURL + 'api/renal_utis';
+        this.form.patientNo = localStorage.getItem('patientID');
+        this.form.whatTreatment = JSON.stringify(this.form.whatTreatment);
+        axios.post(baseURL, this.form).then((r) => {
+          loadingComponent.close();
+            this.$buefy.snackbar.open({
+              message: r.data.message,
+              queue: false
+            });
+        })
+      },
 
       getUtiFormData () {
         // console.log("Data", this.utiForm);
-
-
         Axios.post("", this.utiForm).then((response) => {
-  console.log(response.data)
-})
-
-
+            console.log(response.data)
+        })
       },
 
       // submit() {},

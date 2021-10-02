@@ -6,7 +6,7 @@
         <form @submit.prevent="submit">
 
           <div class="columns">
-   <div class="column is-full cstm-radio-btn"  >
+            <div class="column is-full cstm-radio-btn"  >
               <div class="block">
                 <b-field label="">
                   <b-radio v-model="checked" name="checkVal" native-value="yes" type="is-info">
@@ -22,10 +22,10 @@
 
  <div  v-if="checked === 'yes'">
 
-<div>
-   <p class="mb-4"> <b> "Either check TSH / t 3 / t4 if needed physician consult."
- </b> </p>
-</div>
+    <div>
+      <p class="mb-4"> <b> "Either check TSH / t 3 / t4 if needed physician consult."
+    </b> </p>
+    </div>
 
 
  <div class="columns">
@@ -33,10 +33,10 @@
              <div class="column cstm-radio-btn is-full">
               <div class="block">
                 <b-field label="">
-                  <b-radio   name="Hyper" native-value="Hyper" type="is-info">
+                  <b-radio  v-model="form.typeOf"  name="Hyper" native-value="Hyper" type="is-info">
                     Hyper
                   </b-radio>
-                  <b-radio   name="Hyper" native-value="Hypo" type="is-info">
+                  <b-radio  v-model="form.typeOf"  name="Hyper" native-value="Hypo" type="is-info">
                     Hypo
                   </b-radio>
                 </b-field>
@@ -47,24 +47,11 @@
  <div class="columns mb-3 ">
             <div class="column is-full">
               <b-field label="What treatment">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input   v-model="form.wha" maxlength="300" type="textarea"></b-input>
               </b-field>
             </div>
           </div>
-<!-- <div class="columns">
-            <div class="column is-half">
-              <b-field label="Hyper">
-                <b-input maxlength="300" type="textarea"></b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-half">
-              <b-field label="Hypo">
-                <b-input maxlength="300" type="textarea"></b-input>
-              </b-field>
-            </div>
-          </div> -->
-           <b-button type="sbmt-btn ">Submit</b-button>
+           <b-button type="sbmt-btn "  native-type="submit" >Submit</b-button>
           </div>
 
 
@@ -78,22 +65,14 @@
 </template>
 
 <script>
+ import axios from "axios";
   import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
   import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
+
   export default {
-    name: 'Forms',
+    name: 'Thyroid',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
-      CardComponent,
-      TitleBar
+      CardComponent
     },
     data() {
       return {
@@ -101,18 +80,6 @@
         radio: 'default',
         isLoading: false,
         form: {
-          name: null,
-          email: null,
-          phone: null,
-          department: null,
-          subject: null,
-          question: null
-        },
-        customElementsForm: {
-          checkbox: [],
-          radio: null,
-          switch: true,
-          file: null
         },
         departments: ['Business Development', 'Marketing', 'Sales']
       }
@@ -123,7 +90,21 @@
       }
     },
     methods: {
-      submit() {},
+    submit(){
+      const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        this.form.reflux = 'yes';
+        var baseURL = this.$store.state.siteURL + 'api/thyroids';
+        this.form.patientNo = localStorage.getItem('patientID');
+        axios.post(baseURL, this.form).then((r) => {
+          loadingComponent.close();
+            this.$buefy.snackbar.open({
+              message: r.data.message,
+              queue: false
+            });
+        })
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {

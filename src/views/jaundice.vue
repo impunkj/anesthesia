@@ -3,7 +3,7 @@
 
     <section class="section is-main-section">
       <card-component title="Jaundice">
-        <form @submit.prevent="submit">
+
 
           <div class="columns">
    <div class="column is-full cstm-radio-btn"  >
@@ -21,28 +21,29 @@
 </div>
 
  <div  v-if="checked === 'yes'">
-
+      <ValidationObserver  v-slot="{ handleSubmit }" ref="form">
+          <form  method="post" @submit.prevent="submit">
         <b-field label="When?">
           </b-field>
           <div class="columns mb-3">
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="YYYY" v-model="form.whyy">
+                <b-input placeholder="YY" v-model="form.whyy"  maxlength="2">
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="MM" v-model="form.whmm">
+                <b-input placeholder="MM" v-model="form.whmm"  maxlength="2" >
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-third">
               <b-field label="">
-                <b-input placeholder="DD" v-model="form.whdd">
+                <b-input placeholder="DD" v-model="form.whdd"  maxlength="2" >
                 </b-input>
               </b-field>
             </div>
@@ -50,10 +51,10 @@
           </div>
 
             <b-field class="checkOut" >
-            <b-checkbox v-model="checkboxClick" type="is-info"> Needed hospitalisation </b-checkbox>
+            <b-checkbox v-model="form.needHospital" type="is-info"> Needed hospitalisation </b-checkbox>
         </b-field>
 
- <div  v-if="checkboxClick">
+ <div  v-if="form.needHospital">
           <div class="columns">
             <div class="column is-half">
               <b-field label="Cause">
@@ -82,14 +83,13 @@
             </div>
           </div>
           </div>
- <b-button type="sbmt-btn">Submit</b-button>
-           </div>
-
-
-
+              <b-button type="sbmt-btn"   @click="handleSubmit(submit)"  >Submit</b-button>
 
 
         </form>
+        </ValidationObserver>
+
+           </div>
       </card-component>
 
     </section>
@@ -97,22 +97,20 @@
 </template>
 
 <script>
+ import axios from "axios";
   import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
   import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
+  import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
+  import * as rules from 'vee-validate/dist/rules';
+  Object.keys(rules).forEach(rule => {
+    extend(rule, rules[rule]);
+  });
   export default {
     name: 'Forms',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
       CardComponent,
-      TitleBar
+      ValidationProvider,
+      ValidationObserver
     },
     data() {
       return {
@@ -144,7 +142,22 @@
       }
     },
     methods: {
-      submit() {},
+    submit(){
+      const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        this.form.complications = JSON.stringify(this.form.complications);
+        var baseURL = this.$store.state.siteURL + 'api/hepatic_jaundices';
+        this.form.patientNo = localStorage.getItem('patientID');
+        this.form.whatTreatment = JSON.stringify(this.form.whatTreatment);
+        axios.post(baseURL, this.form).then((r) => {
+          loadingComponent.close();
+            this.$buefy.snackbar.open({
+              message: r.data.message,
+              queue: false
+            });
+        })
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {

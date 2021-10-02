@@ -3,23 +3,22 @@
 
     <section class="section is-main-section">
       <card-component title="HTN (Hypertension)">
+         <ValidationObserver  v-slot="{ handleSubmit }" ref="form">
         <form @submit.prevent="submit">
-
-
- <div class="columns">
-   <div class="column is-full cstm-radio-btn"  >
-              <div class="block">
-                <b-field label="">
-                  <b-radio v-model="checked" name="checkVal" native-value="yes" type="is-info">
-                    Yes
-                  </b-radio>
-                  <b-radio  v-model="checked"   name="checkVal" native-value="no" type="is-info">
-                    No
-                  </b-radio>
-                </b-field>
-              </div>
-      </div>
-</div>
+        <div class="columns">
+            <div class="column is-full cstm-radio-btn"  >
+                        <div class="block">
+                          <b-field label="">
+                            <b-radio v-model="checked" name="checkVal" native-value="yes" type="is-info">
+                              Yes
+                            </b-radio>
+                            <b-radio  v-model="checked"   name="checkVal" native-value="no" type="is-info">
+                              No
+                            </b-radio>
+                          </b-field>
+                        </div>
+                </div>
+        </div>
 <div class="wrapcompo"  v-if="checked === 'yes'">
           <div class="columns"  >
 
@@ -27,10 +26,17 @@
               <b-field label="How long"> </b-field>
               <div class="columns">
                 <div class="column is-4">
-                  <b-field label="">
+                <ValidationProvider
+                  rules="required|numeric"
+                  vid="hlyy"
+                  name="How Long in Years"
+                  v-slot="{ errors, valid }"
+                  >
+                  <b-field label=""  :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors"  >
                     <b-input  maxlength="2" v-model="form.hlyy" placeholder="YY">
                     </b-input>
                   </b-field>
+                </ValidationProvider>
                 </div>
 
                 <div class="column is-4 ">
@@ -54,7 +60,13 @@
               <div class="columns">
                 <div class="column is-full  cstm-radio-btn">
                   <div class="block">
-                    <b-field label="">
+                  <ValidationProvider
+                      rules="required"
+                      vid="stress"
+                      name="Stress"
+                      v-slot="{ errors, valid }"
+                      >
+                    <b-field label=""  :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors"  >
                       <b-radio v-model="form.stress" name="strees" native-value="1" type="is-info">
                         Yes
                       </b-radio>
@@ -62,6 +74,7 @@
                         No
                       </b-radio>
                     </b-field>
+                  </ValidationProvider>
                   </div>
                 </div>
               </div>
@@ -73,13 +86,12 @@
                 <b-input maxlength="300" type="textarea" v-model="form.treatment"></b-input>
               </b-field>
             </div>
-
           </div>
-
-          <b-button type="sbmt-btn"  native-type="submit">Submit</b-button>
+           <b-button type="sbmt-btn"   @click="handleSubmit(submit)"  >Submit</b-button>
 </div>
 
         </form>
+            </ValidationObserver>
       </card-component>
 
     </section>
@@ -90,16 +102,17 @@
  import axios from "axios";
   import mapValues from 'lodash/mapValues'
   import CardComponent from '@/components/CardComponent'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
+  import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
+  import * as rules from 'vee-validate/dist/rules';
+  Object.keys(rules).forEach(rule => {
+    extend(rule, rules[rule]);
+  });
   export default {
-    name: 'Forms',
+    name: 'HTN',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
       CardComponent,
+      ValidationProvider,
+      ValidationObserver
     },
     data() {
       return {

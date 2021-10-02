@@ -3,6 +3,7 @@
 
     <section class="section is-main-section">
       <card-component title="MI">
+             <ValidationObserver  v-slot="{ handleSubmit }" ref="form">
         <form @submit.prevent="submit">
 
           <div class="columns">
@@ -28,21 +29,21 @@
               <div class="columns">
                 <div class="column is-one-third">
                   <b-field label=" ">
-                    <b-input  placeholder="YYYY" v-model="form.whyy">
+                    <b-input  placeholder="YY"  maxlength="2" v-model="form.whyy">
                     </b-input>
                   </b-field>
                 </div>
 
                 <div class="column is-one-third">
                   <b-field label=" ">
-                    <b-input placeholder="MM" v-model="form.whmm">
+                    <b-input placeholder="MM" maxlength="2"  v-model="form.whmm">
                     </b-input>
                   </b-field>
                 </div>
 
                 <div class="column is-one-third">
                   <b-field label=" ">
-                    <b-input placeholder="DD" v-model="form.whdd">
+                    <b-input placeholder="DD" maxlength="2" v-model="form.whdd">
                     </b-input>
                   </b-field>
                 </div>
@@ -61,10 +62,10 @@
             <div class="column is-one-third  cstm-radio-btn">
               <div class="block">
                 <b-field label="Stented">
-                  <b-radio  name="stented" native-value="stentedYes" type="is-info" v-model="form.stented">
+                  <b-radio  name="stented" native-value="Yes" type="is-info" v-model="form.stented">
                     Yes
                   </b-radio>
-                  <b-radio  name="stented" native-value="stentedNo" type="is-info" v-model="form.stented">
+                  <b-radio  name="stented" native-value="No" type="is-info" v-model="form.stented">
                     No
                   </b-radio>
                 </b-field>
@@ -90,7 +91,7 @@
               <div class="columns">
                 <div class="column is-one-third">
                   <b-field label=" ">
-                    <b-input  placeholder="YYYY" v-model="form.twhyy">
+                    <b-input  placeholder="YY" v-model="form.twhyy">
                     </b-input>
                   </b-field>
                 </div>
@@ -122,10 +123,10 @@
             <div class="column is-one-third  cstm-radio-btn">
               <div class="block" >
                 <b-field label="Stopped Antiplatelet" >
-                  <b-radio  v-model="isCardModalActive2" name="antiplatelet" native-value="antiplateletYes" type="is-info">
+                  <b-radio  v-model="form.stoppedAntiplatelet" name="antiplatelet" native-value="Yes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio  name="antiplatelet" native-value="antiplateletNo" type="is-info">
+                  <b-radio  v-model="form.stoppedAntiplatelet" name="antiplatelet" native-value="No" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -137,7 +138,7 @@
           <div class="columns ">
             <div class="column is-full " @click="isCardModalActive = true">
               <b-field label="What treatment">
-                <b-input maxlength="300" type="textarea" v-model="form.whatTreatment"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.whatTreatment.whatTreatment"></b-input>
               </b-field>
             </div>
           </div>
@@ -147,10 +148,10 @@
             <div class="column is-one-third  cstm-radio-btn">
               <div class="block">
                 <b-field label="Symptoms Improved">
-                  <b-radio  name="symptomsImp" native-value="symptomsImprovedYes" type="is-info" v-model="form.symptomsImproved">
+                  <b-radio  name="symptomsImp" native-value="Yes" type="is-info" v-model="form.symptomsImproved">
                     Yes
                   </b-radio>
-                  <b-radio  name="symptomsImp" native-value="symptomsImprovedNo" type="is-info" v-model="form.symptomsImproved">
+                  <b-radio  name="symptomsImp" native-value="No" type="is-info" v-model="form.symptomsImproved">
                     No
                   </b-radio>
                 </b-field>
@@ -160,10 +161,10 @@
             <div class="column is-one-third  cstm-radio-btn">
               <div class="block">
                 <b-field label="CABG">
-                  <b-radio v-model="form.cabg" name="cabg" native-value="cabgYes" type="is-info">
+                  <b-radio v-model="form.cabg" name="cabg" native-value="Yes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="form.cabg"  name="cabg" native-value="cabgNo" type="is-info">
+                  <b-radio v-model="form.cabg"  name="cabg" native-value="No" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -200,47 +201,15 @@
 
 
           <div class="columns">
-           <!--  <div class="column is-one-third">
-              <b-field label="When" class="mb-0"> </b-field>
-              <div class="columns">
-                <div class="column is-one-third">
-                  <b-field label=" ">
-                    <b-input  placeholder="YY">
-                    </b-input>
-                  </b-field>
-                </div>
 
-                <div class="column is-one-third">
-                  <b-field label=" ">
-                    <b-input placeholder="MM">
-                    </b-input>
-                  </b-field>
-                </div>
-
-                <div class="column is-one-third">
-                  <b-field label=" ">
-                    <b-input placeholder="DD">
-                    </b-input>
-                  </b-field>
-                </div>
-
-              </div>
-            </div> -->
-<!--
-            <div class="column is-one-third">
-              <b-field label="What medication ">
-                <b-input v-model="form.medication">
-                </b-input>
-              </b-field>
-            </div> -->
 
             <div class="column is-one-third  cstm-radio-btn">
               <div class="block">
                 <b-field label="Symptoms improved">
-                  <b-radio  name="symptoms" native-value="symptomsYes" type="is-info" >
+                  <b-radio  name="symptoms" native-value="Yes" type="is-info" >
                     Yes
                   </b-radio>
-                  <b-radio  name="symptoms" native-value="symptomsNo" type="is-info" >
+                  <b-radio  name="symptoms" native-value="No" type="is-info" >
                     No
                   </b-radio>
                 </b-field>
@@ -250,10 +219,10 @@
             <div class="column is-one-third  cstm-radio-btn">
               <div class="block">
                 <b-field label="Both Stented and CABG">
-                  <b-radio name="stendedCabg" native-value="stendedCabgYes" type="is-info" v-model="form.BStentedCABG">
+                  <b-radio name="stendedCabg" native-value="Yes" type="is-info" v-model="form.BStentedCABG">
                     Yes
                   </b-radio>
-                  <b-radio name="stendedCabg" native-value="stendedCabgNo" type="is-info" v-model="form.BStentedCABG">
+                  <b-radio name="stendedCabg" native-value="No" type="is-info" v-model="form.BStentedCABG">
                     No
                   </b-radio>
                 </b-field>
@@ -270,35 +239,7 @@
             </div>
           </div>
 
-          <div class="columns">
-            <!-- <div class="column is-one-third  cstm-radio-btn">
-              <div class="block">
-                <b-field label="Both Stented and CABG">
-                  <b-radio name="stendedCabg" native-value="stendedCabgYes" type="is-info">
-                    Yes
-                  </b-radio>
-                  <b-radio name="stendedCabg" native-value="stendedCabgNo" type="is-info">
-                    No
-                  </b-radio>
-                </b-field>
-              </div>
-            </div> -->
 
-          <!--   <div class="column is-one-third ">
-              <b-field label="Repeat CAG">
-                <b-input>
-                </b-input>
-              </b-field>
-            </div> -->
-
-            <!-- <div class="column is-one-third ">
-              <b-field label="How many times">
-                <b-input>
-                </b-input>
-              </b-field>
-            </div> -->
-
-          </div>
 
           <div class="columns mb-3">
              <div class="column is-full ">
@@ -308,11 +249,12 @@
               </b-field>
             </div>
           </div>
-  <b-button type="sbmt-btn" class=" ">Submit</b-button>
+          <b-button type="sbmt-btn"   @click="handleSubmit(submit)"  >Submit</b-button>
 </div>
 
 
         </form>
+                  </ValidationObserver>
       </card-component>
 
 
@@ -327,10 +269,10 @@
               <div class="column is-half  cstm-radio-btn">
                 <div class="block">
                   <b-field label="Antiplatelet">
-                    <b-radio v-model="form.antiplatelet" name="antiplatelet" native-value="antiplateletYes" type="is-info">
+                    <b-radio v-model="form.whatTreatment.antiplatelet" name="antiplatelet" native-value="antiplateletYes" type="is-info">
                       Yes
                     </b-radio>
-                    <b-radio v-model="form.antiplatelet" name="antiplatelet" native-value="antiplateletNo" type="is-info">
+                    <b-radio v-model="form.whatTreatment.antiplatelet" name="antiplatelet" native-value="antiplateletNo" type="is-info">
                       No
                     </b-radio>
                   </b-field>
@@ -340,10 +282,10 @@
               <div class="column is-half  cstm-radio-btn">
                 <div class="block">
                   <b-field label="Antianginals">
-                    <b-radio v-model="form.antianginals" name="antianginals" native-value="antianginalsYes" type="is-info">
+                    <b-radio v-model="form.whatTreatment.antianginals" name="antianginals" native-value="antianginalsYes" type="is-info">
                       Yes
                     </b-radio>
-                    <b-radio v-model="form.antianginals" name="antianginals" native-value="antianginalsNo" type="is-info">
+                    <b-radio v-model="form.whatTreatment.antianginals" name="antianginals" native-value="antianginalsNo" type="is-info">
                       No
                     </b-radio>
                   </b-field>
@@ -356,10 +298,10 @@
               <div class="column is-half  cstm-radio-btn">
                 <div class="block">
                   <b-field label="Statins">
-                    <b-radio v-model="form.statins" name="statins" native-value="statinsYes" type="is-info">
+                    <b-radio v-model="form.whatTreatment.statins" name="statins" native-value="statinsYes" type="is-info">
                       Yes
                     </b-radio>
-                    <b-radio v-model="form.statins" name="statins" native-value="statinsNo" type="is-info">
+                    <b-radio v-model="form.whatTreatment.statins" name="statins" native-value="statinsNo" type="is-info">
                       No
                     </b-radio>
                   </b-field>
@@ -369,10 +311,10 @@
               <div class="column is-half  cstm-radio-btn">
                 <div class="block">
                   <b-field label="Anticoagulant">
-                    <b-radio v-model="form.anticoagulant" name="anticoagulant" native-value="anticoagulantYes" type="is-info">
+                    <b-radio v-model="form.whatTreatment.anticoagulant" name="anticoagulant" native-value="anticoagulantYes" type="is-info">
                       Yes
                     </b-radio>
-                    <b-radio v-model="form.anticoagulant" name="anticoagulant" native-value="anticoagulantNo" type="is-info">
+                    <b-radio v-model="form.whatTreatment.anticoagulant" name="anticoagulant" native-value="anticoagulantNo" type="is-info">
                       No
                     </b-radio>
                   </b-field>
@@ -382,7 +324,7 @@
             <div class="columns mb-0">
               <div class="column is-full">
                 <b-field label="What Treatment">
-                  <b-input maxlength="300" v-model="form.whatTreatment" type="textarea"></b-input>
+                  <b-input maxlength="300" v-model="form.whatTreatment.whatTreatment" type="textarea"></b-input>
                 </b-field>
               </div>
             </div>
@@ -391,7 +333,7 @@
             <div class="columns mb-0">
               <div class="column is-full">
                 <b-field label="Other">
-                  <b-input maxlength="300" type="textarea"></b-input>
+                  <b-input maxlength="300"  v-model="form.whatTreatment.other"   type="textarea"></b-input>
                 </b-field>
               </div>
             </div>
@@ -407,41 +349,7 @@
 
 
      <!-- Stpped modal start-->
-     <b-modal  v-model="isCardModalActive2" :width="640">
-        <div class="card">
-          <h3 class="popup-heading"> Stopped Antiplatelet </h3>
-          <div class="card-content">
 
-
-            <b-field label="When" class=""> </b-field>
-          <div class="columns">
-            <div class="column is-one-third">
-              <b-field label="">
-                <b-input placeholder="MM">
-                </b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-one-third">
-              <b-field label="">
-                <b-input placeholder="DD">
-                </b-input>
-              </b-field>
-            </div>
-
-            <div class="column is-one-third">
-              <b-field label="">
-                <b-input placeholder="HH">
-                </b-input>
-              </b-field>
-            </div>
-          </div>
-
-            <b-button type="sbmt-btn">Submit</b-button>
-
-          </div>
-        </div>
-      </b-modal>
      <!-- stopped modal end -->
 
 
@@ -493,22 +401,20 @@
 </template>
 
 <script>
+ import axios from "axios";
   import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
   import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
+  import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
+  import * as rules from 'vee-validate/dist/rules';
+  Object.keys(rules).forEach(rule => {
+    extend(rule, rules[rule]);
+  });
   export default {
-    name: 'Forms',
+    name: 'CVSMI',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
       CardComponent,
-      TitleBar
+      ValidationProvider,
+      ValidationObserver
     },
     data() {
       return {
@@ -525,7 +431,16 @@
           phone: null,
           department: null,
           subject: null,
-          question: null
+          question: null,
+          whatTreatment:{
+            antiplatelet: "",
+            antianginals: "",
+            statins:"",
+            anticoagulant:"",
+            anticoagulant:"",
+            whatTreatment:"",
+            other:""
+          }
         },
         customElementsForm: {
           checkbox: [],
@@ -542,7 +457,21 @@
       }
     },
     methods: {
-      submit() {},
+    submit(){
+      const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        var baseURL = this.$store.state.siteURL + 'api/cvs_mis';
+        this.form.patientNo = localStorage.getItem('patientID');
+        this.form.whatTreatment = JSON.stringify(this.form.whatTreatment);
+        axios.post(baseURL, this.form).then((r) => {
+          loadingComponent.close();
+            this.$buefy.snackbar.open({
+              message: r.data.message,
+              queue: false
+            });
+        })
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {

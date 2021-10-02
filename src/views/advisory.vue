@@ -25,11 +25,11 @@
 
 <div>
    <p class="mb-4">  <b-field class="checkOut">
-            <b-checkbox type="is-info"> <b> Supplement Steroid pre-op  </b>  </b-checkbox>
+            <b-checkbox  type="is-info" native-value="yes" > <b> Supplement Steroid pre-op  </b>  </b-checkbox>
         </b-field>
 </p>
 </div>
-  <b-button type="sbmt-btn">Submit</b-button>
+  <b-button type="sbmt-btn" native-type="submit" >Submit</b-button>
 </div>
 
 
@@ -44,22 +44,13 @@
 </template>
 
 <script>
+ import axios from "axios";
   import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
   import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
   export default {
-    name: 'Forms',
+    name: 'Advisory',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
-      CardComponent,
-      TitleBar
+         CardComponent
     },
     data() {
       return {
@@ -67,18 +58,6 @@
         radio: 'default',
         isLoading: false,
         form: {
-          name: null,
-          email: null,
-          phone: null,
-          department: null,
-          subject: null,
-          question: null
-        },
-        customElementsForm: {
-          checkbox: [],
-          radio: null,
-          switch: true,
-          file: null
         },
         departments: ['Business Development', 'Marketing', 'Sales']
       }
@@ -89,7 +68,21 @@
       }
     },
     methods: {
-      submit() {},
+    submit(){
+      const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        this.form.supplement = 'yes';
+        var baseURL = this.$store.state.siteURL + 'api/steroids';
+        this.form.patientNo = localStorage.getItem('patientID');
+        axios.post(baseURL, this.form).then((r) => {
+          loadingComponent.close();
+            this.$buefy.snackbar.open({
+              message: r.data.message,
+              queue: false
+            });
+        })
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {

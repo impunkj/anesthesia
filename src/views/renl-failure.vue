@@ -3,9 +3,10 @@
 
     <section class="section is-main-section">
       <card-component title="Failure">
+         <ValidationObserver  v-slot="{ handleSubmit }" ref="form">
         <form @submit.prevent="submit">
   <div class="columns">
-   <div class="column is-full cstm-radio-btn"  >
+    <div class="column is-full cstm-radio-btn"  >
               <div class="block">
                 <b-field label="">
                   <b-radio v-model="checked" name="checkVal" native-value="yes" type="is-info">
@@ -20,19 +21,17 @@
 </div>
 
  <div  v-if="checked === 'yes'">
-
           <div class="columns">
-
             <div class="column is-one-half">
               <b-field label="Urea">
-                <b-input>
+                <b-input  v-model="form.urea">
                 </b-input>
               </b-field>
             </div>
 
             <div class="column is-one-half">
               <b-field label="Creatinine">
-                <b-input>
+                <b-input v-model="form.creatinine" >
                 </b-input>
               </b-field>
               <p> <b> "Start Renal Questionnaire" </b> </p>
@@ -40,18 +39,16 @@
           </div>
 
           <b-field>
-            <b-checkbox  v-model="checkboxClick" type="is-info">Dialysis</b-checkbox>
+            <b-checkbox  v-model="checkboxClick2"  native-value="yes" type="is-info">Dialysis</b-checkbox>
           </b-field>
-
-<div v-if="checkboxClick">
+      <div v-if="checkboxClick2">
           <b-field>
-            <b-checkbox v-model="checkboxClick2" type="is-info">Hemo</b-checkbox>
+            <b-checkbox v-model="hemoCheck" type="is-info">Hemo</b-checkbox>
           </b-field>
-
-          <div class="columns" v-if="checkboxClick2">
+          <div class="columns" v-if="hemoCheck">
             <div class="column is-one-half">
               <b-field>
-                <b-select placeholder="Frequency" expanded>
+                <b-select placeholder="Frequency" v-model="form.hemo"  expanded>
                   <option value="flint">Ony Once</option>
                   <option value="silver">Everyday</option>
                   <option value="silver">Times in a week</option>
@@ -61,7 +58,7 @@
 
             <div class="column is-one-half">
               <b-field label="">
-                <b-input>
+                <b-input v-model="form.hemoValue"  >
                 </b-input>
               </b-field>
             </div>
@@ -78,17 +75,17 @@
 
             <div class="column is-6">
               <b-field>
-                <b-select placeholder="Frequency" expanded>
-                  <option value="flint">Ony Once</option>
-                  <option value="silver">Everyday</option>
-                  <option value="silver">Times in a week</option>
+                <b-select placeholder="Frequency"  v-model="form.peritoneal" expanded>
+                  <option value="once">Ony Once</option>
+                  <option value="everyday">Everyday</option>
+                  <option value="timesinweek">Times in a week</option>
                 </b-select>
               </b-field>
             </div>
 
              <div class="column is-6">
               <b-field label="">
-                <b-input>
+                <b-input  v-model="form.peritonealValue">
                 </b-input>
               </b-field>
             </div>
@@ -96,13 +93,13 @@
           </div>
 
            <b-field class="mb-4">
-            <b-checkbox v-model="checkboxClick3" type="is-info">Fistual</b-checkbox>
+            <b-checkbox v-model="form.fistual" native-value="Yes" type="is-info">Fistual</b-checkbox>
           </b-field>
 
           <div class="columns" v-if="checkboxClick3">
             <div class="column is-full">
               <b-field label="Site">
-                <b-input>
+                <b-input v-model="form.fistualValue" >
                 </b-input>
               </b-field>
               <p class="mb-4"> <b> "Protect Fistula Site No BP Recording From That Arm" </b> </p>
@@ -111,13 +108,10 @@
 
 
 </div>
-  <b-button type="sbmt-btn ">Submit</b-button>
+   <b-button type="sbmt-btn"   @click="handleSubmit(submit)"  >Submit</b-button>
  </div>
-
-
-
-
         </form>
+        </ValidationObserver>
       </card-component>
 
     </section>
@@ -125,39 +119,33 @@
 </template>
 
 <script>
+ import axios from "axios";
   import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
   import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
+  import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
+  import * as rules from 'vee-validate/dist/rules';
+  Object.keys(rules).forEach(rule => {
+    extend(rule, rules[rule]);
+  });
   export default {
-    name: 'Forms',
+    name: 'renalFailure',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
       CardComponent,
-      TitleBar
+      ValidationProvider,
+      ValidationObserver
     },
     data() {
       return {
         checked:false,
-        checkboxClick : false,
+        DialysisTrue : false,
         checkboxClick2 : false,
         checkboxClick3 : false,
         checkboxClick4 : false,
+        hemoCheck : false,
         radio: 'default',
         isLoading: false,
         form: {
-          name: null,
-          email: null,
-          phone: null,
-          department: null,
-          subject: null,
-          question: null
+          name: null
         },
         customElementsForm: {
           checkbox: [],
@@ -174,7 +162,21 @@
       }
     },
     methods: {
-      submit() {},
+    submit(){
+      const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        var baseURL = this.$store.state.siteURL + 'api/renal_failures';
+        this.form.patientNo = localStorage.getItem('patientID');
+        this.form.whatTreatment = JSON.stringify(this.form.whatTreatment);
+        axios.post(baseURL, this.form).then((r) => {
+          loadingComponent.close();
+            this.$buefy.snackbar.open({
+              message: r.data.message,
+              queue: false
+            });
+        })
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {

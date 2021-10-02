@@ -148,11 +148,6 @@
                   label: 'UTI',
                   icon: 'circle-outline'
                 },
-                /* {
-                  to: '/diabetes',
-                  label: 'Diabetes',
-                  icon: 'circle-outline'
-                }, */
               ]
             },
             {
@@ -187,15 +182,10 @@
                 },
                 {
                   to: '/advisory',
-                  label: 'Advisory',
+                  label: 'Supplement/Stroid',
                   icon: 'circle-outline'
                 },
-                /* {
-                  to: '/fraility',
-                  label: 'Fraility',
-                  icon: 'circle-outline'
-                }, */
-              ]
+               ]
             },
             {
               label: 'Anaesthetic',

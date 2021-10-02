@@ -19,21 +19,13 @@
               </div>
       </div>
 </div>
-
  <div  v-if="checked === 'yes'">
-
-
 <div>
-   <p class="mb-4"> <b> "Prescribe H2 / PPI / Metoclopramide Warning Rapid Sequence No LMA."
+   <p class="mb-4"> <b>"Prescribe H2 / PPI / Metoclopramide Warning Rapid Sequence No LMA."
  </b> </p>
 </div>
-  <b-button type="sbmt-btn">Submit</b-button>
+  <b-button type="sbmt-btn" native-type="submit">Submit</b-button>
 </div>
-
-
-
-
-
         </form>
       </card-component>
 
@@ -42,42 +34,27 @@
 </template>
 
 <script>
+ import axios from "axios";
   import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
   import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
+  import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
+  import * as rules from 'vee-validate/dist/rules';
+  Object.keys(rules).forEach(rule => {
+    extend(rule, rules[rule]);
+  });
   export default {
-    name: 'Forms',
+    name: 'Reflux',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
-      CardComponent,
-      TitleBar
+        CardComponent,
+        ValidationProvider,
+        ValidationObserver
     },
     data() {
       return {
         checked :false,
         radio: 'default',
         isLoading: false,
-        form: {
-          name: null,
-          email: null,
-          phone: null,
-          department: null,
-          subject: null,
-          question: null
-        },
-        customElementsForm: {
-          checkbox: [],
-          radio: null,
-          switch: true,
-          file: null
-        },
+        form: { },
         departments: ['Business Development', 'Marketing', 'Sales']
       }
     },
@@ -87,7 +64,21 @@
       }
     },
     methods: {
-      submit() {},
+    submit(){
+      const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        this.form.reflux = 'yes';
+        var baseURL = this.$store.state.siteURL + 'api/hepatic_refluxes';
+        this.form.patientNo = localStorage.getItem('patientID');
+        axios.post(baseURL, this.form).then((r) => {
+          loadingComponent.close();
+            this.$buefy.snackbar.open({
+              message: r.data.message,
+              queue: false
+            });
+        })
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {

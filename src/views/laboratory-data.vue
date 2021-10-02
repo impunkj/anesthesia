@@ -3,6 +3,7 @@
 
     <section class="section is-main-section">
       <card-component title="Laboratory Data" icon="filter">
+          <ValidationObserver  v-slot="{ handleSubmit }" ref="form">
         <form @submit.prevent="submit">
 
 
@@ -202,7 +203,7 @@
             </div>
               <div class="column is-one-fifth">
               <b-field label="ECG">
-                <b-input v-model="form.ECG">
+                <b-input v-model="form.Ecg">
                 </b-input>
               </b-field>
             </div>
@@ -217,10 +218,10 @@
             <div class="column is-one-fifth cstm-radio-btn">
               <div class="block">
                 <b-field label="HIV">
-                  <b-radio v-model="form.HIV" name="name" native-value="hivplusve" type="is-info">
+                  <b-radio v-model="form.HIV" name="name" native-value="1" type="is-info">
                     +ve
                   </b-radio>
-                  <b-radio v-model="form.HIV" name="name" native-value="hivminusve" type="is-info">
+                  <b-radio v-model="form.HIV" name="name" native-value="0" type="is-info">
                     -ve
                   </b-radio>
                 </b-field>
@@ -229,10 +230,10 @@
             <div class="column is-one-fifth cstm-radio-btn">
               <div class="block">
                 <b-field label="HBS Ag">
-                  <b-radio v-model="form.HBSAg" name="hbs" native-value="hbsagplussve" type="is-info">
+                  <b-radio v-model="form.HBSAg" name="hbs" native-value="1" type="is-info">
                     +ve
                   </b-radio>
-                  <b-radio v-model="form.HBSAg" name="hbs" native-value="hbsagminusve" type="is-info">
+                  <b-radio v-model="form.HBSAg" name="hbs" native-value="0" type="is-info">
                     -ve
                   </b-radio>
                 </b-field>
@@ -241,10 +242,10 @@
             <div class="column is-one-fifth cstm-radio-btn">
               <div class="block">
                 <b-field label="HCV">
-                  <b-radio v-model="form.HCV" name="hcv" native-value="hcvplussve" type="is-info">
+                  <b-radio v-model="form.HCV" name="hcv" native-value="1" type="is-info">
                     +ve
                   </b-radio>
-                  <b-radio v-model="form.HCV" name="hcv" native-value="hcvminusve" type="is-info">
+                  <b-radio v-model="form.HCV" name="hcv" native-value="0" type="is-info">
                     -ve
                   </b-radio>
                 </b-field>
@@ -253,10 +254,10 @@
             <div class="column is-one-fifth cstm-radio-btn">
               <div class="block">
                 <b-field label="RTPCR">
-                  <b-radio v-model="form.rtpcr" name="rtpcr" native-value="rtpcrPlus" type="is-info">
+                  <b-radio v-model="form.rtpcr" name="rtpcr" native-value="1" type="is-info">
                     +ve
                   </b-radio>
-                  <b-radio v-model="form.rtpcr" name="rtpcr" native-value="rtpcrminus" type="is-info">
+                  <b-radio v-model="form.rtpcr" name="rtpcr" native-value="0" type="is-info">
                     -ve
                   </b-radio>
                 </b-field>
@@ -271,28 +272,28 @@
 
             <div class="column is-one-fifth">
               <b-field label="Other">
-                <b-input v-model="form.Other1">
+                <b-input v-model="form.other1">
                 </b-input>
               </b-field>
             </div>
 
               <div class="column is-one-fifth">
               <b-field label="Other">
-                <b-input v-model="form.Other2">
+                <b-input v-model="form.other2">
                 </b-input>
               </b-field>
             </div>
 
               <div class="column is-one-fifth">
               <b-field label="Other">
-                <b-input v-model="form.Other3">
+                <b-input v-model="form.other3">
                 </b-input>
               </b-field>
             </div>
 
               <div class="column is-one-fifth">
               <b-field label="Other">
-                <b-input v-model="form.Other4">
+                <b-input v-model="form.other4">
                 </b-input>
               </b-field>
             </div>
@@ -302,7 +303,7 @@
        <div class="columns">
             <div class="column is-6">
               <b-field label="Cardiac echo ">
-                <b-input maxlength="300" v-model="form.Ecg" type="textarea"></b-input>
+                <b-input maxlength="300" v-model="form.cardiacEcho" type="textarea"></b-input>
               </b-field>
             </div>
 
@@ -324,9 +325,10 @@
               </b-field>
             </div>
           </div>
-          <b-button type="sbmt-btn"   native-type="submit">Submit</b-button>
+          <b-button type="sbmt-btn"   @click="handleSubmit(submit)"  >Submit</b-button>
           <b-button class="ml-10" type="primary" @click="reset()">Reset</b-button>
         </form>
+          </ValidationObserver>
       </card-component>
 
     </section>
@@ -336,21 +338,19 @@
 <script>
   import axios from "axios";
   import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
   import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
+  import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
+  import * as rules from 'vee-validate/dist/rules';
+  Object.keys(rules).forEach(rule => {
+    extend(rule, rules[rule]);
+  });
+
   export default {
     name: 'Forms',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
       CardComponent,
-      TitleBar
+      ValidationProvider,
+      ValidationObserver
     },
     data() {
       return {
