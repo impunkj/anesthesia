@@ -5,6 +5,24 @@
       <card-component title="Surgery">
         <form @submit.prevent="submit">
 
+
+          <div class="columns">
+   <div class="column is-full cstm-radio-btn"  >
+              <div class="block">
+                <b-field label="">
+                  <b-radio v-model="checked" name="checkVal" native-value="yes" type="is-info">
+                    Yes
+                  </b-radio>
+                  <b-radio  v-model="checked"   name="checkVal" native-value="no" type="is-info">
+                    No
+                  </b-radio>
+                </b-field>
+              </div>
+      </div>
+</div>
+
+ <div  v-if="checked === 'yes'">
+
           <div class="columns">
             <div class="column pb-0">
               <b-field class="checkOut">
@@ -48,7 +66,9 @@
                 </b-field>
               </div>
           </div>
-          <b-button type="sbmt-btn"  native-type="submit">Submit</b-button>
+
+ <b-button type="sbmt-btn"  native-type="submit">Submit</b-button>
+           </div>
 
         </form>
       </card-component>
@@ -68,6 +88,7 @@ import CardComponent from '@/components/CardComponent'
     },
     data() {
       return {
+        checked: false,
          checkboxClick : false,
          checkboxClick2 : false,
         radio: 'default',
