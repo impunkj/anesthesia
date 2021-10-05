@@ -27,7 +27,7 @@
             Reports
         </router-link>
 
-      </b-navbar-item>
+      <!-- </b-navbar-item> -->
       <b-navbar-item href="#">
                 Settings
       </b-navbar-item>

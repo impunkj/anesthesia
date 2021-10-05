@@ -236,6 +236,41 @@ aside.aside::-webkit-scrollbar-thumb
 }
 
 .w-100{width: 100%;}
+.d-block{display: block;}
+
+/* .editdelte-btn a{
+    color: rgb(65, 55, 55);
+    border: 1px solid;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 4px;
+    margin-left: 20px;} */
+    .editdelte-btn i{padding-right: 5px;}
+    .chng-patient{
+        border: 1px solid #007bff;
+        color: #007bff;
+        padding: 7px 20px;
+        display: inline-block;
+        border-radius: 6px;
+        margin-right: 20px;
+        font-weight: 500;
+    }
+    .chng-patient:hover{background-color: #007bff; color: #fff !important;}
+
+    .new-patient{
+        border: 1px solid #2fb133;
+        color: #2fb133;
+        padding: 7px 20px;
+        display: inline-block;
+        border-radius: 6px;
+        margin-right: 20px;
+        font-weight: 500;
+    }
+
+    .new-patient:hover{background-color: #2fb133; color: #fff !important;}
 
 @media screen and (min-width: 1024px) {
 

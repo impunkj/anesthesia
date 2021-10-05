@@ -190,11 +190,11 @@
                   label: 'Advisory',
                   icon: 'circle-outline'
                 },
-                /* {
+                {
                   to: '/fraility',
                   label: 'Fraility',
                   icon: 'circle-outline'
-                }, */
+                },
               ]
             },
             {

@@ -2,11 +2,12 @@
   <div>
 
     <section class="section is-main-section">
-      <card-component title="Laboratory Data" icon="filter">
+      <card-component title="Laboratory Data" icon="filter" >
         <form @submit.prevent="submit">
 
 
           <div class="columns">
+
             <div class="column is-one-fifth">
               <b-field label="Total Bil">
                 <b-input v-model="form.totalBill">
@@ -341,7 +342,9 @@
   import CheckboxPicker from '@/components/CheckboxPicker'
   import RadioPicker from '@/components/RadioPicker'
   import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
+  import HeroBar from '@/components/HeroBar';
+
+
   export default {
     name: 'Forms',
     components: {
@@ -353,10 +356,12 @@
       TitleBar
     },
     data() {
+      // console.log(JSON.parse(localStorage.getItem("patientName")));
       return {
         radio: 'default',
         isLoading: false,
         form: {},
+        patientName :  localStorage.getItem("patientName"),
         customElementsForm: {
           checkbox: [],
           radio: null,
@@ -366,12 +371,16 @@
         departments: ['Business Development', 'Marketing', 'Sales']
       }
     },
+    mounted(){
+      var patientName = localStorage.getItem("patientName");
+    },
     computed: {
       titleStack() {
         return ['Admin', 'Forms']
       }
     },
     methods: {
+
       submit() {
         const loadingComponent = this.$buefy.loading.open({
                     container: this.isFullPage
