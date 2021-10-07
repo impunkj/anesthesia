@@ -2,12 +2,14 @@
   <div>
 
     <section class="section is-main-section">
-      <card-component title="Laboratory Data" icon="filter">
-          <ValidationObserver  v-slot="{ handleSubmit }" ref="form">
+
+      <card-component title="Laboratory Data" icon="filter" >
+        <ValidationObserver  v-slot="{ handleSubmit }" ref="form">
         <form @submit.prevent="submit">
 
 
           <div class="columns">
+
             <div class="column is-one-fifth">
               <b-field label="Total Bil">
                 <b-input v-model="form.totalBill">
@@ -344,7 +346,6 @@
   Object.keys(rules).forEach(rule => {
     extend(rule, rules[rule]);
   });
-
   export default {
     name: 'Forms',
     components: {
@@ -353,10 +354,12 @@
       ValidationObserver
     },
     data() {
+      // console.log(JSON.parse(localStorage.getItem("patientName")));
       return {
         radio: 'default',
         isLoading: false,
         form: {},
+        patientName :  localStorage.getItem("patientName"),
         customElementsForm: {
           checkbox: [],
           radio: null,
@@ -366,12 +369,16 @@
         departments: ['Business Development', 'Marketing', 'Sales']
       }
     },
+    mounted(){
+      var patientName = localStorage.getItem("patientName");
+    },
     computed: {
       titleStack() {
         return ['Admin', 'Forms']
       }
     },
     methods: {
+
       submit() {
         const loadingComponent = this.$buefy.loading.open({
                     container: this.isFullPage

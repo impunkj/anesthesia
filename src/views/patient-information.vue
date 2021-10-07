@@ -344,9 +344,14 @@ Object.keys(rules).forEach(rule => {
     },
     methods: {
       submit() {
+
         const loadingComponent = this.$buefy.loading.open({
                     container: this.isFullPage
         })
+
+        localStorage.setItem("patientName", this.form.name);
+
+
         var baseURL = this.$store.state.siteURL + 'api/patient_informations';
         axios.post(baseURL, this.form).then((r) => {
           loadingComponent.close();
@@ -357,10 +362,13 @@ Object.keys(rules).forEach(rule => {
             queue: false
           });
           localStorage.setItem('patientID', r.data.data.id);
+          //  console.log(localStorage.getItem(JSON.stringify('patientID'), "name"))
+
         }).catch(error => {
            console.log(error.data.error.message);
            console.log(error.response);
       });
+
       },
       calculateBMI(){
         console.log(this.form.weight);
@@ -384,6 +392,9 @@ Object.keys(rules).forEach(rule => {
           queue: false
         })
       }
+
+
+
     }
   }
 

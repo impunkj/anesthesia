@@ -185,6 +185,11 @@
                   label: 'Supplement/Stroid',
                   icon: 'circle-outline'
                 },
+                {
+                  to: '/fraility',
+                  label: 'Fraility',
+                  icon: 'circle-outline'
+                },
                ]
             },
             {
