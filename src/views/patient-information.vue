@@ -11,7 +11,7 @@
               <div class="columns">
                 <div class="column is-half">
                   <b-field label="Date">
-                    <b-datepicker v-model="form.dateOfAdmission">
+                    <b-datepicker    v-model="form.dateOfAdmission">
                     </b-datepicker>
                   </b-field>
                 </div>
@@ -39,7 +39,7 @@
                   rules="required|numeric|max:2"
                   vid="age"
                   name="Age"
-                  v-slot="{ errors }"
+                  v-slot="{ errors , valid}"
                   >
                   <b-field label="Age"  :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
                     <b-input   v-model="form.age"></b-input>
@@ -51,7 +51,7 @@
                   rules="required|numeric|max:6"
                   vid="age"
                   name="Age"
-                  v-slot="{ errors }" >
+                  v-slot="{ errors, valid }" >
                 <b-field label="Pincode"  :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
                       <b-input v-model="form.pincode"></b-input>
                 </b-field>
@@ -70,7 +70,7 @@
                   rules="required"
                   vid="name"
                   name="name"
-                  v-slot="{ errors }"
+                  v-slot="{ errors, valid }"
                   >
                   <b-field label="Name"   :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors">
                     <b-input  name="name"  v-model="form.name"   >
@@ -92,7 +92,7 @@
                   rules="required"
                   vid="gender"
                   name="gender"
-                  v-slot="{ errors }"
+                  v-slot="{ errors , valid}"
                   >
                   <b-field label="Sex"  :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
                     <b-radio v-model="form.gender" name="gender"   native-value="male" type="is-info">
@@ -122,7 +122,7 @@
                   rules="required"
                   vid="proposedOperation"
                   name="proposedOperation"
-                  v-slot="{ errors }"
+                  v-slot="{ errors, valid }"
                   >
               <b-field label="Proposed Operation"  :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors"  >
                 <b-input maxlength="300" type="textarea" v-model="form.proposedOperation"></b-input>
@@ -135,7 +135,7 @@
                   rules="required"
                   vid="side"
                   name="Side Operations"
-                  v-slot="{ errors }"
+                  v-slot="{ errors, valid }"
                   >
               <b-field label="Side" :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors"   >
                 <div class="select is-normal w-100" >
@@ -168,7 +168,7 @@
                   rules="required"
                   vid="BP"
                   name="BP"
-                  v-slot="{ errors }"
+                  v-slot="{ errors, valid }"
                   >
 
                   <b-field label="BP" :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
@@ -183,7 +183,7 @@
                   rules="required"
                   vid="HR"
                   name="HR"
-                  v-slot="{ errors }"
+                  v-slot="{ errors, valid }"
                   >
                   <b-field label="HR" :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors"  >
                     <b-input  v-model="form.HR">
@@ -203,7 +203,7 @@
                   rules="required"
                   vid="sao2"
                   name="Sao2"
-                  v-slot="{ errors }"
+                  v-slot="{ errors, valid }"
                   >
                   <b-field label="SaO2"  :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
                     <b-input   v-model="form.sao2">
@@ -228,7 +228,7 @@
                   rules="required"
                   vid="weight"
                   name="Weight"
-                  v-slot="{ errors }"
+                  v-slot="{ errors, valid }"
                   >
                   <b-field label="Weight (kg)" :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
                     <b-input   v-model="form.weight"  @input="calculateBMI()" >
@@ -299,15 +299,14 @@
 
 <script>
   import axios from "axios";
+  import dayjs from 'dayjs'
   import mapValues from 'lodash/mapValues'
   import CardComponent from '@/components/CardComponent'
   import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
   import * as rules from 'vee-validate/dist/rules';
-
 Object.keys(rules).forEach(rule => {
   extend(rule, rules[rule]);
 });
-
   export default {
     name: 'Forms',
     components: {
@@ -319,23 +318,19 @@ Object.keys(rules).forEach(rule => {
       return {
         radio: 'default',
         isLoading: false,
-        form: {
-          side: "",
-          name:null,
-          email: null,
-          phone: null,
-          department: null,
-          subject: null,
-          question: null
-        },
+        form: this.getClearFormObject(),
         customElementsForm: {
           checkbox: [],
           radio: null,
           switch: true,
           file: null
         },
+        test:[],
         departments: ['Business Development', 'Marketing', 'Sales']
       }
+    },
+     mounted(){
+         this.getPatientInfo();
     },
     computed: {
       titleStack() {
@@ -344,31 +339,52 @@ Object.keys(rules).forEach(rule => {
     },
     methods: {
       submit() {
-
         const loadingComponent = this.$buefy.loading.open({
                     container: this.isFullPage
         })
-
         localStorage.setItem("patientName", this.form.name);
-
-
         var baseURL = this.$store.state.siteURL + 'api/patient_informations';
-        axios.post(baseURL, this.form).then((r) => {
-          loadingComponent.close();
-          console.log(r);
-          console.log(r.data.data.id);
-          this.$buefy.snackbar.open({
-            message: r.data.message,
-            queue: false
-          });
-          localStorage.setItem('patientID', r.data.data.id);
-          //  console.log(localStorage.getItem(JSON.stringify('patientID'), "name"))
 
-        }).catch(error => {
-           console.log(error.data.error.message);
-           console.log(error.response);
-      });
+        var $patientID = localStorage.getItem('patientID');
+          if($patientID){
+                this.updatePatientInfo();
+          }else{
+                this.createPatientInfo();
+          }
+           loadingComponent.close();
+      },
+      createPatientInfo(){
+           var baseURL = this.$store.state.siteURL + 'api/patient_informations';
+            axios.post(baseURL, this.form).then((r) => {
+            this.$buefy.snackbar.open({
+              message: r.data.message,
+              queue: false
+            });
+            localStorage.setItem('patientID', r.data.data.id);
 
+          }).catch(error => {
+            console.log(error.data.error.message);
+            console.log(error.response);
+        });
+      },
+      updatePatientInfo(){
+            var patientID =  localStorage.getItem('patientID');
+            var baseURL = this.$store.state.siteURL + 'api/patient_informations/' + patientID;
+            this.form.patientID = patientID;
+            axios.put(baseURL, this.form).then((r) => {
+            console.log(r);
+            console.log(r.data.data.id);
+            this.$buefy.snackbar.open({
+              message: r.data.message,
+              queue: false
+            });
+            localStorage.setItem('patientID', r.data.data.id);
+            //  console.log(localStorage.getItem(JSON.stringify('patientID'), "name"))
+
+          }).catch(error => {
+            console.log(error.data.error.message);
+            console.log(error.response);
+        });
       },
       calculateBMI(){
         console.log(this.form.weight);
@@ -391,10 +407,25 @@ Object.keys(rules).forEach(rule => {
           message: 'Reset successfully',
           queue: false
         })
+      },
+      //// get patientInfo
+      getPatientInfo(){
+       var patientID =  localStorage.getItem('patientID');
+        var urlTohit = this.$store.state.siteURL + 'api/patient_informations/' + patientID;
+        axios
+          .get(urlTohit)
+          .then(r => {
+            this.form = r.data.data;
+            this.form.dateOfAdmission =  new Date(r.data.data.dateOfAdmission);
+            this.form.timeOfAdmission =  new Date(r.data.data.timeOfAdmission);
+            this.form.dateOfBirth =  new Date(r.data.data.dateOfBirth);
+          });
+      }, /// GetpatientInfo
+      getClearFormObject () {
+          return {
+
+          }
       }
-
-
-
     }
   }
 

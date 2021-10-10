@@ -6,10 +6,10 @@
     </div>
 
     <div class="column pb-0">
- <p class="is-flex-grow-1 has-text-right editdelte-btn">
+      <p class="is-flex-grow-1 has-text-right editdelte-btn">
 
-          <router-link to="#" class="chng-patient"> <i class="far fa-user"></i>  Change Patient </router-link>
-            <router-link to="#" class="new-patient">  <i class="far fa-user"></i>  New Patient </router-link>
+          <router-link to="/" class="chng-patient"> <i class="far fa-user"></i>  Change Patient </router-link>
+          <button to="#" class="new-patient"  @click="newPatient()" >  <i class="far fa-user"></i>  New Patient </button>
       </p>
     </div>
   </div>
@@ -71,6 +71,12 @@ export default {
   methods: {
     headerIconClick () {
       this.$emit('header-icon-click')
+    },
+    newPatient(){
+      console.log('new patients');
+      localStorage.removeItem('patientID');
+      localStorage.removeItem('patientName');
+       this.$router.push({name:'PatientInformation'});
     }
   }
 }

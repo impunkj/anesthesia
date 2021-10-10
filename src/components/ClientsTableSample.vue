@@ -23,7 +23,16 @@
         </div>
       </b-table-column>
       <b-table-column label="Patient ID" field="id" sortable v-slot="props">
-        {{ props.row.patientNo }}
+        {{ props.row.id }}
+      </b-table-column>
+       <b-table-column label="Patient Name" field="name" sortable v-slot="props">
+        {{ props.row.name }}
+      </b-table-column>
+       <b-table-column label="Hospital Name" field="hospitalName" sortable v-slot="props">
+        {{ props.row.hospitalName }}
+      </b-table-column>
+       <b-table-column label="Pin Code" field="pincode" sortable v-slot="props">
+        {{ props.row.pincode }}
       </b-table-column>
       <b-table-column label="Date Of Admission" field="dateOfAdmission" sortable v-slot="props">
         {{ forMatDate(props.row.dateOfAdmission) }}
@@ -32,16 +41,18 @@
         {{ props.row.proposedOperation }}
       </b-table-column>
 
-
-
-      <b-table-column label="Name" field="name" sortable v-slot="props">
-        {{ props.row.name }}
-      </b-table-column>
       <b-table-column  label="Report"  custom-key="actions" cell-class="is-actions-cell" v-slot="props">
         <div class="buttons ">
-          <button class="button is-small is-primary"  @click="DownloadPDF(props.row.patientNo )">
-            <b-icon icon="file-document" size="is-small"/>
+          <b-tooltip label="Generate Report" position="is-left">
+          <button class="button is-small "  @click="DownloadPDF(props.row.patientNo )">
+            <b-icon icon="file-document" size="is-medium"/>
           </button>
+          </b-tooltip>
+            <b-tooltip label="Click to Edit Patient" position="is-top"  class="ml-2">
+              <button class="button is-small "  @click="editPatient(props.row.id, props.row.name)">
+                <b-icon icon="clipboard-account-outline" size="is-medium"/>
+              </button>
+            </b-tooltip>
         </div>
       </b-table-column>
 
@@ -163,6 +174,12 @@ export default {
     forMatDate(v){
         return dayjs(new Date(v).toLocaleString("en-US", {timeZone: "America/New_York"})).format('MMM D, YYYY')
       /// return dayjs(v).format('MMM D, YYYY')
+    },
+    editPatient(patientID, patientName){
+         //// Set Current Patient Name and ID
+        localStorage.setItem('patientID', patientID);
+        localStorage.setItem('patientName', patientName);
+        this.$router.push({name:'PatientInformation'});
     }
   }
 }

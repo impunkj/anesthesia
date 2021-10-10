@@ -120,7 +120,7 @@
         >
           <b-icon icon="logout" custom-size="default" />
           <span>Log out</span> -->
-        </a>
+
       </div>
     </div>
   </nav>

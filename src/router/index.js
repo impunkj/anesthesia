@@ -31,7 +31,7 @@ const routes = [
       title: 'Patient Information'
     },
     path: '/patient-information',
-    name: 'Patient Information',
+    name: 'PatientInformation',
     component: () => import(/* webpackChunkName: "forms" */ '../views/patient-information.vue')
   },
   {
