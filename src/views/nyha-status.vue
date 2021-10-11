@@ -79,6 +79,9 @@
         }
       }
     },
+      mounted(){
+         this.getNyhaData();
+    },
     computed: {
       titleStack() {
         return ['Admin', 'Forms']

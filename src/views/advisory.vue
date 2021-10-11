@@ -62,6 +62,9 @@
         departments: ['Business Development', 'Marketing', 'Sales']
       }
     },
+       mounted(){
+         this.getAdvisoryData();
+    },
     computed: {
       titleStack() {
         return ['Admin', 'Forms']
@@ -69,18 +72,48 @@
     },
     methods: {
     submit(){
-      const loadingComponent = this.$buefy.loading.open({
+        const loadingComponent = this.$buefy.loading.open({
                     container: this.isFullPage
         })
-        this.form.supplement = 'yes';
+        if(this.form.id){
+           this.updateAdvisoryData();
+        }else {
+          this.createAdvisoryData();
+        }
+        loadingComponent.close();
+      },
+      createAdvisoryData(){
+        const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        var patientID = localStorage.getItem('patientID');
+        if(!patientID){
+           this.$buefy.snackbar.open({
+            message: 'Please saved a patient Information first.',
+            queue: false
+          });
+          return;
+        }
         var baseURL = this.$store.state.siteURL + 'api/steroids';
-        this.form.patientNo = localStorage.getItem('patientID');
+        this.form.patientNo = patientID;
         axios.post(baseURL, this.form).then((r) => {
           loadingComponent.close();
-            this.$buefy.snackbar.open({
-              message: r.data.message,
-              queue: false
-            });
+          this.form = r.data.data;
+          this.$buefy.snackbar.open({
+            message: r.data.message,
+            queue: false
+          });
+        })
+      },
+      updateAdvisoryData(){
+        var ID = this.form.id;
+        var baseURL = this.$store.state.siteURL + 'api/steroids/' + ID;
+        this.form.patientNo = localStorage.getItem('patientID');
+        axios.put(baseURL, this.form).then((r) => {
+          this.$buefy.snackbar.open({
+            message: r.data.message,
+            queue: false
+          });
         })
       },
       reset() {
@@ -95,7 +128,27 @@
           message: 'Reset successfully',
           queue: false
         })
-      }
+      },
+      getAdvisoryData(){
+        var patientID = localStorage.getItem('patientID');
+        if(!patientID){
+          return;
+        }
+        const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        var patientID =  localStorage.getItem('patientID');
+        var urlTohit = this.$store.state.siteURL + 'api/steroids/' + patientID;
+        axios
+          .get(urlTohit)
+          .then(r => {
+            this.form = r.data.data;
+            if(r.data.success){
+              this.checked = 'yes';
+            }
+          });
+          loadingComponent.close();
+      }, /// GetpatientInfo
     }
   }
 

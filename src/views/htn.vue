@@ -160,7 +160,7 @@
           });
           return;
         }
-        var baseURL = this.$store.state.siteURL + 'api/laboratorydatas';
+        var baseURL = this.$store.state.siteURL + 'api/cvs_htns';
         this.form.patientNo = patientID;
         axios.post(baseURL, this.form).then((r) => {
           loadingComponent.close();
@@ -173,7 +173,7 @@
       },
       updateHtnData(){
         var ID = this.form.id;
-        var baseURL = this.$store.state.siteURL + 'api/laboratorydatas/' + ID;
+        var baseURL = this.$store.state.siteURL + 'api/cvs_htns/' + ID;
         this.form.patientNo = localStorage.getItem('patientID');
         axios.put(baseURL, this.form).then((r) => {
           this.$buefy.snackbar.open({

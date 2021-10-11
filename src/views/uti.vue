@@ -131,6 +131,9 @@
 
       }
     },
+     mounted(){
+         this.getUtiData();
+    },
     computed: {
       titleStack() {
         return ['Admin', 'Forms']
@@ -138,18 +141,48 @@
     },
     methods: {
     submit(){
-      const loadingComponent = this.$buefy.loading.open({
+        const loadingComponent = this.$buefy.loading.open({
                     container: this.isFullPage
         })
+        if(this.form.id){
+           this.updateUtiData();
+        }else {
+          this.createUtiData();
+        }
+        loadingComponent.close();
+      },
+      createUtiData(){
+        const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        var patientID = localStorage.getItem('patientID');
+        if(!patientID){
+           this.$buefy.snackbar.open({
+            message: 'Please saved a patient Information first.',
+            queue: false
+          });
+          return;
+        }
         var baseURL = this.$store.state.siteURL + 'api/renal_utis';
-        this.form.patientNo = localStorage.getItem('patientID');
-        this.form.whatTreatment = JSON.stringify(this.form.whatTreatment);
+        this.form.patientNo = patientID;
         axios.post(baseURL, this.form).then((r) => {
           loadingComponent.close();
-            this.$buefy.snackbar.open({
-              message: r.data.message,
-              queue: false
-            });
+          this.form = r.data.data;
+          this.$buefy.snackbar.open({
+            message: r.data.message,
+            queue: false
+          });
+        })
+      },
+      updateUtiData(){
+        var ID = this.form.id;
+        var baseURL = this.$store.state.siteURL + 'api/renal_utis/' + ID;
+        this.form.patientNo = localStorage.getItem('patientID');
+        axios.put(baseURL, this.form).then((r) => {
+          this.$buefy.snackbar.open({
+            message: r.data.message,
+            queue: false
+          });
         })
       },
 
@@ -173,7 +206,27 @@
           message: 'Reset successfully',
           queue: false
         })
-      }
+      },
+      getUtiData(){
+        var patientID = localStorage.getItem('patientID');
+        if(!patientID){
+          return;
+        }
+        const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        var patientID =  localStorage.getItem('patientID');
+        var urlTohit = this.$store.state.siteURL + 'api/renal_utis/' + patientID;
+        axios
+          .get(urlTohit)
+          .then(r => {
+            this.form = r.data.data;
+            if(r.data.success){
+              this.checked = 'yes';
+            }
+          });
+          loadingComponent.close();
+      }, /// GetpatientInfo
     }
   }
 

@@ -111,27 +111,59 @@ import CardComponent from '@/components/CardComponent'
         form: {}
       }
     },
+     mounted(){
+         this.getSnoringData();
+    },
     computed: {
       titleStack() {
         return ['Admin', 'Forms']
       }
     },
     methods: {
-       submit() {
-            const loadingComponent = this.$buefy.loading.open({
-                        container: this.isFullPage
-            })
-            var baseURL = this.$store.state.siteURL + 'api/resp_snorings';
-            this.form.patientNo = localStorage.getItem('patientID');
-            axios.post(baseURL, this.form).then((r) => {
-              loadingComponent.close();
-                this.$buefy.snackbar.open({
-                  message: r.data.message,
-                  queue: false
-                });
-            }).catch(error => {
-                console.log("ERRRR:: ",error.response.data);
-            });
+      submit(){
+        const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        if(this.form.id){
+           this.updateSnoringData();
+        }else {
+          this.createSnoringData();
+        }
+        loadingComponent.close();
+      },
+      createSnoringData(){
+        const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        var patientID = localStorage.getItem('patientID');
+        if(!patientID){
+           this.$buefy.snackbar.open({
+            message: 'Please saved a patient Information first.',
+            queue: false
+          });
+          return;
+        }
+        var baseURL = this.$store.state.siteURL + 'api/resp_snorings';
+        this.form.patientNo = patientID;
+        axios.post(baseURL, this.form).then((r) => {
+          loadingComponent.close();
+          this.form = r.data.data;
+          this.$buefy.snackbar.open({
+            message: r.data.message,
+            queue: false
+          });
+        })
+      },
+      updateSnoringData(){
+        var ID = this.form.id;
+        var baseURL = this.$store.state.siteURL + 'api/resp_snorings/' + ID;
+        this.form.patientNo = localStorage.getItem('patientID');
+        axios.put(baseURL, this.form).then((r) => {
+          this.$buefy.snackbar.open({
+            message: r.data.message,
+            queue: false
+          });
+        })
       },
       reset() {
         this.form = mapValues(this.form, (item) => {
@@ -145,7 +177,27 @@ import CardComponent from '@/components/CardComponent'
           message: 'Reset successfully',
           queue: false
         })
-      }
+      },
+      getSnoringData(){
+        var patientID = localStorage.getItem('patientID');
+        if(!patientID){
+          return;
+        }
+        const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        var patientID =  localStorage.getItem('patientID');
+        var urlTohit = this.$store.state.siteURL + 'api/resp_snorings/' + patientID;
+        axios
+          .get(urlTohit)
+          .then(r => {
+            this.form = r.data.data;
+            if(r.data.success){
+              this.checked = 'yes';
+            }
+          });
+          loadingComponent.close();
+      }, /// GetpatientInfo
     }
   }
 

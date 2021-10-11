@@ -99,6 +99,9 @@
         }
       }
     },
+     mounted(){
+         this.getPaceMakerData();
+    },
     computed: {
       titleStack() {
         return ['Admin', 'Forms']
