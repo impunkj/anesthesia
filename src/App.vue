@@ -210,7 +210,12 @@
                 },
 
               ]
-            }
+            },
+             {
+               to: '/covid',
+                  label: 'Covid',
+                  icon: 'medical-bag'
+            },
           ]
         ]
       }

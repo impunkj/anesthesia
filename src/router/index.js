@@ -268,6 +268,14 @@ const routes = [
     name: 'Advisory',
     component: () => import(/* webpackChunkName: "forms" */ '../views/advisory.vue')
   },
+  {
+    meta: {
+      title: 'Covid'
+    },
+    path: '/covid',
+    name: 'Covid',
+    component: () => import(/* webpackChunkName: "forms" */ '../views/covid.vue')
+  },
 ]
 
 const router = new VueRouter({
