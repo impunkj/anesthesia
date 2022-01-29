@@ -11,14 +11,14 @@
               <div class="columns">
                 <div class="column is-half">
                   <b-field label="Date">
-                    <b-datepicker    v-model="form.dateOfAdmission">
+                    <b-datepicker   v-model="form.dateOfAdmission">
                     </b-datepicker>
                   </b-field>
                 </div>
 
                 <div class="column is-half">
                   <b-field label="Time">
-                    <b-timepicker v-model="form.timeOfAdmission">
+                    <b-timepicker   locale="en-IN"  v-model="form.timeOfAdmission">
                     </b-timepicker>
                   </b-field>
                 </div>
@@ -42,18 +42,18 @@
                   v-slot="{ errors , valid}"
                   >
                   <b-field label="Age"  :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
-                    <b-input   v-model="form.age"></b-input>
+                    <b-input   v-model="form.age" @keypress.native="isNumber($event)" ></b-input>
                   </b-field>
                 </ValidationProvider>
                 </div>
                 <div class="column is-6">
                 <ValidationProvider
                   rules="required|numeric|max:6"
-                  vid="age"
-                  name="Age"
+                  vid="pincode"
+                  name="Pincode"
                   v-slot="{ errors, valid }" >
                 <b-field label="Pincode"  :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
-                      <b-input v-model="form.pincode"></b-input>
+                      <b-input v-model="form.pincode"  @keypress.native="isNumber($event)" ></b-input>
                 </b-field>
                 </ValidationProvider>
 
@@ -158,8 +158,6 @@
               </b-field>
             </div>
           </div>
-
-
           <div class="columns">
             <div class="column is-one-third ">
               <div class="columns">
@@ -170,9 +168,8 @@
                   name="BP"
                   v-slot="{ errors, valid }"
                   >
-
                   <b-field label="BP" :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
-                    <b-input  v-model="form.BP">
+                    <b-input  v-model="form.BP"   @input=repla()  @keypress.native="isNumber($event)" >
                     </b-input>
                   </b-field>
                       </ValidationProvider>
@@ -186,7 +183,7 @@
                   v-slot="{ errors, valid }"
                   >
                   <b-field label="HR" :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors"  >
-                    <b-input  v-model="form.HR">
+                    <b-input  v-model="form.HR" @keypress.native="isNumber($event)" >
                     </b-input>
                   </b-field>
                       </ValidationProvider>
@@ -206,17 +203,24 @@
                   v-slot="{ errors, valid }"
                   >
                   <b-field label="SaO2"  :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
-                    <b-input   v-model="form.sao2">
+                    <b-input   v-model="form.sao2"  @keypress.native="isNumber($event)" >
                     </b-input>
                   </b-field>
                       </ValidationProvider>
                 </div>
 
                 <div class="column is-half">
-                  <b-field label="Height(cm)">
-                    <b-input v-model="form.height">
+                 <ValidationProvider
+                  rules="required"
+                  vid="height"
+                  name="Height"
+                  v-slot="{ errors, valid }"
+                  >
+                  <b-field label="Height(cm)"    :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors"   >
+                    <b-input v-model="form.height"  @keypress.native="isNumber($event)" >
                     </b-input>
                   </b-field>
+                  </ValidationProvider>
                 </div>
               </div>
             </div>
@@ -231,7 +235,7 @@
                   v-slot="{ errors, valid }"
                   >
                   <b-field label="Weight (kg)" :type="{ 'is-danger': errors[0],  'is-success': valid }"  :message="errors" >
-                    <b-input   v-model="form.weight"  @input="calculateBMI()" >
+                    <b-input   v-model="form.weight" @keypress.native="isNumber($event)"   @input="calculateBMI()" >
                     </b-input>
                   </b-field>
                 </ValidationProvider>
@@ -315,6 +319,7 @@ Object.keys(rules).forEach(rule => {
       ValidationObserver
     },
     data() {
+      const min = new Date();
       return {
         radio: 'default',
         isLoading: false,
@@ -338,6 +343,12 @@ Object.keys(rules).forEach(rule => {
       }
     },
     methods: {
+      repla(){
+          if(this.form.BP.length == 3){
+              this.form.BP = this.form.BP + '/';
+          }
+          console.log(new Date());
+      },
       submit() {
         const loadingComponent = this.$buefy.loading.open({
                     container: this.isFullPage
@@ -415,12 +426,24 @@ Object.keys(rules).forEach(rule => {
         axios
           .get(urlTohit)
           .then(r => {
+            console.log('XXXXXXXXXx');
             this.form = r.data.data;
             this.form.dateOfAdmission =  new Date(r.data.data.dateOfAdmission);
             this.form.timeOfAdmission =  new Date(r.data.data.timeOfAdmission);
             this.form.dateOfBirth =  new Date(r.data.data.dateOfBirth);
+          }).catch(error => {
+              console.log('error.response.data.error');
+              this.form.timeOfAdmission =  new Date();
           });
       }, /// GetpatientInfo
+    isNumber(evt) {
+      evt = (evt) ? evt : window.event;
+      var charCode = (evt.which) ? evt.which : evt.keyCode;
+      if ((charCode > 31 && (charCode < 48 || charCode > 57))  && charCode !== 46  && charCode !== 47){
+          evt.preventDefault();
+      }
+      return true;
+    }, 
       getClearFormObject () {
           return {
 
