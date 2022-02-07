@@ -1,8 +1,25 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import store from '../store'
 
 Vue.use(VueRouter)
+
+const ifNotAuthenticated = (to, from, next) => {
+  if (!store.state.idToken) {
+    next()
+    return
+  }
+  next('/')
+}
+
+const ifAuthenticated = (to, from, next) => {
+  if (store.state.idToken) {
+    next()
+    return
+  }
+  next('/login')
+}
 
 const routes = [
   {
@@ -13,18 +30,8 @@ const routes = [
     },
     path: '/',
     name: 'home',
-    component: Home
-  },
-  {
-    meta: {
-      title: 'Tables'
-    },
-    path: '/tables',
-    name: 'tables',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "tables" */ '../views/Tables.vue')
+    component: Home,
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -32,7 +39,8 @@ const routes = [
     },
     path: '/patient-information',
     name: 'PatientInformation',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/patient-information.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/patient-information.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -40,7 +48,8 @@ const routes = [
     },
     path: '/laboratory-data',
     name: 'Laboratory Data',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/laboratory-data.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/laboratory-data.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -48,7 +57,8 @@ const routes = [
     },
     path: '/htn',
     name: 'HTN',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/htn.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/htn.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -56,7 +66,8 @@ const routes = [
     },
     path: '/angina',
     name: 'Angina',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/angina.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/angina.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -64,7 +75,8 @@ const routes = [
     },
     path: '/mi',
     name: 'MI',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/mi.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/mi.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -72,7 +84,8 @@ const routes = [
     },
     path: '/nyha-status',
     name: 'NYHA Status',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/nyha-status.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/nyha-status.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -80,23 +93,17 @@ const routes = [
     },
     path: '/pacemaker',
     name: 'Pacemaker',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/pacemaker.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/pacemaker.vue'),
+    beforeEnter: ifAuthenticated
   },
-  /* {
-    meta: {
-      title: 'Failure'
-    },
-    path: '/failure',
-    name: 'Failure',
-    component: () => import(  '../views/failure.vue')
-  }, */
   {
     meta: {
       title: 'Asthma'
     },
     path: '/asthma',
     name: 'Asthma',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/asthma.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/asthma.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -104,7 +111,8 @@ const routes = [
     },
     path: '/smoking',
     name: 'Smoking',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/smoking.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/smoking.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -112,7 +120,8 @@ const routes = [
     },
     path: '/snoring',
     name: 'Snoring',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/snoring.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/snoring.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -120,7 +129,8 @@ const routes = [
     },
     path: '/cough',
     name: 'Cough',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/cough.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/cough.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -128,7 +138,8 @@ const routes = [
     },
     path: '/sputum',
     name: 'Sputum',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/sputum.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/sputum.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -136,7 +147,8 @@ const routes = [
     },
     path: '/stroke',
     name: 'Stroke',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/stroke.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/stroke.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -144,7 +156,8 @@ const routes = [
     },
     path: '/epilesy',
     name: 'Epilesy',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/epilesy.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/epilesy.vue'),
+    beforeEnter: ifAuthenticated
   },
 
   {
@@ -153,7 +166,8 @@ const routes = [
     },
     path: '/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/login.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/login.vue'),
+    beforeEnter: ifNotAuthenticated
   },
   {
     meta: {
@@ -161,7 +175,8 @@ const routes = [
     },
     path: '/surgery',
     name: 'Surgery',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/surgery.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/surgery.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -169,7 +184,8 @@ const routes = [
     },
     path: '/cognitive-impairment',
     name: 'Cognitive impairment',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/cognitive-impairment.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/cognitive-impairment.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -177,7 +193,8 @@ const routes = [
     },
     path: '/stones',
     name: 'Stones',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/stones.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/stones.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -185,7 +202,8 @@ const routes = [
     },
     path: '/uti',
     name: 'UTI',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/uti.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/uti.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -193,7 +211,8 @@ const routes = [
     },
     path: '/diabetes',
     name: 'Diabetes',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/diabetes.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/diabetes.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -201,7 +220,8 @@ const routes = [
     },
     path: '/jaundice',
     name: 'Jaundice',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/jaundice.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/jaundice.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -209,7 +229,8 @@ const routes = [
     },
     path: '/reflux',
     name: 'Reflux',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/reflux.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/reflux.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -217,7 +238,8 @@ const routes = [
     },
     path: '/thyroid',
     name: 'Thyroid',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/thyroid.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/thyroid.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -225,7 +247,8 @@ const routes = [
     },
     path: '/renl-failure',
     name: 'Failure',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/renl-failure.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/renl-failure.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -233,7 +256,8 @@ const routes = [
     },
     path: '/fraility',
     name: 'Fraility',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/fraility.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/fraility.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -241,7 +265,8 @@ const routes = [
     },
     path: '/anaesthetic-history',
     name: 'Anaesthetic History',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/anaesthetic-history.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/anaesthetic-history.vue'),
+    beforeEnter: ifAuthenticated
   },
   ,
   {
@@ -250,7 +275,8 @@ const routes = [
     },
     path: '/physical-exam',
     name: 'Physical Exam',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/physical-exam.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/physical-exam.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -258,7 +284,8 @@ const routes = [
     },
     path: '/documnet-upload',
     name: 'Document Upload',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/documnet-upload.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/documnet-upload.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {
@@ -266,7 +293,8 @@ const routes = [
     },
     path: '/advisory',
     name: 'Advisory',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/advisory.vue')
+    component: () => import(/* webpackChunkName: "forms" */ '../views/advisory.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     meta: {

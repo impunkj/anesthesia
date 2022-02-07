@@ -25,7 +25,7 @@
 
 <div>
    <p class="mb-4">  <b-field class="checkOut">
-            <b-checkbox  type="is-info" native-value="yes" > <b> Supplement Steroid pre-op  </b>  </b-checkbox>
+            <b-checkbox  type="is-info" native-value="yes"   v-model="form.supplement" > <b> Supplement Steroid pre-op  </b>  </b-checkbox>
         </b-field>
 </p>
 </div>
@@ -58,11 +58,12 @@
         radio: 'default',
         isLoading: false,
         form: {
+          supplement: false
         },
         departments: ['Business Development', 'Marketing', 'Sales']
       }
     },
-       mounted(){
+    mounted(){
          this.getAdvisoryData();
     },
     computed: {
@@ -130,24 +131,27 @@
         })
       },
       getAdvisoryData(){
-        var patientID = localStorage.getItem('patientID');
-        if(!patientID){
-          return;
-        }
-        const loadingComponent = this.$buefy.loading.open({
-                    container: this.isFullPage
-        })
-        var patientID =  localStorage.getItem('patientID');
-        var urlTohit = this.$store.state.siteURL + 'api/steroids/' + patientID;
-        axios
-          .get(urlTohit)
-          .then(r => {
-            this.form = r.data.data;
-            if(r.data.success){
-              this.checked = 'yes';
-            }
-          });
-          loadingComponent.close();
+          var patientID = localStorage.getItem('patientID');
+          if(!patientID){
+            return;
+          }
+          const loadingComponent = this.$buefy.loading.open({
+                      container: this.isFullPage
+          })
+          var patientID =  localStorage.getItem('patientID');
+          var urlTohit = this.$store.state.siteURL + 'api/steroids/' + patientID;
+          axios
+            .get(urlTohit)
+            .then(r => {
+              if(r.data.data.supplement){
+                this.form.supplement = true;
+              }
+              this.form = r.data.data;
+              if(r.data.success){
+                this.checked = 'yes';
+              }
+            });
+            loadingComponent.close();
       }, /// GetpatientInfo
     }
   }

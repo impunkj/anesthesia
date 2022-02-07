@@ -17,8 +17,15 @@
     <div class="navbar-brand no-negative-margin-left">
       <a title="Collapse" class="navbar-item is-desktop-icon-only"><span class="icon"><i class="mdi mdi-backburger mdi-24px"></i></span></a>
       <b-navbar-item href="#">
-                Dashboard
+                
       </b-navbar-item>
+        <router-link
+              to="/"
+              class="navbar-item"
+              exact-active-class="is-active"
+            >
+            Dashboard
+        </router-link>      
         <router-link
               to="/"
               class="navbar-item"
@@ -27,10 +34,6 @@
             Reports
         </router-link>
 
-      <!-- </b-navbar-item> -->
-      <b-navbar-item href="#">
-                Settings
-      </b-navbar-item>
     </div>
 
 
@@ -99,7 +102,7 @@
               <span>Messages</span>
             </a>
             <hr class="navbar-divider" />
-            <a class="navbar-item">
+            <a @click="logout()" class="navbar-item">
               <b-icon icon="logout" custom-size="default"></b-icon>
               <span>Log Out</span>
             </a>
@@ -164,7 +167,8 @@ export default {
       this.isMenuNavBarActive = !this.isMenuNavBarActive
     },
     logout () {
-      this.$buefy.snackbar.open({
+       this.$store.dispatch('logout');
+        this.$buefy.snackbar.open({
         message: 'Log out clicked',
         queue: false
       })

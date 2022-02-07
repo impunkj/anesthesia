@@ -44,7 +44,7 @@
       <b-table-column  label="Report"  custom-key="actions" cell-class="is-actions-cell" v-slot="props">
         <div class="buttons ">
           <b-tooltip label="Generate Report" position="is-left">
-          <button class="button is-small "  @click="DownloadPDF(props.row.patientNo )">
+          <button class="button is-small "  @click="DownloadPDF(props.row.id )">
             <b-icon icon="file-document" size="is-medium"/>
           </button>
           </b-tooltip>
@@ -100,7 +100,7 @@ export default {
       clients: [],
       isLoading: false,
       paginated: false,
-      perPage: 10,
+      perPage: 30,
       checkedRows: []
     }
   },

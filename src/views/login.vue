@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <section class="section is-main-section">
+    <section class="section is-main-section  hero is-fullheight is-error-section login-page">
       <div class="column is-8 is-centered is-offset-2">
         <div class="columns login-form py-5">
           <div class="column is-6 text-ceter py-5">
@@ -9,25 +9,25 @@
           </div>
           <div class="column is-6 px-5 py-5">
             <div class="">
-              <form action="">
+                  <form @submit.prevent="submit">
                 <header class="mb-5 pb-3">
                   <p class="modal-card-title login-title">Login</p>
                 </header>
                 <section class="">
                   <b-field label="Email" :label-position="labelPosition">
-                    <b-input type="email" value="" maxlength="30">
+                    <b-input type="email"  v-model="form.email"  maxlength="30"  required>
                     </b-input>
                   </b-field>
 
                   <b-field label="Password" :label-position="labelPosition">
-                    <b-input  type="password"  password-reveal
+                    <b-input  type="password"  v-model="form.password"  required  password-reveal
                       >
                     </b-input>
                   </b-field>
 
-                  <b-checkbox  size="is-small" type="is-info">Remember me</b-checkbox>
+                  <b-checkbox  size="is-small"  type="is-info">Remember me</b-checkbox>
                   <div class="mt-4">
-                   <button class="button sbmt-btn" >Login</button>
+                      <b-button type="sbmt-btn"  native-type="submit">Submit</b-button>
                    </div>
                 </section>
               </form>
@@ -62,20 +62,8 @@
       return {
         labelPosition: 'on-border',
         radio: 'default',
-        isLoading: false,
-        form: {
-          name: null,
-          email: null,
-          phone: null,
-          department: null,
-          subject: null,
-          question: null
-        },
-        customElementsForm: {
-          checkbox: [],
-          radio: null,
-          switch: true,
-          file: null
+        form:{
+
         },
         departments: ['Business Development', 'Marketing', 'Sales']
       }
@@ -86,7 +74,10 @@
       }
     },
     methods: {
-      submit() {},
+      submit() {
+          ///this.$store.dispatch('login', this.form)
+          this.$store.dispatch('login', this.form)
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {

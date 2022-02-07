@@ -39,9 +39,9 @@
           </div>
 
           <b-field>
-            <b-checkbox  v-model="checkboxClick2"  native-value="yes" type="is-info">Dialysis</b-checkbox>
+            <b-checkbox  v-model="form.dialysis"   type="is-info">Dialysis</b-checkbox>
           </b-field>
-      <div v-if="checkboxClick2">
+      <div v-if="form.dialysis">
           <b-field>
             <b-checkbox v-model="hemoCheck" type="is-info">Hemo</b-checkbox>
           </b-field>
@@ -49,9 +49,9 @@
             <div class="column is-one-half">
               <b-field>
                 <b-select placeholder="Frequency" v-model="form.hemo"  expanded>
-                  <option value="flint">Ony Once</option>
-                  <option value="silver">Everyday</option>
-                  <option value="silver">Times in a week</option>
+                  <option value="onlyonce">Ony Once</option>
+                  <option value="everyday">Everyday</option>
+                  <option value="timeinweek">Times in a week</option>
                 </b-select>
               </b-field>
             </div>
@@ -145,7 +145,8 @@
         radio: 'default',
         isLoading: false,
         form: {
-          name: null
+          name: null,
+          dialysis: false,
         },
         customElementsForm: {
           checkbox: [],
@@ -239,6 +240,19 @@
             this.form = r.data.data;
             if(r.data.success){
               this.checked = 'yes';
+              if(r.data.data.dialysis == 1){
+                 this.form.dialysis = true;
+
+              }
+              if(r.data.data.fistual == 1){
+                 this.form.fistual = true;
+              }
+              if(r.data.data.hemo){
+                this.hemoCheck = true;
+              }
+              if(r.data.data.peritoneal){
+                this.checkboxClick4 = true;
+              }
             }
           });
           loadingComponent.close();

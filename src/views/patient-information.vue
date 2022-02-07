@@ -421,8 +421,10 @@ Object.keys(rules).forEach(rule => {
       },
       //// get patientInfo
       getPatientInfo(){
-       var patientID =  localStorage.getItem('patientID');
-        var urlTohit = this.$store.state.siteURL + 'api/patient_informations/' + patientID;
+        this.form.timeOfAdmission =  new Date();
+        this.form.dateOfAdmission = new Date();
+        var patientID =  localStorage.getItem('patientID');
+        var urlTohit = this.$store.state.siteURL + 'api/patient_informations/' + patientID
         axios
           .get(urlTohit)
           .then(r => {
@@ -433,7 +435,7 @@ Object.keys(rules).forEach(rule => {
             this.form.dateOfBirth =  new Date(r.data.data.dateOfBirth);
           }).catch(error => {
               console.log('error.response.data.error');
-              this.form.timeOfAdmission =  new Date();
+              
           });
       }, /// GetpatientInfo
     isNumber(evt) {

@@ -7,13 +7,13 @@
           <div class="columns">
             <div class="column is-one-half">
               <b-field label="Supplement steroid">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300"  v-model="form.Ssteroid" type="textarea"></b-input>
               </b-field>
             </div>
 
             <div class="column is-one-half">
               <b-field label="Steroid intake in last 6 months">
-                <b-input maxlength="300" type="textarea"></b-input>
+                <b-input maxlength="300"   v-model="form.sterioid" type="textarea"></b-input>
               </b-field>
             </div>
           </div>
@@ -22,7 +22,7 @@
           <div class="columns">
             <div class="column">
               <b-field label="Fraility score">
-                <b-input>
+                <b-input v-model="form.frailityscore" >
                 </b-input>
               </b-field>
             </div>
@@ -52,13 +52,13 @@
             <div class="column is-5 cstm-radio-btn">
               <div class="block">
                 <b-field label="">
-                  <b-radio v-model="radio" name="error" native-value="errorNo" type="is-info">
+                  <b-radio v-model="form.cognition" name="cognition" native-value="Noerrors" type="is-info">
                     No errors
                   </b-radio>
-                  <b-radio v-model="radio" name="error" native-value="errorSpacing" type="is-info">
+                  <b-radio v-model="form.cognition" name="cognition" native-value="minorspacingerror" type="is-info">
                     Minor spacing error
                   </b-radio>
-                  <b-radio v-model="radio" name="error" native-value="errorOther" type="is-info">
+                  <b-radio v-model="form.cognition" name="cognition" native-value="othererror" type="is-info">
                     Other errors
                   </b-radio>
                 </b-field>
@@ -78,13 +78,13 @@
             <div class="column is-5 cstm-radio-btn">
               <div class="block">
                 <b-field label="">
-                  <b-radio v-model="radio" name="generalhealth" native-value="generalhealth0" type="is-info">
+                  <b-radio v-model="form.ghstatus" name="generalhealth" native-value="0" type="is-info">
                     0
                   </b-radio>
-                  <b-radio v-model="radio" name="generalhealth" native-value="generalhealth1" type="is-info">
+                  <b-radio v-model="form.ghstatus" name="generalhealth" native-value="1-2" type="is-info">
                     1-2
                   </b-radio>
-                  <b-radio v-model="radio" name="generalhealth" native-value="generalhealth2" type="is-info">
+                  <b-radio v-model="form.ghstatus" name="generalhealth" native-value=">2" type="is-info">
                     >2
                   </b-radio>
                 </b-field>
@@ -103,13 +103,13 @@
             <div class="column is-5 cstm-radio-btn">
               <div class="block">
                 <b-field label="">
-                  <b-radio v-model="radio" name="general" native-value="generalgood" type="is-info">
+                  <b-radio v-model="form.describehealth" name="general" native-value="generalgood" type="is-info">
                     ‘Excellent’, ‘Very good’, ‘Good’
                   </b-radio>
-                  <b-radio v-model="radio" name="general" native-value="generalfair" type="is-info">
+                  <b-radio v-model="form.describehealth" name="general" native-value="generalfair" type="is-info">
                     ‘Fair’
                   </b-radio>
-                  <b-radio v-model="radio" name="general" native-value="generalpoor" type="is-info">
+                  <b-radio v-model="form.describehealth" name="general" native-value="generalpoor" type="is-info">
                     ‘Poor’
                   </b-radio>
                 </b-field>
@@ -130,13 +130,13 @@
             <div class="column is-5 cstm-radio-btn">
               <div class="block">
                 <b-field label="">
-                  <b-radio v-model="radio" name="independence" native-value="independence0" type="is-info">
+                  <b-radio v-model="form.findependence" name="independence" native-value="0-1" type="is-info">
                     0-1
                   </b-radio>
-                  <b-radio v-model="radio" name="independence" native-value="independence1" type="is-info">
+                  <b-radio v-model="form.findependence"  name="independence" native-value="2-4" type="is-info">
                     2-4
                   </b-radio>
-                  <b-radio v-model="radio" name="independence" native-value="independence2" type="is-info">
+                  <b-radio v-model="form.findependence"  name="independence" native-value="5-8" type="is-info">
                     5-8
                   </b-radio>
                 </b-field>
@@ -155,13 +155,13 @@
             <div class="column is-5 cstm-radio-btn">
               <div class="block">
                 <b-field label="">
-                  <b-radio v-model="radio" name="support" native-value="supportAlways" type="is-info">
+                  <b-radio v-model="form.socialSupport"  name="support" native-value="Always" type="is-info">
                     Always
                   </b-radio>
-                  <b-radio v-model="radio" name="support" native-value="supportSometimes" type="is-info">
+                  <b-radio v-model="form.socialSupport" name="support" native-value="Sometimes" type="is-info">
                     Sometimes
                   </b-radio>
-                  <b-radio v-model="radio" name="support" native-value="supportNever" type="is-info">
+                  <b-radio v-model="form.socialSupport" name="support" native-value="Never" type="is-info">
                     Never
                   </b-radio>
                 </b-field>
@@ -180,10 +180,10 @@
             <div class="column is-5 cstm-radio-btn">
               <div class="block">
                 <b-field label="">
-                  <b-radio v-model="radio" name="medication" native-value="medicationYes" type="is-info">
+                  <b-radio v-model="form.medicationusefive" name="medication" native-value="Yes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="radio" name="medication" native-value="medicationNo" type="is-info">
+                  <b-radio v-model="form.medicationusefive" name="medication" native-value="No" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -202,10 +202,10 @@
             <div class="column is-5 cstm-radio-btn">
               <div class="block">
                 <b-field label="">
-                  <b-radio v-model="radio" name="prescription" native-value="prescriptionYes" type="is-info">
+                  <b-radio v-model="form.medicationuseprescription" name="prescription" native-value="Yes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="radio" name="prescription" native-value="prescriptionNo" type="is-info">
+                  <b-radio v-model="form.medicationuseprescription" name="prescription" native-value="No" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -224,10 +224,10 @@
             <div class="column is-5 cstm-radio-btn">
               <div class="block">
                 <b-field label="">
-                  <b-radio v-model="radio" name="nutrition" native-value="nutritionYes" type="is-info">
+                  <b-radio v-model="form.Nutrition" name="nutrition" native-value="Yes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="radio" name="nutrition" native-value="nutritionNo" type="is-info">
+                  <b-radio v-model="form.Nutrition" name="nutrition" native-value="No" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -247,10 +247,10 @@
             <div class="column is-5 cstm-radio-btn">
               <div class="block">
                 <b-field label="">
-                  <b-radio v-model="radio" name="mood" native-value="moodYes" type="is-info">
+                  <b-radio v-model="form.Mood" name="mood" native-value="Yes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="radio" name="mood" native-value="moodNo" type="is-info">
+                  <b-radio v-model="form.Mood" name="mood" native-value="No" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -270,10 +270,10 @@
             <div class="column is-5 cstm-radio-btn">
               <div class="block">
                 <b-field label="">
-                  <b-radio v-model="radio" name="continence" native-value="continenceYes" type="is-info">
+                  <b-radio v-model="form.Continence" name="continence" native-value="Yes" type="is-info">
                     Yes
                   </b-radio>
-                  <b-radio v-model="radio" name="continence" native-value="continenceNo" type="is-info">
+                  <b-radio v-model="form.Continence" name="continence" native-value="No" type="is-info">
                     No
                   </b-radio>
                 </b-field>
@@ -295,13 +295,13 @@
             <div class="column is-5 cstm-radio-btn">
               <div class="block">
                 <b-field label="">
-                  <b-radio v-model="radio" name="functional" native-value="functional10" type="is-info">
+                  <b-radio v-model="form.Functionalperformance" name="functional" native-value="0-10" type="is-info">
                     0–10 s
                   </b-radio>
-                  <b-radio v-model="radio" name="functional" native-value="functional11" type="is-info">
+                  <b-radio v-model="form.Functionalperformance" name="functional" native-value="11-20" type="is-info">
                     11–20 s
                   </b-radio>
-                  <b-radio v-model="radio" name="functional" native-value="functional20" type="is-info">
+                  <b-radio v-model="form.Functionalperformance" name="functional" native-value=">20" type="is-info">
                     One of :>20 s,or patient unwilling ,or requires assistance
                   </b-radio>
                 </b-field>
@@ -319,7 +319,7 @@
             </div>
             <div class="column is-5">
               <b-field label="TOTAL (/17)">
-                <b-input>
+                <b-input v-model="form.Totals">
                 </b-input>
               </b-field>
             </div>
@@ -339,11 +339,7 @@
             </div>
           </div>
 
-
-
-
-
-          <b-button type="sbmt-btn">Submit</b-button>
+  <b-button type="sbmt-btn"  native-type="submit">Submit</b-button>
 
 
         </form>
@@ -354,34 +350,21 @@
 </template>
 
 <script>
+  import axios from "axios";
   import mapValues from 'lodash/mapValues'
-  import TitleBar from '@/components/TitleBar'
   import CardComponent from '@/components/CardComponent'
-  import CheckboxPicker from '@/components/CheckboxPicker'
-  import RadioPicker from '@/components/RadioPicker'
-  import FilePicker from '@/components/FilePicker'
-  import HeroBar from '@/components/HeroBar'
   export default {
-    name: 'Forms',
+    name: 'Covid',
     components: {
-      HeroBar,
-      FilePicker,
-      RadioPicker,
-      CheckboxPicker,
-      CardComponent,
-      TitleBar
+      CardComponent
+
     },
     data() {
       return {
+        checked: false,
         radio: 'default',
         isLoading: false,
         form: {
-          name: null,
-          email: null,
-          phone: null,
-          department: null,
-          subject: null,
-          question: null
         },
         customElementsForm: {
           checkbox: [],
@@ -392,13 +375,61 @@
         departments: ['Business Development', 'Marketing', 'Sales']
       }
     },
+      mounted(){
+         this.getfralityData();
+    },
     computed: {
       titleStack() {
         return ['Admin', 'Forms']
       }
     },
     methods: {
-      submit() {},
+      submit(){
+        const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        if(this.form.id){
+           this.updatefralityData();
+        }else {
+          this.createfralityData();
+        }
+        loadingComponent.close();
+      },
+      createfralityData(){
+          const loadingComponent = this.$buefy.loading.open({
+                      container: this.isFullPage
+          })
+          var patientID = localStorage.getItem('patientID');
+          if(!patientID){
+            this.$buefy.snackbar.open({
+              message: 'Please saved a patient Information first.',
+              queue: false
+            });
+            return;
+          }
+          var baseURL = this.$store.state.siteURL + 'api/fralities';
+          this.form.patientNo = patientID;
+            axios.post(baseURL, this.form).then((r) => {
+              loadingComponent.close();
+              this.form = r.data.data;
+              this.$buefy.snackbar.open({
+                message: r.data.message,
+                queue: false
+              });
+            })
+      },
+      updatefralityData(){
+        var ID = this.form.id;
+        this.form.treatment = JSON.stringify(this.Treatment);
+        var baseURL = this.$store.state.siteURL + 'api/fralities/' + ID;
+        this.form.patientNo = localStorage.getItem('patientID');
+        axios.put(baseURL, this.form).then((r) => {
+          this.$buefy.snackbar.open({
+            message: r.data.message,
+            queue: false
+          });
+        })
+      },
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {
@@ -406,13 +437,35 @@
           }
           return null
         })
-
         this.$buefy.snackbar.open({
           message: 'Reset successfully',
           queue: false
         })
-      }
+      },
+      getfralityData(){
+          var patientID = localStorage.getItem('patientID');
+          if(!patientID){
+            return;
+          }
+          const loadingComponent = this.$buefy.loading.open({
+                      container: this.isFullPage
+          })
+          var patientID =  localStorage.getItem('patientID');
+          var urlTohit = this.$store.state.siteURL + 'api/fralities/' + patientID;
+          axios
+            .get(urlTohit)
+            .then(r => {
+                this.form = r.data.data;
+                if(r.data.data.treatment){
+                      this.Treatment = JSON.parse(r.data.data.treatment);
+                }
+                if(r.data.success){
+                  this.checked = 'yes';
+                }
+            });
+            loadingComponent.close();
+      }, /// GetpatientInfo
     }
   }
 
-</script>
+</script> 

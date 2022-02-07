@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <nav-bar />
-    <aside-menu :menu="menu" />
+    <nav-bar  v-if="isLoggedIn" />
+    <aside-menu  v-if="isLoggedIn" :menu="menu" />
     <router-view />
-    <footer-bar />
+    <footer-bar v-if="isLoggedIn" />
   </div>
 </template>
 
@@ -21,6 +21,7 @@
       NavBar
     },
     computed: {
+      isLoggedIn : function(){ return this.$store.getters.isLoggedIn},
       menu() {
         return [
           'Basic Detail',

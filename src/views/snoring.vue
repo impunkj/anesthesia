@@ -23,7 +23,7 @@
           <div class="columns mb-0">
             <div class="column is-one-third">
               <b-field label="Stop BANG Score">
-                <b-input v-model="form.stopBangScore">
+                <b-input  @keypress.native="isNumber($event)"  v-model="form.stopBangScore"  >
                 </b-input>
               </b-field>
             </div>
@@ -165,6 +165,14 @@ import CardComponent from '@/components/CardComponent'
           });
         })
       },
+    isNumber(evt) {
+      evt = (evt) ? evt : window.event;
+      var charCode = (evt.which) ? evt.which : evt.keyCode;
+      if ((charCode > 31 && (charCode < 48 || charCode > 57))  && charCode !== 46  && charCode !== 47){
+          evt.preventDefault();
+      }
+      return true;
+    },       
       reset() {
         this.form = mapValues(this.form, (item) => {
           if (item && typeof item === 'object') {

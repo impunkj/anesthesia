@@ -166,7 +166,7 @@
           name: null,
           email: null,
           phone: null,
-          department: null,
+          advised: false,
           subject: null,
           question: null
         },
@@ -211,6 +211,11 @@
           });
           return;
         }
+        if(this.form.advised  == false){
+            this.form.advised = 0
+        }else{
+            this.form.advised = 1
+        }        
         var baseURL = this.$store.state.siteURL + 'api/resp_asthmas';
         this.form.patientNo = patientID;
         axios.post(baseURL, this.form).then((r) => {
@@ -226,11 +231,17 @@
         var ID = this.form.id;
         var baseURL = this.$store.state.siteURL + 'api/resp_asthmas/' + ID;
         this.form.patientNo = localStorage.getItem('patientID');
+        if(this.form.advised  == false){
+            this.form.advised = 0
+        }else{
+            this.form.advised = 1
+        }
         axios.put(baseURL, this.form).then((r) => {
           this.$buefy.snackbar.open({
             message: r.data.message,
             queue: false
           });
+          this.getAsthmaData();
         })
       },
       reset() {
@@ -262,6 +273,10 @@
             this.form = r.data.data;
             if(r.data.success){
               this.checked = 'yes';
+              if(this.form.advised == 1){
+                this.form.advised = true;
+              }
+
             }
           });
           loadingComponent.close();

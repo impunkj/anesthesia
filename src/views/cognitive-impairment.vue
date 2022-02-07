@@ -7,7 +7,7 @@
           <div class="columns">
             <div class="column">
               <b-field label="Mini-Cog Score">
-                <b-input   v-model="form.MiniCogScore" maxlength="2" >
+                <b-input    @keypress.native="isNumber($event)"   v-model="form.MiniCogScore" maxlength="2" >
                 </b-input>
               </b-field>
             </div>
@@ -190,6 +190,14 @@ import CardComponent from '@/components/CardComponent'
           queue: false
         })
       },
+    isNumber(evt) {
+      evt = (evt) ? evt : window.event;
+      var charCode = (evt.which) ? evt.which : evt.keyCode;
+      if ((charCode > 31 && (charCode < 48 || charCode > 57))  && charCode !== 46  && charCode !== 47){
+          evt.preventDefault();
+      }
+      return true;
+    },      
       getCognitiveData(){
         var patientID = localStorage.getItem('patientID');
         if(!patientID){
