@@ -92,7 +92,7 @@
               <div class="column  cstm-radio-btn">
               <div class="block">
                 <b-field label="Diet">
-                    <b-checkbox   type="is-info"  name="dietcontrol" v-model="form.dietcontrol"  native-value="yes" >
+                    <b-checkbox   type="is-info"  native-value="1"  name="dietcontrol" v-model="form.dietcontrol"   >
                       Diet control
                     </b-checkbox>
                  </b-field>
@@ -205,11 +205,13 @@
           });
           return;
         }
+        this.form.complications  =  this.form.complications.toString();
         var baseURL = this.$store.state.siteURL + 'api/diabetes';
         this.form.patientNo = patientID;
         axios.post(baseURL, this.form).then((r) => {
           loadingComponent.close();
           this.form = r.data.data;
+          this.getDiabetesData();
           this.$buefy.snackbar.open({
             message: r.data.message,
             queue: false
@@ -218,9 +220,11 @@
       },
       updateDiabetesData(){
         var ID = this.form.id;
+        this.form.complications  =  this.form.complications.toString();
         var baseURL = this.$store.state.siteURL + 'api/diabetes/' + ID;
         this.form.patientNo = localStorage.getItem('patientID');
         axios.put(baseURL, this.form).then((r) => {
+          this.getDiabetesData();
           this.$buefy.snackbar.open({
             message: r.data.message,
             queue: false
@@ -254,6 +258,11 @@
           .get(urlTohit)
           .then(r => {
             this.form = r.data.data;
+            this.form.complications = r.data.data.complications.split(',');
+            if(r.data.data.dietcontrol == 1){
+              this.form.dietcontrol = true;
+            }
+
             if(r.data.success){
               this.checked = 'yes';
             }

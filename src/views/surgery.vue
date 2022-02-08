@@ -110,14 +110,15 @@ import CardComponent from '@/components/CardComponent'
         departments: ['Business Development', 'Marketing', 'Sales']
       }
     },
-       mounted(){
-         this.getSurgeryData();
+    mounted(){
+         this.surgeryData();
     },
     computed: {
       titleStack() {
         return ['Admin', 'Forms']
       }
     },
+  methods: {
     submit(){
         const loadingComponent = this.$buefy.loading.open({
                     container: this.isFullPage
@@ -176,7 +177,8 @@ import CardComponent from '@/components/CardComponent'
           queue: false
         })
       },
-      getSurgeryData(){
+      surgeryData(){
+        console.log('xxxx');
         var patientID = localStorage.getItem('patientID');
         if(!patientID){
           return;
@@ -197,6 +199,7 @@ import CardComponent from '@/components/CardComponent'
           loadingComponent.close();
       }, /// GetpatientInfo
     }
+  }
 
 
 </script>

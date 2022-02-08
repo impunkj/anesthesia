@@ -25,7 +25,7 @@
 
 <div>
    <p class="mb-4">  <b-field class="checkOut">
-            <b-checkbox  type="is-info" native-value="yes"   v-model="form.supplement" > <b> Supplement Steroid pre-op  </b>  </b-checkbox>
+            <b-checkbox  v-model="form.supplement" value="yes" type="is-info" native-value="yes" > <b> Supplement Steroid pre-op  </b>  </b-checkbox>
         </b-field>
 </p>
 </div>
@@ -58,7 +58,6 @@
         radio: 'default',
         isLoading: false,
         form: {
-          supplement: false
         },
         departments: ['Business Development', 'Marketing', 'Sales']
       }
@@ -87,6 +86,11 @@
         const loadingComponent = this.$buefy.loading.open({
                     container: this.isFullPage
         })
+        if(this.form.supplement == true){
+              this.form.supplement = 'yes';
+        }else{
+           this.form.supplement = 'no';
+        }        
         var patientID = localStorage.getItem('patientID');
         if(!patientID){
            this.$buefy.snackbar.open({
@@ -99,6 +103,7 @@
         this.form.patientNo = patientID;
         axios.post(baseURL, this.form).then((r) => {
           loadingComponent.close();
+          this.getAdvisoryData();
           this.form = r.data.data;
           this.$buefy.snackbar.open({
             message: r.data.message,
@@ -109,8 +114,14 @@
       updateAdvisoryData(){
         var ID = this.form.id;
         var baseURL = this.$store.state.siteURL + 'api/steroids/' + ID;
+        if(this.form.supplement == true){
+              this.form.supplement = 'yes';
+        }else{
+           this.form.supplement = 'no';
+        }
         this.form.patientNo = localStorage.getItem('patientID');
         axios.put(baseURL, this.form).then((r) => {
+          this.getAdvisoryData();
           this.$buefy.snackbar.open({
             message: r.data.message,
             queue: false
@@ -131,27 +142,29 @@
         })
       },
       getAdvisoryData(){
-          var patientID = localStorage.getItem('patientID');
-          if(!patientID){
-            return;
-          }
-          const loadingComponent = this.$buefy.loading.open({
-                      container: this.isFullPage
-          })
-          var patientID =  localStorage.getItem('patientID');
-          var urlTohit = this.$store.state.siteURL + 'api/steroids/' + patientID;
-          axios
-            .get(urlTohit)
-            .then(r => {
-              if(r.data.data.supplement){
+        var patientID = localStorage.getItem('patientID');
+        if(!patientID){
+          return;
+        }
+        const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        var patientID =  localStorage.getItem('patientID');
+        var urlTohit = this.$store.state.siteURL + 'api/steroids/' + patientID;
+        axios
+          .get(urlTohit)
+          .then(r => {
+            this.form = r.data.data;
+            if(r.data.success){
+              this.checked = 'yes';
+              if(r.data.data.supplement == 'yes'){
                 this.form.supplement = true;
+              }else{
+                this.form.supplement = false;
               }
-              this.form = r.data.data;
-              if(r.data.success){
-                this.checked = 'yes';
-              }
-            });
-            loadingComponent.close();
+            }
+          });
+          loadingComponent.close();
       }, /// GetpatientInfo
     }
   }

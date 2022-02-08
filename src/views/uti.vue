@@ -51,10 +51,10 @@
                     <div class="column is-full cstm-radio-btn"  >
                               <div class="block">
                                 <b-field label="Treated">
-                                    <b-radio v-model="checked2" name="checkVal2" native-value="yes" type="is-info">
+                                    <b-radio v-model="form.treatedV" name="checkVal2" native-value="1" type="is-info">
                                       Yes
                                     </b-radio>
-                                    <b-radio  v-model="checked2"   name="checkVal2" native-value="no" type="is-info">
+                                    <b-radio  v-model="form.treatedV"   name="checkVal2" native-value="0" type="is-info">
                                       No
                                     </b-radio>
                                 </b-field>
@@ -62,7 +62,7 @@
                       </div>
                 </div>
 
- <div  v-if="checked2 === 'yes'">
+ <div  v-if="form.treatedV == '1'">
 
           <div class="columns mb-4">
             <div class="column is-one-third">
@@ -117,7 +117,7 @@
     data() {
       return {
         checked: false,
-        checked2: false,
+        checked2: "yes",
          radio: 'default',
         isLoading: false,
         form: {

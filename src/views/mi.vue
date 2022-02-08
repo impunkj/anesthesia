@@ -1,25 +1,23 @@
 <template>
   <div>
-
     <section class="section is-main-section">
       <card-component title="MI">
-             <ValidationObserver  v-slot="{ handleSubmit }" ref="form">
-        <form @submit.prevent="submit">
-
+          <ValidationObserver  v-slot="{ handleSubmit }" ref="form">
+              <form @submit.prevent="submit">
           <div class="columns">
-   <div class="column is-full cstm-radio-btn"  >
-              <div class="block">
-                <b-field label="">
-                  <b-radio v-model="checked" name="checkVal" native-value="yes" type="is-info">
-                    Yes
-                  </b-radio>
+              <div class="column is-full cstm-radio-btn"  >
+                <div class="block">
+                  <b-field label="">
+                    <b-radio v-model="checked" name="checkVal" native-value="yes" type="is-info">
+                       Yes
+                    </b-radio>
                   <b-radio  v-model="checked"   name="checkVal" native-value="no" type="is-info">
                     No
                   </b-radio>
                 </b-field>
               </div>
-      </div>
-</div>
+             </div>
+       </div>
 
  <div  v-if="checked === 'yes'">
 
@@ -133,8 +131,6 @@
               </div>
             </div>
           </div>
-
-
           <div class="columns ">
             <div class="column is-full " @click="isCardModalActive = true">
               <b-field label="What treatment">
@@ -142,8 +138,6 @@
               </b-field>
             </div>
           </div>
-
-
           <div class="columns">
             <div class="column is-one-third  cstm-radio-btn">
               <div class="block">
@@ -157,7 +151,6 @@
                 </b-field>
               </div>
             </div>
-
             <div class="column is-one-third  cstm-radio-btn">
               <div class="block">
                 <b-field label="CABG">
@@ -170,7 +163,6 @@
                 </b-field>
               </div>
             </div>
-
              <div class="column is-one-third">
               <b-field label="When" class="mb-0"> </b-field>
               <div class="columns">
@@ -180,7 +172,6 @@
                     </b-input>
                   </b-field>
                 </div>
-
                 <div class="column is-one-third">
                   <b-field label=" ">
                     <b-input placeholder="MM"   maxlength="2">
@@ -198,11 +189,7 @@
               </div>
             </div>
           </div>
-
-
           <div class="columns">
-
-
             <div class="column is-one-third  cstm-radio-btn">
               <div class="block">
                 <b-field label="Symptoms improved">
@@ -229,8 +216,6 @@
               </div>
             </div>
           </div>
-
-
           <div class="columns">
             <div class="column is-full">
               <b-field label="Type of Graft">
@@ -238,9 +223,6 @@
               </b-field>
             </div>
           </div>
-
-
-
           <div class="columns mb-3">
              <div class="column is-full ">
               <b-field label="Repeat CAG">
@@ -269,10 +251,10 @@
               <div class="column is-half  cstm-radio-btn">
                 <div class="block">
                   <b-field label="Antiplatelet">
-                    <b-radio v-model="form.whatTreatment.antiplatelet" name="antiplatelet" native-value="antiplateletYes" type="is-info">
+                    <b-radio v-model="form.whatTreatment.antiplatelet" name="antiplatelet" native-value="Yes" type="is-info">
                       Yes
                     </b-radio>
-                    <b-radio v-model="form.whatTreatment.antiplatelet" name="antiplatelet" native-value="antiplateletNo" type="is-info">
+                    <b-radio v-model="form.whatTreatment.antiplatelet" name="antiplatelet" native-value="No" type="is-info">
                       No
                     </b-radio>
                   </b-field>
@@ -282,10 +264,10 @@
               <div class="column is-half  cstm-radio-btn">
                 <div class="block">
                   <b-field label="Antianginals">
-                    <b-radio v-model="form.whatTreatment.antianginals" name="antianginals" native-value="antianginalsYes" type="is-info">
+                    <b-radio v-model="form.whatTreatment.antianginals" name="antianginals" native-value="Yes" type="is-info">
                       Yes
                     </b-radio>
-                    <b-radio v-model="form.whatTreatment.antianginals" name="antianginals" native-value="antianginalsNo" type="is-info">
+                    <b-radio v-model="form.whatTreatment.antianginals" name="antianginals" native-value="No" type="is-info">
                       No
                     </b-radio>
                   </b-field>
@@ -298,10 +280,10 @@
               <div class="column is-half  cstm-radio-btn">
                 <div class="block">
                   <b-field label="Statins">
-                    <b-radio v-model="form.whatTreatment.statins" name="statins" native-value="statinsYes" type="is-info">
+                    <b-radio v-model="form.whatTreatment.statins" name="statins" native-value="Yes" type="is-info">
                       Yes
                     </b-radio>
-                    <b-radio v-model="form.whatTreatment.statins" name="statins" native-value="statinsNo" type="is-info">
+                    <b-radio v-model="form.whatTreatment.statins" name="statins" native-value="No" type="is-info">
                       No
                     </b-radio>
                   </b-field>
@@ -311,10 +293,10 @@
               <div class="column is-half  cstm-radio-btn">
                 <div class="block">
                   <b-field label="Anticoagulant">
-                    <b-radio v-model="form.whatTreatment.anticoagulant" name="anticoagulant" native-value="anticoagulantYes" type="is-info">
+                    <b-radio v-model="form.whatTreatment.anticoagulant" name="anticoagulant" native-value="Yes" type="is-info">
                       Yes
                     </b-radio>
-                    <b-radio v-model="form.whatTreatment.anticoagulant" name="anticoagulant" native-value="anticoagulantNo" type="is-info">
+                    <b-radio v-model="form.whatTreatment.anticoagulant" name="anticoagulant" native-value="No" type="is-info">
                       No
                     </b-radio>
                   </b-field>
@@ -451,6 +433,9 @@
         departments: ['Business Development', 'Marketing', 'Sales']
       }
     },
+    mounted(){
+         this.getMiData();
+    },
     computed: {
       titleStack() {
         return ['Admin', 'Forms']
@@ -458,18 +443,50 @@
     },
     methods: {
     submit(){
-      const loadingComponent = this.$buefy.loading.open({
+        const loadingComponent = this.$buefy.loading.open({
                     container: this.isFullPage
         })
-        var baseURL = this.$store.state.siteURL + 'api/cvs_mis';
-        this.form.patientNo = localStorage.getItem('patientID');
+        if(this.form.id){
+           this.updateMiData();
+        }else {
+          this.createMiData();
+        }
+        loadingComponent.close();
+      },
+      createMiData(){
+        const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
         this.form.whatTreatment = JSON.stringify(this.form.whatTreatment);
+        var patientID = localStorage.getItem('patientID');
+        if(!patientID){
+           this.$buefy.snackbar.open({
+            message: 'Please saved a patient Information first.',
+            queue: false
+          });
+          return;
+        }
+        var baseURL = this.$store.state.siteURL + 'api/cvs_mis';
+        this.form.patientNo = patientID;
         axios.post(baseURL, this.form).then((r) => {
           loadingComponent.close();
-            this.$buefy.snackbar.open({
-              message: r.data.message,
-              queue: false
-            });
+          this.form = r.data.data;
+          this.$buefy.snackbar.open({
+            message: r.data.message,
+            queue: false
+          });
+        })
+      },
+      updateMiData(){
+        var ID = this.form.id;
+          this.form.whatTreatment = JSON.stringify(this.form.whatTreatment);
+        var baseURL = this.$store.state.siteURL + 'api/cvs_mis/' + ID;
+        this.form.patientNo = localStorage.getItem('patientID');
+        axios.put(baseURL, this.form).then((r) => {
+          this.$buefy.snackbar.open({
+            message: r.data.message,
+            queue: false
+          });
         })
       },
       reset() {
@@ -487,7 +504,28 @@
       },
       submitWhatTreatment(){
         this.isCardModalActive = false;
-      }
+      },
+      getMiData(){
+        var patientID = localStorage.getItem('patientID');
+        if(!patientID){
+          return;
+        }
+        const loadingComponent = this.$buefy.loading.open({
+                    container: this.isFullPage
+        })
+        var patientID =  localStorage.getItem('patientID');
+        var urlTohit = this.$store.state.siteURL + 'api/cvs_mis/' + patientID;
+        axios
+          .get(urlTohit)
+          .then(r => {
+            this.form = r.data.data;
+            this.form.whatTreatment = JSON.parse(r.data.data.whatTreatment);
+            if(r.data.success){
+              this.checked = 'yes';
+            }
+          });
+          loadingComponent.close();
+      }, /// GetpatientInfo
     }
   }
 

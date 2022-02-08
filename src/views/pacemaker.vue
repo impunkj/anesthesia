@@ -28,7 +28,7 @@
             </div>
             <div class="column is-half">
               <b-field label="Pacemaker make / Type?">
-                <b-input maxlength="300" type="textarea" v-model="form.pacemakerType"></b-input>
+                <b-input maxlength="300" type="textarea" v-model="form.pacemakerType"   required></b-input>
               </b-field>
             </div>
           </div>
@@ -58,7 +58,7 @@
 
 
           <b-field class="checkOut">
-            <b-checkbox type="is-info" v-model="form.ckpaperwork" native-value="ckpaperwork"  name="ckpaperwork">Check paperwork / Card / Chest xRay</b-checkbox>
+            <b-checkbox type="is-info" v-model="ckpaperwork" native-value="1"  name="ckpaperwork">Check paperwork / Card / Chest xRay</b-checkbox>
           </b-field>
 
           <div  v-if="checkboxClick" class="mt-2 mb-5">
@@ -86,6 +86,7 @@
     data() {
       return {
         checkboxClick : false,
+        ckpaperwork: false,
         radio: 'default',
         checked: false,
         checkboxGroup: ['Flint'],
@@ -132,6 +133,11 @@
           return;
         }
         var baseURL = this.$store.state.siteURL + 'api/cvs_pacemakers';
+        if(this.ckpaperwork == true){
+          this.form.ckpaperwork = 1;  
+        }else{
+            this.form.ckpaperwork = 0;   
+        }
         this.form.patientNo = patientID;
         axios.post(baseURL, this.form).then((r) => {
           loadingComponent.close();
@@ -143,6 +149,12 @@
         })
       },
       updatePaceMakerData(){
+   
+        if(this.ckpaperwork == true){
+          this.form.ckpaperwork = 1;  
+        }else{
+            this.form.ckpaperwork = 0;   
+        }   
         var ID = this.form.id;
         var baseURL = this.$store.state.siteURL + 'api/cvs_pacemakers/' + ID;
         this.form.patientNo = localStorage.getItem('patientID');
@@ -182,6 +194,9 @@
             this.form = r.data.data;
             if(r.data.success){
               this.checked = 'yes';
+              if(r.data.data.ckpaperwork == 1){
+                this.ckpaperwork = true;
+              }
             }
           });
           loadingComponent.close();
