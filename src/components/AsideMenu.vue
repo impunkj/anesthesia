@@ -1,5 +1,5 @@
 <template>
-  <aside v-show="isAsideVisible" class="aside is-placed-left is-expanded logo-section">
+  <aside v-show="isAsideVisible" class="aside is-placed-left is-expanded logo-section"  >
     <aside-tools :is-main-menu="true">
       <span slot="label" class="logo-img"> <img src="../assets/logo.png" alt=""> <span> eAccess  Telemedics  </span>  </span>
     </aside-tools>
